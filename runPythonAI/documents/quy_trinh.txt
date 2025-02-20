@@ -1,0 +1,43 @@
+==> Quy trình đăng ký tài khoản
+1. Truy cập vào trang web chính thức của chúng tôi.
+2. Nhấn vào nút "Đăng ký".
+3. Nhập đầy đủ thông tin cá nhân: Họ tên, Email, Số điện thoại.
+4. Tạo mật khẩu an toàn và xác nhận lại mật khẩu.
+5. Nhấn "Xác nhận" để hoàn tất đăng ký.
+6. Kiểm tra email để xác nhận tài khoản.
+
+==> Quy trình đặt hàng
+1. Đăng nhập vào tài khoản của bạn.
+2. Duyệt danh mục sản phẩm và chọn sản phẩm mong muốn.
+3. Nhấn vào "Thêm vào giỏ hàng".
+4. Kiểm tra giỏ hàng và nhấn "Thanh toán".
+5. Nhập địa chỉ giao hàng và chọn phương thức thanh toán.
+6. Nhấn "Xác nhận đơn hàng" để hoàn tất.
+
+==> Quy trình hủy đơn hàng
+1. Đăng nhập vào tài khoản của bạn.
+2. Truy cập "Đơn hàng của tôi".
+3. Chọn đơn hàng muốn hủy.
+4. Nhấn "Hủy đơn hàng" và xác nhận lý do hủy.
+5. Hệ thống sẽ gửi thông báo xác nhận hủy đơn hàng qua email.
+
+==> Quy trình đổi trả sản phẩm
+1. Đăng nhập vào tài khoản của bạn.
+2. Truy cập "Lịch sử mua hàng".
+3. Chọn sản phẩm cần đổi/trả và nhấn vào "Yêu cầu đổi/trả".
+4. Điền lý do đổi/trả và chọn phương thức hoàn trả.
+5. Nhấn "Gửi yêu cầu", hệ thống sẽ kiểm tra và phản hồi trong 3-5 ngày làm việc.
+
+==> Quy trình liên hệ hỗ trợ
+1. Truy cập trang "Hỗ trợ khách hàng".
+2. Chọn danh mục vấn đề bạn gặp phải.
+3. Nhập nội dung chi tiết về vấn đề của bạn.
+4. Nhấn "Gửi yêu cầu hỗ trợ".
+5. Bộ phận CSKH sẽ phản hồi trong vòng 24 giờ làm việc.
+
+==> Quy trình rút tiền
+1. Đăng nhập vào tài khoản ngân hàng của bạn.
+2. Truy cập mục "Rút tiền".
+3. Chọn phương thức rút tiền mong muốn.
+4. Nhập số tiền cần rút và xác nhận.
+5. Kiểm tra tài khoản ngân hàng để đảm bảo giao dịch thành công.

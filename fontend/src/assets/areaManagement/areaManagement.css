@@ -1,0 +1,30 @@
+.areaManagement {
+  height: 90vh;
+  overflow-y: auto;
+}
+
+.areaManagement_item {
+  /* min-height: 25%; */
+  background-color: rgb(53, 55, 56);
+}
+
+.areaManagement_item .areaManagement_item_tables .areaManagement_item_tables_table[type="den"] {
+  background-color: #303F9F !important;
+}
+
+.areaManagement_item .areaManagement_item_tables .areaManagement_item_tables_table[type="xanh"] {
+  background-color: rgb(53, 161, 58) !important;
+}
+
+.areaManagement_item .areaManagement_item_tables .areaManagement_item_tables_table[type="vang"] {
+  background-color: rgb(207, 187, 10);
+}
+
+.areaManagement_item .areaManagement_item_tables .areaManagement_item_tables_table[type="do"] {
+  background-color: rgb(211, 25, 25);
+}
+
+.areaManagement_infoTable .v-data-table-footer{
+  display: none;
+}
+
