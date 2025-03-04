@@ -1,6 +1,10 @@
 <template>
-  <div id="reportManagement" class="mt-1" style="width: 100%; height: 100%">
-    <div class="d-flex justify-space-between">
+  <div
+    id="reportManagement"
+    class="mt-1 d-flex flex-column"
+    style="width: 100%; height: 100%"
+  >
+    <div class="d-flex justify-space-between flex-wrap">
       <v-btn
         @click="valueVisiable = 1"
         variant="elevated"
@@ -36,7 +40,7 @@
       </v-btn>
     </div>
 
-    <div style="width: 100%" class="mt-3">
+    <div style="width: 100%; margin-bottom: 52px" class="flex-1-0">
       <ReportRevenue v-if="valueVisiable == 1" />
       <BestSellingItemsReport v-if="valueVisiable == 2" />
       <BillingReport v-if="valueVisiable == 3" />

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="reportManagement_totalAmount d-flex flex-wrap flex-column mt-2 pa-2 rounded"
+    class="reportManagement_totalAmount d-flex flex-wrap flex-column pa-2 rounded"
     style="height: 100%"
   >
     <v-card style="height: 100%">
@@ -22,16 +22,16 @@
               </JsonExcel> -->
       </v-card-title>
       <v-card-text
-        class="px-2"
+        class="px-2 h-100"
         :style="{ backgroundColor: 'var(--bg-color-item)' }"
       >
-        <div class="d-flex justify-space-between">
+        <div class="d-flex justify-space-between h-100">
           <div class="" style="width: 59%">
             <!-- Báo cáo doanh thu theo nhân viên -->
-            <div class="mt-2">
+            <div class="mt-1 d-flex flex-column" style="height: 60%">
               <h2 class="text-center w-100 opacity-50">Theo Nhân Viên</h2>
               <div
-                class="reportManagement_chosseTime d-flex justify-md-space-between mb-2"
+                class="reportManagement_chosseTime d-flex justify-md-space-between"
               >
                 <div>
                   <!-- Lọc theo ngày -->
@@ -98,9 +98,10 @@
                   Làm mới
                 </v-btn>
               </div>
+              <!-- style="height: 405px; max-height: 405px; overflow-y: auto" -->
               <div
-                class="reportManagement_totalAmount_salesSummary d-flex mt-2 mb-2"
-                style="height: 250px; max-height: 350px; overflow-y: auto"
+                class="reportManagement_totalAmount_salesSummary flex-1-0 d-flex mt-1 mb-1"
+                style="overflow-y: auto"
               >
                 <v-data-table
                   :headers="headersEmployee"
@@ -161,7 +162,7 @@
               </div>
             </div>
             <!-- Báo cáo doanh thu theo thời gian -->
-            <div class="mb-2 mt-4">
+            <div class="mb-2 mt-1">
               <h2 class="text-center w-100 opacity-50">
                 Tổng doanh thu - Số lượng đơn hàng hôm nay
               </h2>
@@ -434,7 +435,7 @@
               </div>
             </div>
           </div>
-          <div class="mt-2 mb-2" style="width: 40%">
+          <div class="mt-1 mb-2" style="width: 40%">
             <h2 class="text-center w-100 opacity-50">Theo Danh Mục</h2>
             <div
               class="reportManagement_chosseTime d-flex justify-md-space-between"

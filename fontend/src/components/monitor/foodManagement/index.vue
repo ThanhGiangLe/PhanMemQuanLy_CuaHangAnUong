@@ -1,5 +1,5 @@
 <template>
-  <div class="foodManagement mt-1">
+  <div class="foodManagement mt-1 d-flex flex-column">
     <div class="foodManagement_search d-flex align-center">
       <v-text-field
         class="user_debt_equipment-search"
@@ -70,7 +70,10 @@
         </v-card>
       </v-dialog>
     </div>
-    <div class="foodManagement_listFoodOrder mt-4 d-flex justify-space-between">
+    <div
+      class="foodManagement_listFoodOrder flex-1-0 mt-3 d-flex justify-space-between"
+      style="margin-bottom: 52px"
+    >
       <div
         class="foodManagement_listFoodOrder_menu rounded"
         :style="{ backgroundColor: 'var(--bg-color-item)' }"
@@ -148,7 +151,16 @@
                       <div style="min-width: 105px; color: #666">
                         Giá niêm yết:
                       </div>
-                      <div>
+                      <div
+                        style="
+                          height: 19.94px;
+                          max-height: 19.94px;
+                          overflow: hidden;
+                          display: -webkit-box;
+                          -webkit-box-orient: vertical;
+                          -webkit-line-clamp: 1;
+                        "
+                      >
                         {{ formatCurrency(foodItem.priceListed) }} vnd/{{
                           foodItem.unit
                         }}
@@ -159,7 +171,16 @@
                       <div style="min-width: 105px; color: #666">
                         Giá bán ra:
                       </div>
-                      <div>
+                      <div
+                        style="
+                          height: 19.94px;
+                          max-height: 19.94px;
+                          overflow: hidden;
+                          display: -webkit-box;
+                          -webkit-box-orient: vertical;
+                          -webkit-line-clamp: 1;
+                        "
+                      >
                         {{ formatCurrency(foodItem.priceCustom) }} vnd/{{
                           foodItem.unit
                         }}
@@ -196,7 +217,7 @@
                   </div>
                   <!-- Buttons -->
                   <div
-                    class="d-flex flex-wrap justify-center align-center w-100 mt-1"
+                    class="d-flex flex-wrap justify-center align-center w-100 mt-2"
                     v-if="user.role !== 'Staff'"
                   >
                     <v-btn

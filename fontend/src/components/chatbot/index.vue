@@ -52,13 +52,15 @@ const sendMessage = async () => {
       <!-- Phần header -->
       <div
         class="d-flex justify-space-between align-center"
-        style="padding: 10px; background-color: #007bff; color: white"
+        style="padding: 5px; background-color: #007bff; color: white"
       >
         <div class="d-flex justify-center align-center">
-          <v-icon size="x-large">mdi-cat</v-icon>
-          <span class="ms-1" style="font-size: 18px">Méo Mập</span>
+          <v-icon size="large">mdi-cat</v-icon>
+          <span class="ms-1" style="font-size: 14px">Méo Mập</span>
         </div>
-        <v-icon class="close-icon" @click="toggleChatbot">mdi-close</v-icon>
+        <v-icon size="small" class="close-icon" @click="toggleChatbot"
+          >mdi-close</v-icon
+        >
       </div>
       <!-- Phần khung chat -->
       <div
@@ -75,16 +77,24 @@ const sendMessage = async () => {
             <!-- Gửi câu hỏi đi -->
             <div
               v-if="msg.type === 'request'"
-              class="chatbot-dialog-body-chats-request px-3 py-2 rounded-xl align-self-end mt-2"
-              style="background-color: rgba(97, 97, 97, 1); max-width: 85%"
+              class="chatbot-dialog-body-chats-request px-2 py-1 rounded-xl align-self-end mt-2"
+              style="
+                background-color: rgba(97, 97, 97, 1);
+                font-size: 12px;
+                max-width: 90%;
+              "
             >
               <span> {{ msg.text }}</span>
             </div>
             <!-- Nhận về câu trả lời -->
             <div
               v-if="msg.type === 'response'"
-              class="chatbot-dialog-body-chats-response px-3 py-2 rounded-xl align-self-start mt-2"
-              style="background-color: rgba(66, 66, 66, 1); max-width: 85%"
+              class="chatbot-dialog-body-chats-response px-2 py-1 rounded-xl align-self-start mt-2"
+              style="
+                background-color: rgba(66, 66, 66, 1);
+                font-size: 12px;
+                max-width: 90%;
+              "
             >
               <span v-if="Array.isArray(msg.text)">
                 <ul style="padding-left: 4px; margin: 0">
@@ -110,12 +120,12 @@ const sendMessage = async () => {
             rows="1"
             auto-grow
             autofocus
-            density="comfortable"
-            style="max-height: 250px; overflow-y: auto"
+            density="compact"
+            style="max-height: 250px; overflow-y: auto; font: 12px"
           ></v-textarea>
           <v-icon
             class="cursor-pointer ms-2"
-            style="font-size: 36px"
+            style="font-size: 32px"
             @click="sendMessage"
             >mdi-arrow-up-circle</v-icon
           >

@@ -9,8 +9,12 @@ model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
 def create_faiss_index(texts):
     """ Chuyển đổi văn bản thành vector và lưu vào FAISS """
     vectors = model.encode(texts)  # Encode từng đoạn quy trình
-    index = faiss.IndexFlatL2(vectors.shape[1])  # Tạo FAISS Index
-    index.add(np.array(vectors))  # Thêm vector vào FAISS
+    
+    # Sử dụng FAISS với HNSW để tối ưu hiệu suất tìm kiếm
+    d = vectors.shape[1]
+    index = faiss.IndexHNSWFlat(d, 32)  # 32 là số neighbor (có thể điều chỉnh)
+    index.add(np.array(vectors))
+
     return index, texts
 
 # Đọc tài liệu từ file quy trình
