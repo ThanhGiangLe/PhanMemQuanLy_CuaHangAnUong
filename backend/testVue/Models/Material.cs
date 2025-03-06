@@ -11,10 +11,10 @@ namespace testVue.Models
 
         [Required]
         [MaxLength(100)]
-        public string MaterialName { get; set; } // Tên nguyên liệu
+        public string MaterialName { get; set; } = string.Empty;// Tên nguyên liệu
 
         [MaxLength(50)]
-        public string MaterialType { get; set; } // Loại nguyên liệu
+        public string MaterialType { get; set; } = string.Empty; // Loại nguyên liệu
 
         [Required]
         [Range(0, double.MaxValue)]
@@ -26,7 +26,7 @@ namespace testVue.Models
 
         [Required]
         [MaxLength(20)]
-        public string Unit { get; set; } // Đơn vị tính
+        public string Unit { get; set; } = string.Empty; // Đơn vị tính
 
         [Required]
         public DateTime ImportDate { get; set; } // Ngày nhập

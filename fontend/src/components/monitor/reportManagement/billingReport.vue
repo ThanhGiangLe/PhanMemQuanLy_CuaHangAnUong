@@ -1,6 +1,6 @@
 <template>
   <div
-    class="reportManagement_bestsellingItem d-flex flex-wrap flex-column pa-2 rounded"
+    class="reportManagement_billingItem d-flex flex-wrap flex-column pa-2 rounded"
   >
     <v-card style="height: 100%">
       <v-card-title class="pa-0 mb-2 d-flex justify-center">

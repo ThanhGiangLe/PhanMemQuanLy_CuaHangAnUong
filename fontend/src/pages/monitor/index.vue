@@ -15,18 +15,18 @@
         v-if="user.role !== 'Staff'"
         >Nhân viên</v-tab
       >
-      <v-tab
+      <!-- <v-tab
         prepend-icon="mdi-cart-outline"
         value="cart"
         v-if="user.role !== 'Staff'"
         >Bán hàng</v-tab
-      >
-      <v-tab
+      > -->
+      <!-- <v-tab
         prepend-icon="mdi-currency-usd"
         value="currency"
         v-if="user.role !== 'Staff'"
         >Két tiền</v-tab
-      >
+      > -->
       <v-tab
         prepend-icon="mdi-warehouse"
         value="warehouse"

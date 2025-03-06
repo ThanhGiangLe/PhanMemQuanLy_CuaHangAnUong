@@ -43,7 +43,6 @@
                         min-width="90px"
                         style="border: 1px solid #333"
                         size="small"
-                        class="ms-2"
                       >
                         {{ selectedDayForEmp || "Ngày" }}
                       </v-btn>
@@ -92,7 +91,6 @@
                 <v-btn
                   style="border: 1px solid #333; min-width: 60px"
                   size="small"
-                  class="mx-3"
                   @click="resetTimeFillterRevenueOrderForEmployee"
                 >
                   Làm mới
@@ -162,7 +160,7 @@
               </div>
             </div>
             <!-- Báo cáo doanh thu theo thời gian -->
-            <div class="mb-2 mt-1">
+            <div class="mb-2 mt-2">
               <h2 class="text-center w-100 opacity-50">
                 Tổng doanh thu - Số lượng đơn hàng hôm nay
               </h2>
