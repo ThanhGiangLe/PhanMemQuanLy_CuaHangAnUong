@@ -1,5 +1,5 @@
 <template>
-  <div class="employeeManagement py-5 px-10 d-flex flex-column">
+  <div class="employeeManagement py-2 px-4 d-flex flex-column">
     <div class="employeeManagement_search d-flex align-center">
       <v-text-field
         class="me-12"
@@ -33,7 +33,7 @@
         <v-dialog
           v-model="showDialogAddEmployee"
           max-width="600px"
-          max-height="550px"
+          max-height="600px"
           style="overflow-y: auto"
         >
           <v-card class="pa-2">
@@ -81,8 +81,8 @@
       </div>
     </div>
     <div
-      class="employeeManagement_list overflow-y-auto mt-2"
-      style="max-height: 72vh"
+      class="employeeManagement_list flex-1-0 overflow-y-auto mt-2"
+      style="max-height: 80%"
     >
       <v-container>
         <v-row>

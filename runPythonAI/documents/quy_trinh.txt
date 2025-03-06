@@ -1,43 +1,85 @@
-==> Quy trình đăng ký tài khoản
-1. Truy cập vào trang web chính thức của chúng tôi.
-2. Nhấn vào nút "Đăng ký".
-3. Nhập đầy đủ thông tin cá nhân: Họ tên, Email, Số điện thoại.
-4. Tạo mật khẩu an toàn và xác nhận lại mật khẩu.
-5. Nhấn "Xác nhận" để hoàn tất đăng ký.
-6. Kiểm tra email để xác nhận tài khoản.
+==> Quy trình đăng ký tài khoản?
+1. Đăng nhập vào hệ thống bằng Account của người có chức vụ là "quản lý" hoặc "chủ cửa hàng".
+2. Chọn vào Tab "NHÂN VIÊN" trên thanh Menu.
+3. Nhấn vào nút "+ ADD CANDIDATE".
+4. Điền đầy đủ các trường thông tin cần thiết.
+5. Nhấn "Thêm" để hoàn tất đăng ký.
+6. Kiểm tra bằng việc xem số lượng nhân viên đã được tăng lên hoặc xem thông tin được thêm vào giao diện ngay lập tức.
 
-==> Quy trình đặt hàng
+==> Quy trình đặt món cho khách?
 1. Đăng nhập vào tài khoản của bạn.
-2. Duyệt danh mục sản phẩm và chọn sản phẩm mong muốn.
-3. Nhấn vào "Thêm vào giỏ hàng".
-4. Kiểm tra giỏ hàng và nhấn "Thanh toán".
-5. Nhập địa chỉ giao hàng và chọn phương thức thanh toán.
-6. Nhấn "Xác nhận đơn hàng" để hoàn tất.
+2. Thực hiện đặt món ở Tab "DANH SÁCH MÓN ĂN".
+3. Nhấn vào nút "CHỌN MÓN".
+4. Sau đó sẽ hiển thị các món ăn có thể gọi kèm.
+5. Đánh dấu vào các món muốn gọi, có thể để lại ghi chú để nhà bếp có thể thực hiện theo đúng yêu cầu.
+5. Nhấn vào nút "THÊM VÀO GIỎ" để xác nhận món ăn.
+6. Nhấn vào nút "HỦY" để bỏ các yêu cầu đã chọn.
 
-==> Quy trình hủy đơn hàng
+==> Thao tác trên giao diện "DANH SÁCH MÓN ĂN"?
+1. Có thể thực hiện tìm kiếm món ăn.
+2. Có thể chọn món ăn cùng món ăn kèm.
+3. Có thể thay đổi món ăn đã gọi hoặc xóa khỏi danh sách các món đã chọn.
+4. Đặt món mang về hoặc đặt món và chọn bàn ngồi lại quán.
+
+==> Cách tìm kiếm món ăn?
+1. Bạn có thể nhập tên món ăn vào vào phía trên để lọc các món ăn bạn muốn.
+2. Hoặc có thể lọc các món ăn theo từng loại như: Món khô, Món nước, Món ăn nhanh,...
+
+==> Quy trình chọn món ăn vào thực đơn?
 1. Đăng nhập vào tài khoản của bạn.
-2. Truy cập "Đơn hàng của tôi".
-3. Chọn đơn hàng muốn hủy.
-4. Nhấn "Hủy đơn hàng" và xác nhận lý do hủy.
-5. Hệ thống sẽ gửi thông báo xác nhận hủy đơn hàng qua email.
+2. Thực hiện đặt món ở Tab "DANH SÁCH MÓN ĂN".
+3. Nhấn vào nút "CHỌN MÓN".
+4. Sau đó sẽ hiển thị các món ăn có thể gọi kèm.
+5. Đánh dấu vào các món muốn gọi, có thể để lại ghi chú để nhà bếp có thể thực hiện theo đúng yêu cầu.
+5. Nhấn vào nút "THÊM VÀO GIỎ" để xác nhận món ăn.
+6. Nhấn vào nút "HỦY" để bỏ các yêu cầu đã chọn.
 
-==> Quy trình đổi trả sản phẩm
-1. Đăng nhập vào tài khoản của bạn.
-2. Truy cập "Lịch sử mua hàng".
-3. Chọn sản phẩm cần đổi/trả và nhấn vào "Yêu cầu đổi/trả".
-4. Điền lý do đổi/trả và chọn phương thức hoàn trả.
-5. Nhấn "Gửi yêu cầu", hệ thống sẽ kiểm tra và phản hồi trong 3-5 ngày làm việc.
+==> Quy trình cập nhật món ăn trong thực đơn?
+1. Sau khi đã chọn món ăn sẽ nằm ở bên phải màn hình.
+2. Xác định món ăn cần thay đổi.
+3. Nhấn vào biểu tượng "✏️" sẽ hiển thị thông tin về món ăn của bạn.
+4. Bạn có thể cập nhật ghi chú, thông tin các món ăn kèm hoặc số lượng.
+5. Nhấn vào nút "Hủy" để bỏ các thay đổi.
+6. Nhấn vào nút "Xác nhận thay đổi" để thực hiện cập nhật thông tin.
 
-==> Quy trình liên hệ hỗ trợ
-1. Truy cập trang "Hỗ trợ khách hàng".
-2. Chọn danh mục vấn đề bạn gặp phải.
-3. Nhập nội dung chi tiết về vấn đề của bạn.
-4. Nhấn "Gửi yêu cầu hỗ trợ".
-5. Bộ phận CSKH sẽ phản hồi trong vòng 24 giờ làm việc.
+==> Quy trình bỏ món ăn trong thực đơn?
+1. Sau khi đã chọn món ăn sẽ nằm ở bên phải màn hình.
+2. Xác định món ăn cần thay đổi.
+3. Nhấn vào biểu tượng "🗑️" để xóa món ăn đã chọn.
 
-==> Quy trình rút tiền
-1. Đăng nhập vào tài khoản ngân hàng của bạn.
-2. Truy cập mục "Rút tiền".
-3. Chọn phương thức rút tiền mong muốn.
-4. Nhập số tiền cần rút và xác nhận.
-5. Kiểm tra tài khoản ngân hàng để đảm bảo giao dịch thành công.
+==> Quy trình thêm món ăn mới?
+1. Đăng nhập vào hệ thống bằng tài khoản của "quản lý" hoặc "chủ cửa hàng".
+2. Chọn vào Tab "QUẢN LÝ MÓN ĂN".
+3. Nhấn vào nút "THÊM MÓN MỚI".
+4. Nhập đầy đủ thông tin món ăn cần thêm vào.
+5. Có thể hủy bằng cách nhấn vào nút "HỦY".
+6. Thực hiện tạo món bằng cách nhấn vào nút "THÊM".
+7. Xác nhận thành công bằng việc hiển thị thông báo ở góc trên-phải màn hình.
+
+==> Thao tác trên giao diện "QUẢN LÝ MÓN ĂN"?
+1. Tìm kiếm món ăn cần thao tác bằng việc nhập tên món ăn.
+2. Thêm món ăn mới vào thực đơn.
+3. Lọc món ăn theo các danh mục món ăn.
+4. Thực hiện cập nhật món ăn hoặc xóa món ăn bất kì.
+
+==> Quy trình cập nhật món ăn của cửa hàng?
+1. Đăng nhập vào hệ thống bằng tài khoản của "quản lý" hoặc "chủ cửa hàng".
+2. Chọn vào Tab "QUẢN LÝ MÓN ĂN".
+3. Xác định món ăn cần thay đổi thông tin bằng cách lọc theo danh mục hoặc tìm kiếm theo tên món ăn.
+4. Nhấn vào nút "THAY ĐỔI".
+5. Hiển thị thông tin về món ăn mà bạn vừa chọn.
+6. Thực hiện các thay đổi cần thiết và bấm vào "XÁC NHẬN" để thay đổi thông tin.
+
+==> Quy trình xóa món ăn của cửa hàng?
+1. Đăng nhập vào hệ thống bằng tài khoản của "quản lý" hoặc "chủ cửa hàng".
+2. Chọn vào Tab "QUẢN LÝ MÓN ĂN".
+3. Xác định món ăn cần thay đổi thông tin bằng cách lọc theo danh mục hoặc tìm kiếm theo tên món ăn.
+4. Nhấn vào nút "XÓA".
+
+==> Thao tác trên giao diện "BÁO CÁO"?
+1. Xem báo cáo theo doanh thu
+    - Xem báo cáo doanh thu theo nhân viên(Có thể lọc theo thời gian).
+    - Xem báo cáo doanh thu theo danh mục(Có thể lọc theo thời gian).
+    - Xem báo cáo Tổng doanh thu và Số lượng đơn hàng so với ngày trước đó(Có thể lọc theo thời gian).
+2. Xem báo cáo Các món đang bán chạy(Có thể lọc theo thời gian).
+3. Xem báo cáo Tổng hóa đơn(Có thể lọc theo thời gian, nhân viên).

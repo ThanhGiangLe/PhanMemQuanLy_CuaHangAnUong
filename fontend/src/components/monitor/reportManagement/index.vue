@@ -1,10 +1,15 @@
 <template>
-  <div id="reportManagement" class="mt-1" style="width: 100%; height: 100%">
-    <div class="d-flex justify-space-between">
+  <div
+    id="reportManagement"
+    class="mt-1 d-flex flex-column"
+    style="width: 100%; height: 100%"
+  >
+    <div class="d-flex justify-center flex-wrap">
       <v-btn
         @click="valueVisiable = 1"
         variant="elevated"
         color="indigo-darken-4"
+        class="mx-3 mb-1"
       >
         <v-icon class="ma-1">mdi-file-chart-outline</v-icon>
         Xem báo cáo doanh thu
@@ -13,6 +18,7 @@
         @click="valueVisiable = 2"
         variant="elevated"
         color="indigo-darken-4"
+        class="mx-3 mb-1"
       >
         <v-icon class="ma-1">mdi-chart-line</v-icon>
         Xem báo cáo các món bán chạy
@@ -21,6 +27,7 @@
         @click="valueVisiable = 3"
         variant="elevated"
         color="indigo-darken-4"
+        class="mx-3 mb-1"
       >
         <v-icon class="ma-1">mdi-file-document</v-icon>
         Xem báo cáo tổng hóa đơn
@@ -29,14 +36,14 @@
         @click="valueVisiable = 4"
         variant="elevated"
         color="indigo-darken-4"
-        class="cursor-not-allowed"
+        class="mx-3 mb-1"
       >
         <v-icon class="ma-1">mdi-warehouse</v-icon>
         Xem báo cáo tồn kho
       </v-btn>
     </div>
 
-    <div style="width: 100%" class="mt-3">
+    <div style="width: 100%; margin-bottom: 52px" class="flex-1-0">
       <ReportRevenue v-if="valueVisiable == 1" />
       <BestSellingItemsReport v-if="valueVisiable == 2" />
       <BillingReport v-if="valueVisiable == 3" />

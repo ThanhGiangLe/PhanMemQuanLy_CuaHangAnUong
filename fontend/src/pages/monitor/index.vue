@@ -1,5 +1,5 @@
 <template>
-  <v-card style="height: 100vh; max-width: 1208px; margin: 0 auto">
+  <v-card style="height: 100vh; max-width: 1280px; margin: 0 auto">
     <v-tabs v-model="tab">
       <v-tab prepend-icon="mdi-menu" value="listFood">Danh sách món ăn</v-tab>
       <v-tab prepend-icon="mdi-food" value="food">Quản lý món ăn</v-tab>
@@ -15,18 +15,18 @@
         v-if="user.role !== 'Staff'"
         >Nhân viên</v-tab
       >
-      <v-tab
+      <!-- <v-tab
         prepend-icon="mdi-cart-outline"
         value="cart"
         v-if="user.role !== 'Staff'"
         >Bán hàng</v-tab
-      >
-      <v-tab
+      > -->
+      <!-- <v-tab
         prepend-icon="mdi-currency-usd"
         value="currency"
         v-if="user.role !== 'Staff'"
         >Két tiền</v-tab
-      >
+      > -->
       <v-tab
         prepend-icon="mdi-warehouse"
         value="warehouse"
@@ -46,7 +46,7 @@
       <v-tab prepend-icon="mdi-logout" value="exit">Đăng xuất</v-tab>
     </v-tabs>
 
-    <v-card-text style="height: 100%">
+    <v-card-text style="height: 100%" class="pa-2">
       <v-tabs-window v-model="tab" style="height: 100%">
         <v-tabs-window-item value="listFood" style="height: 100%">
           <ListFoodManagement />
@@ -60,7 +60,7 @@
           <MonitorReportManagement />
         </v-tabs-window-item>
 
-        <v-tabs-window-item value="users">
+        <v-tabs-window-item value="users" style="height: 100%">
           <MonitorEmployeeManagement />
         </v-tabs-window-item>
 
@@ -100,12 +100,7 @@
 </template>
 <script setup>
 import { useUserStore } from "@/stores/user.js";
-import { useRouter } from "vue-router";
-import { useGlobalStore } from "@/stores/app.js";
-import axios from "axios";
 import { computed, ref } from "vue";
-import API_ENDPOINTS from "@/api/api.js";
-import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 
 import ListFoodManagement from "@/components/monitor/listFoodManagament/index.vue"; // 0
@@ -122,19 +117,10 @@ import LogoutUser from "@/components/monitor/logoutUser/index.vue"; // 10
 
 import ChatBot from "@/components/chatbot/index.vue";
 
-const router = useRouter();
-const globalStore = useGlobalStore();
 const userStore = useUserStore();
-const dialogVisibleInfo = ref(false);
-const newPassword = ref("");
-const newConfirmPassword = ref("");
 const tab = ref("main");
 
 // Lấy thông tin người dùng từ store
 const user = computed(() => userStore.user);
 console.log("User in Navigation: ", user.value);
-
-const updateGlobalVariableCurrentPage = (indexPage) => {
-  globalStore.updateGlobalVariableCurrentPage(indexPage);
-};
 </script>

@@ -307,12 +307,21 @@ export default function useReportRevenue() {
       }
     );
 
-    listDatas.value = responseRevenueForCategory.data.map(
-      (i) => i.totalRevenue
-    );
-    while (listDatas.value.length < listLabels.value.length) {
-      listDatas.value.push(1);
-    }
+    console.log("Phần khởi tạo Categories", responseRevenueForCategory.data);
+
+    const revenueMap = responseRevenueForCategory.data.reduce((acc, item) => {
+      acc[item.categoryName] = item.totalRevenue;
+      return acc;
+    }, {});
+
+    listDatas.value = listLabels.value.map((label) => revenueMap[label] || 0);
+
+    // listDatas.value = responseRevenueForCategory.data.map(
+    //   (i) => i.totalRevenue
+    // );
+    // while (listDatas.value.length < listLabels.value.length) {
+    //   listDatas.value.push(1);
+    // }
 
     chartData.value = {
       labels: listLabels.value,
@@ -421,11 +430,21 @@ export default function useReportRevenue() {
         date: selectedDayForCate.value,
       }
     );
+    console.log("LƯU Ý: ", responseTotal1.data);
 
-    listDatas.value = responseTotal1.data.map((i) => i.totalRevenue);
-    while (listDatas.value.length < listLabels.value.length) {
-      listDatas.value.push(1);
-    }
+    const revenueMap = responseTotal1.data.reduce((acc, item) => {
+      acc[item.categoryName] = item.totalRevenue;
+      return acc;
+    }, {});
+
+    listDatas.value = listLabels.value.map((label) => revenueMap[label] || 0);
+
+    // listDatas.value = responseRevenueForCategory.data.map(
+    //   (i) => i.totalRevenue
+    // );
+    // while (listDatas.value.length < listLabels.value.length) {
+    //   listDatas.value.push(1);
+    // }
 
     chartData.value = {
       labels: listLabels.value,
@@ -454,10 +473,19 @@ export default function useReportRevenue() {
         date: selectedMonthForCate.value,
       }
     );
-    listDatas.value = responseTotal1.data.map((i) => i.totalRevenue);
-    while (listDatas.value.length < listLabels.value.length) {
-      listDatas.value.push(1);
-    }
+    const revenueMap = responseTotal1.data.reduce((acc, item) => {
+      acc[item.categoryName] = item.totalRevenue;
+      return acc;
+    }, {});
+
+    listDatas.value = listLabels.value.map((label) => revenueMap[label] || 0);
+
+    // listDatas.value = responseRevenueForCategory.data.map(
+    //   (i) => i.totalRevenue
+    // );
+    // while (listDatas.value.length < listLabels.value.length) {
+    //   listDatas.value.push(1);
+    // }
 
     chartData.value = {
       labels: listLabels.value,

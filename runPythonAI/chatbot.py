@@ -22,7 +22,7 @@ def get_answer(question):
     print(f"📖 Nội dung tìm thấy: {documents[best_match_idx][:100]}...\n")
 
     # Kiểm tra nếu câu hỏi không đủ độ chính xác
-    THRESHOLD = 5  # Điều chỉnh ngưỡng tìm kiếm
+    THRESHOLD = 2.0
     if best_match_idx < 0 or best_distance > THRESHOLD:
         return (
             "🤖 Xin lỗi, tôi chưa có thông tin về câu hỏi này. "

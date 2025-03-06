@@ -1,5 +1,5 @@
 <template>
-  <div class="foodManagement mt-1">
+  <div class="foodManagement mt-1 d-flex flex-column">
     <div class="foodManagement_search d-flex align-center">
       <v-text-field
         class="user_debt_equipment-search"
@@ -12,7 +12,10 @@
         v-model="search"
       ></v-text-field>
     </div>
-    <div class="foodManagement_listFoodOrder mt-4 d-flex justify-space-between">
+    <div
+      class="foodManagement_listFoodOrder flex-1-0 mt-3 d-flex justify-space-between"
+      style="margin-bottom: 52px"
+    >
       <div
         class="foodManagement_listFoodOrder_menu rounded w-66"
         :style="{ backgroundColor: 'var(--bg-color-item)' }"

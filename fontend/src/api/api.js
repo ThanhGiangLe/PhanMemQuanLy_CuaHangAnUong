@@ -30,6 +30,8 @@ const API_ENDPOINTS = {
   ADD_FOOD_ITEM: `${BASE_URL}/food/add-food-item`,
   DELETE_FOOD_ITEM: `${BASE_URL}/food/delete-food-item`,
   UPDATE_FOOD_ITEM: `${BASE_URL}/food/update-food-item`,
+
+  GET_ALL_MATERIALS: `${BASE_URL}/Inventory/get-all-material`,
 };
 
 export default API_ENDPOINTS;
