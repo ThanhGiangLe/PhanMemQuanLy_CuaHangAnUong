@@ -1,4 +1,4 @@
-==> Quy trình đăng ký tài khoản?
+==> Đăng ký tài khoản?
 1. Đăng nhập vào hệ thống bằng Account của người có chức vụ là "quản lý" hoặc "chủ cửa hàng".
 2. Chọn vào Tab "NHÂN VIÊN" trên thanh Menu.
 3. Nhấn vào nút "+ ADD CANDIDATE".
@@ -6,7 +6,7 @@
 5. Nhấn "Thêm" để hoàn tất đăng ký.
 6. Kiểm tra bằng việc xem số lượng nhân viên đã được tăng lên hoặc xem thông tin được thêm vào giao diện ngay lập tức.
 
-==> Quy trình đặt món cho khách?
+==> Đặt món cho khách?
 1. Đăng nhập vào tài khoản của bạn.
 2. Thực hiện đặt món ở Tab "DANH SÁCH MÓN ĂN".
 3. Nhấn vào nút "CHỌN MÓN".
@@ -21,11 +21,11 @@
 3. Có thể thay đổi món ăn đã gọi hoặc xóa khỏi danh sách các món đã chọn.
 4. Đặt món mang về hoặc đặt món và chọn bàn ngồi lại quán.
 
-==> Cách tìm kiếm món ăn?
+==> Tìm kiếm món ăn?
 1. Bạn có thể nhập tên món ăn vào vào phía trên để lọc các món ăn bạn muốn.
 2. Hoặc có thể lọc các món ăn theo từng loại như: Món khô, Món nước, Món ăn nhanh,...
 
-==> Quy trình chọn món ăn vào thực đơn?
+==> Chọn món ăn vào thực đơn?
 1. Đăng nhập vào tài khoản của bạn.
 2. Thực hiện đặt món ở Tab "DANH SÁCH MÓN ĂN".
 3. Nhấn vào nút "CHỌN MÓN".
@@ -34,7 +34,7 @@
 5. Nhấn vào nút "THÊM VÀO GIỎ" để xác nhận món ăn.
 6. Nhấn vào nút "HỦY" để bỏ các yêu cầu đã chọn.
 
-==> Quy trình cập nhật món ăn trong thực đơn?
+==> Cập nhật món ăn trong thực đơn?
 1. Sau khi đã chọn món ăn sẽ nằm ở bên phải màn hình.
 2. Xác định món ăn cần thay đổi.
 3. Nhấn vào biểu tượng "✏️" sẽ hiển thị thông tin về món ăn của bạn.
@@ -42,12 +42,7 @@
 5. Nhấn vào nút "Hủy" để bỏ các thay đổi.
 6. Nhấn vào nút "Xác nhận thay đổi" để thực hiện cập nhật thông tin.
 
-==> Quy trình bỏ món ăn trong thực đơn?
-1. Sau khi đã chọn món ăn sẽ nằm ở bên phải màn hình.
-2. Xác định món ăn cần thay đổi.
-3. Nhấn vào biểu tượng "🗑️" để xóa món ăn đã chọn.
-
-==> Quy trình thêm món ăn mới?
+==> Thêm món ăn mới của cửa hàng?
 1. Đăng nhập vào hệ thống bằng tài khoản của "quản lý" hoặc "chủ cửa hàng".
 2. Chọn vào Tab "QUẢN LÝ MÓN ĂN".
 3. Nhấn vào nút "THÊM MÓN MỚI".
@@ -62,7 +57,7 @@
 3. Lọc món ăn theo các danh mục món ăn.
 4. Thực hiện cập nhật món ăn hoặc xóa món ăn bất kì.
 
-==> Quy trình cập nhật món ăn của cửa hàng?
+==> Cập nhật món ăn của cửa hàng?
 1. Đăng nhập vào hệ thống bằng tài khoản của "quản lý" hoặc "chủ cửa hàng".
 2. Chọn vào Tab "QUẢN LÝ MÓN ĂN".
 3. Xác định món ăn cần thay đổi thông tin bằng cách lọc theo danh mục hoặc tìm kiếm theo tên món ăn.
@@ -70,7 +65,7 @@
 5. Hiển thị thông tin về món ăn mà bạn vừa chọn.
 6. Thực hiện các thay đổi cần thiết và bấm vào "XÁC NHẬN" để thay đổi thông tin.
 
-==> Quy trình xóa món ăn của cửa hàng?
+==> Xóa món ăn của cửa hàng?
 1. Đăng nhập vào hệ thống bằng tài khoản của "quản lý" hoặc "chủ cửa hàng".
 2. Chọn vào Tab "QUẢN LÝ MÓN ĂN".
 3. Xác định món ăn cần thay đổi thông tin bằng cách lọc theo danh mục hoặc tìm kiếm theo tên món ăn.

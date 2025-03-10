@@ -232,7 +232,9 @@ const generateDates = (month, year) => {
   const daysInMonth = new Date(year, month, 0).getDate(); // Lấy số ngày trong tháng
   const dates = [];
   for (let day = 1; day <= daysInMonth; day++) {
-    dates.push(`${day}-${month}-${year}`);
+    let formatDay = day.toString().padStart(2, "0");
+    let formatMonth = month.toString().padStart(2, "0");
+    dates.push(`${formatDay}-${formatMonth}-${year}`);
   }
   return dates;
 };
@@ -240,7 +242,8 @@ const generateDates = (month, year) => {
 const generateMonths = (year) => {
   const months = [];
   for (let month = 1; month <= 12; month++) {
-    months.push(`${month}-${year}`);
+    let formatMonth = month.toString().padStart(2, "0");
+    months.push(`${formatMonth}-${year}`);
   }
   return months;
 };

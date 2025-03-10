@@ -80,7 +80,7 @@
         v-if="!loading && foodCategories && filteredFoodItems"
       >
         <div
-          class="foodManagement_listFoodOrder_menu_dishes d-flex justify-center flex-wrap mt-3"
+          class="foodManagement_listFoodOrder_menu_dishes d-flex justify-center flex-wrap mt-2"
         >
           <v-chip
             class="ma-2 foodManagement_listFoodOrder_menu_dishes_item"
