@@ -20,5 +20,77 @@ namespace testVue.Controllers
         {
             return await _appDbContext.Materials.ToListAsync();
         }
+
+        [HttpPost("update-quantity-material")]
+        public async Task<IActionResult> UpdateQuantityMaterial([FromBody] UpdateQuantityMaterial request)
+        {
+            if (request == null || request.AddedQuantity < 0) {
+                return BadRequest("Dữ liệu không hợp lệ.");
+            }
+            var material = await _appDbContext.Materials.FindAsync(request.MaterialId);
+            if(material == null)
+            {
+                return NotFound("Không tìm thấy nguyên liệu.");
+            }
+
+            var now = DateTime.Now;
+            if(material.MaterialType.ToLower().Equals("thực phẩm"))
+            {
+                material.ImportDate = now;
+                material.ExpirationDate = now.AddDays(4);
+            }else if(material.MaterialType.ToLower().Equals("nguyên liệu"))
+            {
+                material.ImportDate = now;
+                material.ExpirationDate = now.AddDays(15);
+            }
+            else if(material.MaterialType.ToLower().Equals("gia vị")) {
+                material.ImportDate = now;
+                material.ExpirationDate = now.AddDays(30);
+            }
+
+            material.Quantity += request.AddedQuantity;
+
+            // Cập nhật vào database
+            _appDbContext.Materials.Update(material);
+            await _appDbContext.SaveChangesAsync();
+
+            return Ok(new
+            {
+                Message = "Cập nhật số lượng thành công!",
+                UpdatedQuantity = material.Quantity,
+                ImportDateRes = material.ImportDate,
+                ExpirationDateRes = material.ExpirationDate,
+            });
+        }
+
+        [HttpPost("cancel-all-goods")]
+        public async Task<IActionResult> CancelAllGoods([FromBody] CancelAllGoods request)
+        {
+            if (request.MaterialId == 0)
+            {
+                return BadRequest("Dữ liệu không hợp lệ");
+            }
+            var material = await _appDbContext.Materials.FindAsync(request.MaterialId);
+            if(material == null)
+            {
+                return NotFound("Không tìm thấy nguyên liệu.");
+            }
+            material.Quantity = 0;
+            var now = DateTime.Now;
+            material.ImportDate = now;
+            material.ExpirationDate = now;
+
+            _appDbContext.Materials.Update(material);
+            await _appDbContext.SaveChangesAsync();
+
+            return Ok(new
+            {
+                Message = "Hủy bỏ nguyên liệu thành công",
+                Id = material.MaterialId,
+                UpdateQuantity = material.Quantity,
+                ImportDateRes = material.ImportDate,
+                ExpirationDateRes = material.ExpirationDate,
+            });
+        }
     }
 }

@@ -90,6 +90,7 @@
   margin-bottom: 10px;
   /* flex-grow: 1; Chiếm toàn bộ không gian còn lại */
   overflow-y: auto; /* Đảm bảo cuộn khi nội dung quá lớn */
+  overflow-x: hidden;
 }
 
 .foodManagement_listFoodOrder

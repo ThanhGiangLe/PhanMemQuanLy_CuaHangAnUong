@@ -22,7 +22,7 @@
         v-if="!loading && foodCategories && filteredFoodItems"
       >
         <div
-          class="foodManagement_listFoodOrder_menu_dishes d-flex justify-center flex-wrap mt-3"
+          class="foodManagement_listFoodOrder_menu_dishes d-flex justify-center flex-wrap mt-2"
         >
           <v-chip
             class="ma-1 foodManagement_listFoodOrder_menu_dishes_item"
@@ -40,7 +40,7 @@
         <v-divider class="mt-2"></v-divider>
 
         <div class="foodManagement_listFoodOrder_menu_foods">
-          <v-container>
+          <v-container class="pa-2">
             <v-row class="pa-2" gutters="16">
               <v-col
                 v-for="foodItem in filteredFoodItems"
@@ -53,7 +53,7 @@
                 class="pa-2"
               >
                 <div
-                  class="foodManagement_listFoodOrder_menu_foods_item rounded-lg pa-4 position-relative"
+                  class="foodManagement_listFoodOrder_menu_foods_item rounded-lg pa-3 position-relative"
                 >
                   <img
                     :src="foodItem.imageUrl"

@@ -96,6 +96,7 @@
             <template v-slot:item.materialName="{ item }">
               <span
                 style="font-weight: 500; color: rgba(var(--v-theme-primary), 1)"
+                class="cursor-pointer"
               >
                 {{ item.materialName ? item.materialName : "-" }}
               </span>
@@ -134,7 +135,7 @@
                 }}</span
               >
             </template>
-            <template v-slot:item.added="{ item }">
+            <!-- <template v-slot:item.added="{ item }">
               <v-btn
                 style="border: 1px solid #333"
                 size="small"
@@ -155,11 +156,11 @@
                   style="border: 1px solid #333"
                   size="small"
                   color="light-blue-accent-4"
-                  @click="item.isEditing = !item.isEditing"
+                  @click="addQuantityInItemAndCallAPIUpdate(item)"
                   >Nhập</v-btn
                 >
               </div>
-            </template>
+            </template> -->
 
             <!-- <template v-slot:item.quantitySold="{ item }">
               <div class="d-user-contract-inventory-chart-progress-bar">
@@ -202,6 +203,8 @@ import { ref } from "vue";
 import axios from "axios";
 import API_ENDPOINTS from "@/api/api.js";
 import "underscore";
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
 const loading = shallowRef(true);
 const materials = ref([]);
 const materialsFilter = ref([]);
@@ -212,7 +215,6 @@ const header = ref([
   { title: "Đơn vị tính", key: "unit" },
   { title: "Ngày nhập", key: "importDate" },
   { title: "Ngày hết hạn", key: "expirationDate" },
-  { title: "Nhập thêm", key: "added" },
 ]);
 
 async function init() {
@@ -285,6 +287,42 @@ const filterMaterialsOfSoldOut = () => {
 };
 
 function showDisplayInputAddedValues(item) {
+  item.isEditing = !item.isEditing;
+}
+
+async function addQuantityInItemAndCallAPIUpdate(item) {
+  try {
+    const response = await axios.post(API_ENDPOINTS.UPDATE_QUANTITY_MATERIAL, {
+      MaterialId: item.materialId,
+      AddedQuantity: item.quantityAdded,
+    });
+
+    console.log("Response:", response.data);
+    if (response.data.message && response.data.message.trim() !== "") {
+      item.quantity = item.quantity + item.quantityAdded;
+      item.quantityAdded = 0;
+      toast.success("Thêm thành công!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false, // Hiện thanh tiến trình
+        closeOnClick: true, // Đóng khi nhấp vào thông báo
+        pauseOnHover: true, // Dừng khi di chuột lên thông báo
+        draggable: true, // Kéo thông báo
+        progress: undefined, // Tiến độ (nếu có)
+      });
+    }
+  } catch (error) {
+    console.error("API Error:", error);
+    toast.error("Thêm thất bại!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false, // Hiện thanh tiến trình
+      closeOnClick: true, // Đóng khi nhấp vào thông báo
+      pauseOnHover: true, // Dừng khi di chuột lên thông báo
+      draggable: true, // Kéo thông báo
+      progress: undefined, // Tiến độ (nếu có)
+    });
+  }
   item.isEditing = !item.isEditing;
 }
 
