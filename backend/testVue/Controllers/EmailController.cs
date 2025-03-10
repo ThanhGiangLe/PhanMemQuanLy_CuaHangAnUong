@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using testVue.Datas;
-using testVue.Models;
+using testVue.Models.User;
 
 namespace testVue.Controllers
 {
@@ -19,7 +19,7 @@ namespace testVue.Controllers
 
         // POST: http://localhost:5248/api/email/check
         [HttpPost("check")]
-        public async Task<IActionResult> CheckEmail([FromBody] EmailCheckRequest request)
+        public async Task<IActionResult> CheckEmail([FromBody] EmailCheckRequestDTO request)
         {
             if (string.IsNullOrEmpty(request.Email))
             {

@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using testVue.Datas;
-using testVue.Models;
+using testVue.Models.Inventory;
+using testVue.Models.Inventory.Inventory;
 
 namespace testVue.Controllers
 {
@@ -16,13 +17,13 @@ namespace testVue.Controllers
         }
 
         [HttpGet("get-all-material")]
-        public async Task<ActionResult<IEnumerable<Material>>> GetAllMaterial()
+        public async Task<ActionResult<IEnumerable<MaterialDTO>>> GetAllMaterial()
         {
             return await _appDbContext.Materials.ToListAsync();
         }
 
         [HttpPost("update-quantity-material")]
-        public async Task<IActionResult> UpdateQuantityMaterial([FromBody] UpdateQuantityMaterial request)
+        public async Task<IActionResult> UpdateQuantityMaterial([FromBody] UpdateQuantityMaterialDTO request)
         {
             if (request == null || request.AddedQuantity < 0) {
                 return BadRequest("Dữ liệu không hợp lệ.");
@@ -64,7 +65,7 @@ namespace testVue.Controllers
         }
 
         [HttpPost("cancel-all-goods")]
-        public async Task<IActionResult> CancelAllGoods([FromBody] CancelAllGoods request)
+        public async Task<IActionResult> CancelAllGoods([FromBody] CancelAllGoodsDTO request)
         {
             if (request.MaterialId == 0)
             {

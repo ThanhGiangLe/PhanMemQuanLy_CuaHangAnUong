@@ -59,7 +59,7 @@
                     :src="foodItem.imageUrl"
                     alt="Food Item"
                     class="foodManagement_listFoodOrder_menu_foods_item_img rounded-lg"
-                    style="height: 140px"
+                    style="min-height: 160px"
                   />
                   <span
                     class="mt-3"

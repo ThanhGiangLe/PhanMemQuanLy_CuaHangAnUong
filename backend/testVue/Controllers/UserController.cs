@@ -2,8 +2,10 @@
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.EntityFrameworkCore;
 using testVue.Datas;
-using testVue.Models;
 using BCrypt.Net;
+using testVue.Models.User;
+using Microsoft.AspNetCore.Identity.Data;
+using testVue.Models.User.User;
 
 namespace testVue.Controllers
 {
@@ -20,14 +22,14 @@ namespace testVue.Controllers
 
         // GET: api/user
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsers()
         {
             return await _context.Users.ToListAsync();
         }
 
         // POST: api/user/login
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginRequest loginRequest)
+        public async Task<IActionResult> Login([FromBody] LoginRequestDTO loginRequest)
         {
             // Lấy thông tin người dùng từ cơ sở dữ liệu dựa trên số điện thoại
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Phone == loginRequest.Phone);
@@ -54,7 +56,7 @@ namespace testVue.Controllers
 
         // POST: api/user/update-password
         [HttpPost("update-password")]
-        public async Task<IActionResult> UpdatePassword([FromBody] UpdatePasswordRequest request)
+        public async Task<IActionResult> UpdatePassword([FromBody] UpdatePasswordRequestDTO request)
         {
             // Kiểm tra thông tin đầu vào
             if (string.IsNullOrEmpty(request.Email) || string.IsNullOrEmpty(request.NewPassword))
@@ -90,7 +92,7 @@ namespace testVue.Controllers
 
         // POST: api/user/add
         [HttpPost("add")]
-        public async Task<IActionResult> AddUser([FromBody] AddUserRequest addUserRequest)
+        public async Task<IActionResult> AddUser([FromBody] AddUserRequestDTO addUserRequest)
         {
             // Kiểm tra thông tin đầu vào
             if (string.IsNullOrEmpty(addUserRequest.FullName) ||
@@ -110,7 +112,7 @@ namespace testVue.Controllers
             }
 
             // Tạo đối tượng người dùng mới
-            var user = new User
+            var user = new UserDTO
             {
                 FullName = addUserRequest.FullName,
                 Phone = addUserRequest.Phone,
