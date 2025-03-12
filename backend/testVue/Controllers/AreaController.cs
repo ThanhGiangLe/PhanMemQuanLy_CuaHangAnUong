@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using testVue.Datas;
-using testVue.Models;
+using testVue.Models.Area;
 
 namespace testVue.Controllers
 {
@@ -18,7 +18,7 @@ namespace testVue.Controllers
 
         // GET: api/area/get-all-table
         [HttpGet("get-all-table")]
-        public async Task<ActionResult<IEnumerable<Table>>> GetAllTable()
+        public async Task<ActionResult<IEnumerable<TableDTO>>> GetAllTable()
         {
             return await _context.Tables.ToListAsync();
         }

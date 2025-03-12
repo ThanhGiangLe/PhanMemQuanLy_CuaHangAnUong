@@ -1,4 +1,6 @@
-﻿namespace testVue.Models
+﻿using testVue.Models.User;
+
+namespace testVue.Models
 {
     public class CashRegister
     {
@@ -11,6 +13,6 @@
         public decimal TotalIncome { get; set; }
         public decimal TotalExpenses { get; set; }
 
-        public User User { get; set; }
+        public UserDTO? User { get; set; }
     }
 }

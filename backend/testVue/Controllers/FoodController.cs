@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using testVue.Datas;
-using testVue.Models;
+using testVue.Models.Food;
 
 namespace testVue.Controllers
 {
@@ -18,7 +18,7 @@ namespace testVue.Controllers
 
         // GET: api/food/get-all-category
         [HttpGet("get-all-category")]
-        public async Task<ActionResult<IEnumerable<FoodCategory>>> GetCategorys()
+        public async Task<ActionResult<IEnumerable<FoodCategoryDTO>>> GetCategorys()
         {
             // Lấy danh sách người dùng từ cơ sở dữ liệu
             return await _context.FoodCategories.ToListAsync();
@@ -26,7 +26,7 @@ namespace testVue.Controllers
 
         // GET: api/food/get-all-food-items
         [HttpGet("get-all-food-items")]
-        public async Task<ActionResult<IEnumerable<FoodItem>>> GetFoodItems()
+        public async Task<ActionResult<IEnumerable<FoodItemDTO>>> GetFoodItems()
         {
             // Lấy danh sách người dùng từ cơ sở dữ liệu
             return await _context.FoodItems.ToListAsync();
@@ -34,20 +34,20 @@ namespace testVue.Controllers
 
         // GET: api/food/get-all-additional-food
         [HttpGet("get-all-additional-food")]
-        public async Task<ActionResult<IEnumerable<AdditionalFood>>> GetAdditionalFood()
+        public async Task<ActionResult<IEnumerable<AdditionalFoodDTO>>> GetAdditionalFood()
         {
             return await _context.AdditionalFoods.ToListAsync();
         }
 
         // POST: api/food/add-order
         [HttpPost("add-order")]
-        public async Task<IActionResult> AddOrder([FromBody] AddOrderRequest orderRequest)
+        public async Task<IActionResult> AddOrder([FromBody] AddOrderRequestDTO orderRequest)
         {
             if(orderRequest == null)
             {
                 return Ok(new { success = -1 });
             }
-            var order = new Order
+            var order = new OrderDTO
             {
                 UserId = orderRequest.UserId,
                 OrderTime = orderRequest.OrderTime,
@@ -91,13 +91,13 @@ namespace testVue.Controllers
 
         // POST: api/food/add-order
         [HttpPost("add-order-item")]
-        public async Task<IActionResult> AddOrderItem([FromBody] OrderItemRequest orderItemRequest)
+        public async Task<IActionResult> AddOrderItem([FromBody] OrderItemRequestDTO orderItemRequest)
         {
             if(orderItemRequest == null)
             {
                 return BadRequest(new { success = -1, message = "Request không hợp lệ" });
             }
-            var orderItem = new OrderItem
+            var orderItem = new OrderItemDTO
             {
                 OrderId = orderItemRequest.OrderId,
                 FoodName = orderItemRequest.FoodName,
@@ -132,7 +132,7 @@ namespace testVue.Controllers
         }
 
         [HttpPost("add-food-item")]
-        public async Task<IActionResult> AddFoodItem([FromBody] RequestFoodItemAdd request)
+        public async Task<IActionResult> AddFoodItem([FromBody] RequestFoodItemAddDTO request)
         {
             // Kiểm tra dữ liệu đầu vào (Validation)
             if (request == null)
@@ -141,7 +141,7 @@ namespace testVue.Controllers
             }
 
             // Tạo một đối tượng FoodItem từ RequestFoodItemAdd
-            var foodItem = new FoodItem
+            var foodItem = new FoodItemDTO
             {
                 FoodName = request.FoodName,
                 PriceListed = request.PriceListed,
@@ -222,7 +222,7 @@ namespace testVue.Controllers
 
         // PUT: api/food/update-food-item/{FoodItemId}
         [HttpPut("update-food-item/{FoodItemId}")]
-        public async Task<IActionResult> UpdateFoodItem(int FoodItemId, [FromBody] RequestUpdateFoodItem updatedFoodItem)
+        public async Task<IActionResult> UpdateFoodItem(int FoodItemId, [FromBody] RequestUpdateFoodItemDTO updatedFoodItem)
         {
             // Kiểm tra dữ liệu đầu vào
             if (updatedFoodItem == null || FoodItemId != updatedFoodItem.FoodItemId)

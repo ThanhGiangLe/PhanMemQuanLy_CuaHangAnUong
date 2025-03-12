@@ -4,11 +4,11 @@ from sentence_transformers import SentenceTransformer
 from load_documents import load_documents   # Cập nhật hàm đọc file
 
 # Chọn mô hình ngôn ngữ
-model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
+model = SentenceTransformer("sentence-transformers/all-mpnet-base-v2")
 
 def create_faiss_index(texts):
     """ Chuyển đổi văn bản thành vector và lưu vào FAISS """
-    vectors = model.encode(texts)  # Encode từng đoạn quy trình
+    vectors = model.encode(texts, normalize_embeddings=True)  # Encode từng đoạn quy trình
     
     # Sử dụng FAISS với HNSW để tối ưu hiệu suất tìm kiếm
     d = vectors.shape[1]

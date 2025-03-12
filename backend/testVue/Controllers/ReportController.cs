@@ -2,7 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using testVue.Datas;
-using testVue.Models;
+using testVue.Models.Food;
+using testVue.Models.Report.Report;
 
 namespace testVue.Controllers
 {
@@ -41,7 +42,7 @@ namespace testVue.Controllers
         }
 
         [HttpPost("total-revenue-employee-time")]
-        public async Task<IActionResult> GetTotalRevenueByUserTime([FromBody] RequestTimeFilterTotalRevenue request)
+        public async Task<IActionResult> GetTotalRevenueByUserTime([FromBody] RequestTimeFilterTotalRevenueDTO request)
         {
             try
             {
@@ -83,7 +84,7 @@ namespace testVue.Controllers
         }
 
         [HttpPost("total-revenue-employee-time-month")]
-        public async Task<IActionResult> GetTotalRevenueByUserTimeMonth([FromBody] RequestTimeFilterTotalRevenue request)
+        public async Task<IActionResult> GetTotalRevenueByUserTimeMonth([FromBody] RequestTimeFilterTotalRevenueDTO request)
         {
             try
             {
@@ -146,7 +147,7 @@ namespace testVue.Controllers
         }
 
         [HttpPost("total-revenue-category-time")]
-        public async Task<IActionResult> GetTotalRevenueByCategoryTime(RequestTimeFilterTotalRevenue request)
+        public async Task<IActionResult> GetTotalRevenueByCategoryTime(RequestTimeFilterTotalRevenueDTO request)
         {
             try
             {
@@ -187,7 +188,7 @@ namespace testVue.Controllers
         }
 
         [HttpPost("total-revenue-category-time-month")]
-        public async Task<IActionResult> GetTotalRevenueByCategoryTimeMonth(RequestTimeFilterTotalRevenue request)
+        public async Task<IActionResult> GetTotalRevenueByCategoryTimeMonth(RequestTimeFilterTotalRevenueDTO request)
         {
             try
             {
@@ -228,7 +229,7 @@ namespace testVue.Controllers
         }
 
         [HttpPost("total-revenue-time")]
-        public async Task<IActionResult> GetTotalAmountByDate([FromBody] TimeRequest dateRequest)
+        public async Task<IActionResult> GetTotalAmountByDate([FromBody] TimeRequestDTO dateRequest)
         {
             try
             {
@@ -275,7 +276,7 @@ namespace testVue.Controllers
         }
 
         [HttpPost("total-revenue-time-month")]
-        public async Task<IActionResult> GetTotalAmountByMonth([FromBody] TimeMonthRequest monthRequest)
+        public async Task<IActionResult> GetTotalAmountByMonth([FromBody] TimeMonthRequestDTO monthRequest)
         {
             try
             {
@@ -350,7 +351,7 @@ namespace testVue.Controllers
         }
 
         [HttpPost("get-all-orderitem-bestseling-currentday")]
-        public async Task<IActionResult> getAllOrderItemBestSelingurrent(TimeRequest request)
+        public async Task<IActionResult> getAllOrderItemBestSelingurrent(TimeRequestDTO request)
         {
             try
             {
@@ -389,7 +390,7 @@ namespace testVue.Controllers
         }
 
         [HttpPost("get-all-orderitem-bestseling-currentmonth")]
-        public async Task<IActionResult> getAllOrderItemBestSelingurrentMonth(TimeRequest request)
+        public async Task<IActionResult> getAllOrderItemBestSelingurrentMonth(TimeRequestDTO request)
         {
             try
             {
@@ -430,12 +431,12 @@ namespace testVue.Controllers
 
         // Phần BÁO CÁO THEO TỔNG HÓA ĐƠN
         [HttpGet("get-all-order")]
-        public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
+        public async Task<ActionResult<IEnumerable<OrderDTO>>> GetOrders()
         {
             var query = from order in _context.Orders
                         join user in _context.Users on order.UserId equals user.UserId
                         join table in _context.Tables on order.TableId equals table.TableId
-                        select new OrderDetailShowViewReport
+                        select new OrderDetailShowViewReportDTO
                         {
                             FullName = user.FullName,
                             OrderTime = order.OrderTime,
@@ -451,7 +452,7 @@ namespace testVue.Controllers
         }
 
         [HttpPost("get-all-order-currentday")]
-        public async Task<ActionResult<IEnumerable<Order>>> GetOrdersByDate([FromBody] TimeRequest timeRequest)
+        public async Task<ActionResult<IEnumerable<OrderDTO>>> GetOrdersByDate([FromBody] TimeRequestDTO timeRequest)
         {
             // Chuyển đổi chuỗi ngày "dd-MM-yyyy" thành kiểu DateTime
             if (!DateTime.TryParseExact(timeRequest.Date, "dd-MM-yyyy", null, System.Globalization.DateTimeStyles.None, out var parsedDate))
@@ -464,7 +465,7 @@ namespace testVue.Controllers
                         join user in _context.Users on order.UserId equals user.UserId
                         join table in _context.Tables on order.TableId equals table.TableId
                         where order.OrderTime.Date == parsedDate.Date // So sánh ngày-tháng-năm
-                        select new OrderDetailShowViewReport
+                        select new OrderDetailShowViewReportDTO
                         {
                             FullName = user.FullName,
                             OrderTime = order.OrderTime,
@@ -480,7 +481,7 @@ namespace testVue.Controllers
         }
 
         [HttpPost("get-all-order-currentmonth")]
-        public async Task<ActionResult<IEnumerable<Order>>> GetOrdersByDateMonth([FromBody] TimeRequest timeRequest)
+        public async Task<ActionResult<IEnumerable<OrderDTO>>> GetOrdersByDateMonth([FromBody] TimeRequestDTO timeRequest)
         {
             // Chuyển đổi chuỗi ngày "dd-MM-yyyy" thành kiểu DateTime
             if (!DateTime.TryParseExact(timeRequest.Date, "MM-yyyy", null, System.Globalization.DateTimeStyles.None, out var parsedDate))
@@ -493,7 +494,7 @@ namespace testVue.Controllers
                         join user in _context.Users on order.UserId equals user.UserId
                         join table in _context.Tables on order.TableId equals table.TableId
                         where order.OrderTime.Month == parsedDate.Month && order.OrderTime.Year == parsedDate.Year // So sánh tháng-năm
-                        select new OrderDetailShowViewReport
+                        select new OrderDetailShowViewReportDTO
                         {
                             FullName = user.FullName,
                             OrderTime = order.OrderTime,
@@ -509,7 +510,7 @@ namespace testVue.Controllers
         }
 
         [HttpPost("get-all-order-fullname")]
-        public async Task<ActionResult<IEnumerable<Order>>> GetOrdersByFullName([FromBody] TimeRequest timeRequest)
+        public async Task<ActionResult<IEnumerable<OrderDTO>>> GetOrdersByFullName([FromBody] TimeRequestDTO timeRequest)
         {
             // Chuyển đổi chuỗi ngày "dd-MM-yyyy" thành kiểu DateTime
             if (timeRequest == null)
@@ -522,7 +523,7 @@ namespace testVue.Controllers
                         join user in _context.Users on order.UserId equals user.UserId
                         join table in _context.Tables on order.TableId equals table.TableId
                         where (string.IsNullOrEmpty(timeRequest.Date) || user.FullName.Contains(timeRequest.Date))
-                        select new OrderDetailShowViewReport
+                        select new OrderDetailShowViewReportDTO
                         {
                             FullName = user.FullName,
                             OrderTime = order.OrderTime,

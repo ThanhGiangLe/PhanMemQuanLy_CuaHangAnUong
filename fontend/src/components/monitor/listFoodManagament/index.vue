@@ -33,7 +33,11 @@
             :class="{ selected: listDashSelected.includes(foodCategory) }"
             @click="tonggleSelected(foodCategory)"
           >
-            <v-icon :icon="foodCategory.icon" start></v-icon>
+            <v-icon
+              :icon="foodCategory.icon"
+              start
+              style="margin-left: 2px"
+            ></v-icon>
             {{ foodCategory.categoryName }}
           </v-chip>
         </div>
@@ -59,7 +63,7 @@
                     :src="foodItem.imageUrl"
                     alt="Food Item"
                     class="foodManagement_listFoodOrder_menu_foods_item_img rounded-lg"
-                    style="height: 140px"
+                    style="min-height: 160px"
                   />
                   <span
                     class="mt-3"
