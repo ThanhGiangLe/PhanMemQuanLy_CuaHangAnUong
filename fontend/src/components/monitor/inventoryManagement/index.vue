@@ -23,9 +23,17 @@
         :style="{ backgroundColor: 'var(--bg-color-item)' }"
       >
         <div
-          class="reportManagement_chosseTime d-flex justify-md-space-between mb-2"
+          class="reportManagement_chosseTime d-flex justify-md-space-between align-center flex-wrap mb-2"
         >
-          <div>
+          <v-btn
+            style="border: 1px solid #333; min-width: 60px"
+            size="small"
+            v-if="!isFilter"
+            @click="isFilter = !isFilter"
+          >
+            Chọn điều kiện lọc
+          </v-btn>
+          <div v-else>
             <!-- Lọc theo Thực phẩm -->
             <v-btn
               style="border: 1px solid #333"
@@ -117,6 +125,7 @@
                 style="font-weight: 500; color: rgba(var(--v-theme-primary), 1)"
                 class="cursor-pointer"
                 :class="{ 'opacity-50': item.quantity == 0 }"
+                @click="showDetailMaterialHistory(item)"
               >
                 {{ item.materialName ? item.materialName : "-" }}
               </span>
@@ -229,6 +238,119 @@
           </v-data-table>
         </div>
       </v-card-text>
+
+      <v-dialog v-model="displayWarehouseHistoryOfMaterial" max-width="1180px">
+        <v-card>
+          <v-card-title class="d-flex justify-space-between align-center">
+            <span class="">Lịch Sử Nhập Kho</span>
+            <v-btn icon @click="displayWarehouseHistoryOfMaterial = false">
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
+          </v-card-title>
+
+          <v-card-text>
+            <div
+              class="reportManagement_totalAmount_salesSummary_bestSellingItems d-flex"
+              style="height: 450px; max-height: 450px; overflow-y: auto"
+            >
+              <v-data-table
+                :headers="headerDetail"
+                :loading="loading"
+                :items="warehouseHistoryOfMaterialIsChoose"
+                height="calc(33vh - 2rem)"
+                density="compact"
+                fixed-footer
+                fixed-header
+              >
+                <template v-slot:item.materialName="{ item }">
+                  <span
+                    style="
+                      font-weight: 500;
+                      color: rgba(var(--v-theme-primary), 1);
+                    "
+                    class="cursor-pointer"
+                    :class="{ 'opacity-50': item.quantity == 0 }"
+                    @click="showDetailMaterialHistory(item)"
+                  >
+                    {{ item.materialName ? item.materialName : "-" }}
+                  </span>
+                </template>
+                <template v-slot:item.quantity="{ item }">
+                  <span
+                    style="padding: 4px 12px; border-radius: 25px"
+                    :class="{
+                      'bg-green-lighten-1': item.quantity > item.minQuantity,
+                      'bg-yellow-lighten-1':
+                        item.quantity <= item.minQuantity && item.quantity > 0,
+                      'bg-red-lighten-1': item.quantity == 0,
+                    }"
+                  >
+                    {{ item.quantity ? item.quantity : "0" }}
+                  </span>
+                </template>
+                <template v-slot:item.unit="{ item }">
+                  <span
+                    class="text-capitalize"
+                    :class="{ 'opacity-50': item.quantity == 0 }"
+                  >
+                    {{ item.unit ? item.unit : "-" }}
+                  </span>
+                </template>
+                <template v-slot:item.importPrice="{ item }">
+                  <span class="text-capitalize">
+                    {{ formatCurrency(item.importPrice) }} VNĐ
+                  </span>
+                </template>
+                <template v-slot:item.money="{ item }">
+                  <span class="text-capitalize">
+                    {{ formatCurrency(item.quantity * item.importPrice) }} VNĐ
+                  </span>
+                </template>
+                <template v-slot:item.importDate="{ item }">
+                  <span :class="{ 'opacity-50': item.quantity == 0 }">
+                    {{
+                      item.importDate
+                        ? formatDateFormApiToView(item.importDate)
+                        : "-"
+                    }}
+                  </span>
+                </template>
+                <template v-slot:item.expirationDate="{ item }">
+                  <span :class="{ 'opacity-50': item.quantity == 0 }">
+                    {{
+                      item.expirationDate
+                        ? formatDateFormApiToView(item.expirationDate)
+                        : "-"
+                    }}</span
+                  >
+                </template>
+                <template v-slot:item.cancel="{ item }">
+                  <v-btn
+                    style="border: 1px solid #333"
+                    size="small"
+                    color="red-accent-3"
+                    v-if="checkExpirationDate(item)"
+                    @click="cancelAllGoodsDetail(item)"
+                    >Hủy hàng</v-btn
+                  >
+                </template>
+                <template v-slot:loading>
+                  <v-skeleton-loader type="table-row@5"></v-skeleton-loader>
+                </template>
+                <template v-slot:no-data>
+                  <div
+                    class="d-event-info-item d-emp-activity-item-content d-emp-activity-no-data pa-6"
+                    style="background: none"
+                  >
+                    <!-- <VIcon icon="mdi-robot-dead-outline"></VIcon> -->
+                    <span>Hệ thống không tìm thấy thông tin</span>
+                  </div>
+                </template>
+              </v-data-table>
+            </div>
+          </v-card-text>
+        </v-card>
+      </v-dialog>
     </v-card>
   </div>
 </template>
@@ -241,6 +363,10 @@ const {
   materials,
   materialsFilter,
   header,
+  headerDetail,
+  isFilter,
+  displayWarehouseHistoryOfMaterial,
+  warehouseHistoryOfMaterialIsChoose,
 
   formatDateFormApiToView,
   filterMaterialsOfFood,
@@ -255,5 +381,8 @@ const {
   resetTimeFillterRevenueOrder,
   checkExpirationDate,
   cancelAllGoods,
+  cancelAllGoodsDetail,
+  showDetailMaterialHistory,
+  formatCurrency,
 } = useInventoryManagement();
 </script>

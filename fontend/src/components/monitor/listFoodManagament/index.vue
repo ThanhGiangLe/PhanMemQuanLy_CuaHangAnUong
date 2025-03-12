@@ -33,7 +33,11 @@
             :class="{ selected: listDashSelected.includes(foodCategory) }"
             @click="tonggleSelected(foodCategory)"
           >
-            <v-icon :icon="foodCategory.icon" start></v-icon>
+            <v-icon
+              :icon="foodCategory.icon"
+              start
+              style="margin-left: 2px"
+            ></v-icon>
             {{ foodCategory.categoryName }}
           </v-chip>
         </div>

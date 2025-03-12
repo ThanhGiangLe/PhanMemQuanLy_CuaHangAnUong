@@ -9,6 +9,9 @@ export default function useInventoryManagement() {
   const loading = shallowRef(true);
   const materials = ref([]);
   const materialsFilter = ref([]);
+  const isFilter = ref(false);
+  const displayWarehouseHistoryOfMaterial = ref(false);
+  const warehouseHistoryOfMaterialIsChoose = ref([]);
 
   const header = ref([
     { title: "Tên gọi", key: "materialName" },
@@ -17,6 +20,17 @@ export default function useInventoryManagement() {
     { title: "Ngày nhập", key: "importDate" },
     { title: "Ngày hết hạn", key: "expirationDate" },
     { title: "Nhập thêm", key: "added" },
+    { title: "Hủy hàng", key: "cancel" },
+  ]);
+
+  const headerDetail = ref([
+    { title: "Tên gọi", key: "materialName" },
+    { title: "Số lượng", key: "quantity" },
+    { title: "Đơn vị tính", key: "unit" },
+    { title: "Giá nhập", key: "importPrice" },
+    { title: "Thành tiền", key: "money" },
+    { title: "Ngày nhập", key: "importDate" },
+    { title: "Ngày hết hạn", key: "expirationDate" },
     { title: "Hủy hàng", key: "cancel" },
   ]);
 
@@ -108,6 +122,7 @@ export default function useInventoryManagement() {
 
   function showDisplayInputAddedValues(item) {
     item.isEditing = !item.isEditing;
+    console.log("Item", item);
   }
 
   async function addQuantityInItemAndCallAPIUpdate(item) {
@@ -125,13 +140,20 @@ export default function useInventoryManagement() {
         item.isEditing = !item.isEditing;
         return;
       }
-      const response = await axios.post(
-        API_ENDPOINTS.UPDATE_QUANTITY_MATERIAL,
-        {
+      // Gọi 2 API song song
+      const [response, response2] = await Promise.all([
+        axios.post(API_ENDPOINTS.UPDATE_QUANTITY_MATERIAL, {
           MaterialId: item.materialId,
           AddedQuantity: item.quantityAdded,
-        }
-      );
+        }),
+        axios.post(API_ENDPOINTS.IMPORT_WAREHOUSE_HISTORY, {
+          MaterialId: item.materialId,
+          Unit: item.unit,
+          ImportPrice: item.importPrice,
+          Quantity: item.quantityAdded,
+        }),
+      ]);
+      console.log("Response2:", response2.data);
 
       console.log("Response:", response.data);
       if (response.data.message && response.data.message.trim() !== "") {
@@ -165,6 +187,7 @@ export default function useInventoryManagement() {
   }
 
   const resetTimeFillterRevenueOrder = () => {
+    isFilter.value = !isFilter.value;
     init();
   };
 
@@ -222,11 +245,108 @@ export default function useInventoryManagement() {
     }
   }
 
+  async function cancelAllGoodsDetail(item) {
+    try {
+      const response = await axios.post(API_ENDPOINTS.CANCEL_ALL_GOODS_DETAIL, {
+        MaterialId: item.materialId,
+        ImportDate: item.importDate,
+        ExpirationDate: item.expirationDate,
+        Quantity: item.quantity,
+      });
+      if (response.data.message && response.data.message.trim() !== "") {
+        toast.success("Hủy nguyên liệu thành công!", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false, // Hiện thanh tiến trình
+          closeOnClick: true, // Đóng khi nhấp vào thông báo
+          pauseOnHover: true, // Dừng khi di chuột lên thông báo
+          draggable: true, // Kéo thông báo
+          progress: undefined, // Tiến độ (nếu có)
+        });
+        warehouseHistoryOfMaterialIsChoose.value =
+          warehouseHistoryOfMaterialIsChoose.value.filter(
+            (i) =>
+              i.importDate != item.importDate &&
+              i.expirationDate != item.expirationDate
+          );
+        let materialsFilterChoose = materialsFilter.value.find(
+          (material) => material.materialId == item.materialId
+        );
+        materialsFilterChoose.quantity -= item.quantity;
+      } else {
+        toast.error("Hủy nguyên liệu thất bại!", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false, // Hiện thanh tiến trình
+          closeOnClick: true, // Đóng khi nhấp vào thông báo
+          pauseOnHover: true, // Dừng khi di chuột lên thông báo
+          draggable: true, // Kéo thông báo
+          progress: undefined, // Tiến độ (nếu có)
+        });
+      }
+    } catch (error) {
+      toast.error("Lỗi call API!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false, // Hiện thanh tiến trình
+        closeOnClick: true, // Đóng khi nhấp vào thông báo
+        pauseOnHover: true, // Dừng khi di chuột lên thông báo
+        draggable: true, // Kéo thông báo
+        progress: undefined, // Tiến độ (nếu có)
+      });
+    }
+  }
+
+  async function showDetailMaterialHistory(item) {
+    try {
+      const response = await axios.get(
+        `${API_ENDPOINTS.GET_WAREHOUSE_HISTORY_BY_MATERIALID}/${item.materialId}`
+      );
+      console.log("response", response.data);
+
+      if (response.data.message) {
+        toast.warn("Không có lịch sử nhập kho cho nguyên liệu này!", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false, // Hiện thanh tiến trình
+          closeOnClick: true, // Đóng khi nhấp vào thông báo
+          pauseOnHover: true, // Dừng khi di chuột lên thông báo
+          draggable: true, // Kéo thông báo
+          progress: undefined, // Tiến độ (nếu có)
+        });
+      } else {
+        displayWarehouseHistoryOfMaterial.value = true;
+        warehouseHistoryOfMaterialIsChoose.value = response.data;
+        console.log(
+          "warehouseHistoryOfMaterialIsChoose",
+          warehouseHistoryOfMaterialIsChoose.value
+        );
+      }
+    } catch (error) {
+      toast.error(error, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false, // Hiện thanh tiến trình
+        closeOnClick: true, // Đóng khi nhấp vào thông báo
+        pauseOnHover: true, // Dừng khi di chuột lên thông báo
+        draggable: true, // Kéo thông báo
+        progress: undefined, // Tiến độ (nếu có)
+      });
+    }
+  }
+  function formatCurrency(value) {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
+
   return {
     loading,
     materials,
     materialsFilter,
     header,
+    headerDetail,
+    isFilter,
+    displayWarehouseHistoryOfMaterial,
+    warehouseHistoryOfMaterialIsChoose,
 
     formatDateFormApiToView,
     filterMaterialsOfFood,
@@ -241,5 +361,8 @@ export default function useInventoryManagement() {
     resetTimeFillterRevenueOrder,
     checkExpirationDate,
     cancelAllGoods,
+    cancelAllGoodsDetail,
+    showDetailMaterialHistory,
+    formatCurrency,
   };
 }

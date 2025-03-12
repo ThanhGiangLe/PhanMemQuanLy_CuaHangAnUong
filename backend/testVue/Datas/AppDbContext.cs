@@ -22,6 +22,7 @@ namespace testVue.Datas
         public DbSet<OrderDTO> Orders { get; set; }
         public DbSet<OrderItemDTO> OrderItems { get; set; }
         public DbSet<MaterialDTO> Materials { get; set; }
+        public DbSet<WarehouseHistoryDTO> WarehouseHistorys { get; set; }
 
     }
 }

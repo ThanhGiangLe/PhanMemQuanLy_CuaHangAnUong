@@ -22,7 +22,44 @@ namespace testVue.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("testVue.Models.AdditionalFood", b =>
+            modelBuilder.Entity("testVue.Models.Area.TableDTO", b =>
+                {
+                    b.Property<int>("TableId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TableId"));
+
+                    b.Property<string>("TableName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TableId");
+
+                    b.ToTable("Tables");
+                });
+
+            modelBuilder.Entity("testVue.Models.CustomizableItem", b =>
+                {
+                    b.Property<int>("CustomItemId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomItemId"));
+
+                    b.Property<string>("CustomItemName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("CustomItemPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("CustomItemId");
+
+                    b.ToTable("CustomizableItem");
+                });
+
+            modelBuilder.Entity("testVue.Models.Food.AdditionalFoodDTO", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -30,7 +67,7 @@ namespace testVue.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CategoryId")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -56,27 +93,7 @@ namespace testVue.Migrations
                     b.ToTable("AdditionalFood");
                 });
 
-            modelBuilder.Entity("testVue.Models.CustomizableItem", b =>
-                {
-                    b.Property<int>("CustomItemId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomItemId"));
-
-                    b.Property<string>("CustomItemName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("CustomItemPrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("CustomItemId");
-
-                    b.ToTable("CustomizableItem");
-                });
-
-            modelBuilder.Entity("testVue.Models.FoodCategory", b =>
+            modelBuilder.Entity("testVue.Models.Food.FoodCategoryDTO", b =>
                 {
                     b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd()
@@ -101,26 +118,7 @@ namespace testVue.Migrations
                     b.ToTable("FoodCategory");
                 });
 
-            modelBuilder.Entity("testVue.Models.FoodCustomizable", b =>
-                {
-                    b.Property<int>("FoodCustomId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FoodCustomId"));
-
-                    b.Property<int>("CustomItemId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("FoodItemId")
-                        .HasColumnType("int");
-
-                    b.HasKey("FoodCustomId");
-
-                    b.ToTable("FoodCustomizable");
-                });
-
-            modelBuilder.Entity("testVue.Models.FoodItem", b =>
+            modelBuilder.Entity("testVue.Models.Food.FoodItemDTO", b =>
                 {
                     b.Property<int>("FoodItemId")
                         .ValueGeneratedOnAdd()
@@ -128,7 +126,7 @@ namespace testVue.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FoodItemId"));
 
-                    b.Property<int?>("CategoryId")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("CreateDate")
@@ -164,6 +162,106 @@ namespace testVue.Migrations
                     b.ToTable("FoodItem");
                 });
 
+            modelBuilder.Entity("testVue.Models.Food.OrderDTO", b =>
+                {
+                    b.Property<int>("OrderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"));
+
+                    b.Property<decimal>("Discount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("OrderTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TableId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Tax")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("TotalAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("OrderId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("testVue.Models.Food.OrderItemDTO", b =>
+                {
+                    b.Property<int>("OrderItemId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderItemId"));
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FoodItemId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FoodName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("IsMainItem")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Note")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("OrderTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Unit")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("OrderItemId");
+
+                    b.ToTable("OrderItems");
+                });
+
+            modelBuilder.Entity("testVue.Models.FoodCustomizable", b =>
+                {
+                    b.Property<int>("FoodCustomId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FoodCustomId"));
+
+                    b.Property<int>("CustomItemId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FoodItemId")
+                        .HasColumnType("int");
+
+                    b.HasKey("FoodCustomId");
+
+                    b.ToTable("FoodCustomizable");
+                });
+
             modelBuilder.Entity("testVue.Models.FoodPriceType", b =>
                 {
                     b.Property<int>("PriceTypeId")
@@ -187,7 +285,7 @@ namespace testVue.Migrations
                     b.ToTable("FoodPriceType");
                 });
 
-            modelBuilder.Entity("testVue.Models.Material", b =>
+            modelBuilder.Entity("testVue.Models.Inventory.MaterialDTO", b =>
                 {
                     b.Property<int>("MaterialId")
                         .ValueGeneratedOnAdd()
@@ -198,7 +296,8 @@ namespace testVue.Migrations
                     b.Property<DateTime?>("ExpirationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("ImportDate")
+                    b.Property<DateTime?>("ImportDate")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("ImportPrice")
@@ -230,104 +329,42 @@ namespace testVue.Migrations
                     b.ToTable("Materials");
                 });
 
-            modelBuilder.Entity("testVue.Models.Order", b =>
+            modelBuilder.Entity("testVue.Models.Inventory.WarehouseHistoryDTO", b =>
                 {
-                    b.Property<int>("OrderId")
+                    b.Property<int>("WarehouseHistoryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("WarehouseHistoryId"));
 
-                    b.Property<decimal?>("Discount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<DateTime>("OrderTime")
+                    b.Property<DateTime?>("ExpỉationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TableId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal?>("Tax")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("TotalAmount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("OrderId");
-
-                    b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("testVue.Models.OrderItem", b =>
-                {
-                    b.Property<int>("OrderItemId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderItemId"));
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("FoodItemId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("FoodName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("IsMainItem")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Note")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("OrderTime")
+                    b.Property<DateTime?>("ImportDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("Price")
+                    b.Property<decimal>("ImportPrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("Quantity")
+                    b.Property<int>("MaterialId")
                         .HasColumnType("int");
+
+                    b.Property<double>("Quantity")
+                        .HasColumnType("float");
 
                     b.Property<string>("Unit")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("OrderItemId");
+                    b.HasKey("WarehouseHistoryId");
 
-                    b.ToTable("OrderItems");
+                    b.HasIndex("MaterialId");
+
+                    b.ToTable("WarehouseHistorys");
                 });
 
-            modelBuilder.Entity("testVue.Models.Table", b =>
-                {
-                    b.Property<int>("TableId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TableId"));
-
-                    b.Property<string>("TableName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("TableId");
-
-                    b.ToTable("Tables");
-                });
-
-            modelBuilder.Entity("testVue.Models.User", b =>
+            modelBuilder.Entity("testVue.Models.User.UserDTO", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
@@ -366,6 +403,17 @@ namespace testVue.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("testVue.Models.Inventory.WarehouseHistoryDTO", b =>
+                {
+                    b.HasOne("testVue.Models.Inventory.MaterialDTO", "Material")
+                        .WithMany()
+                        .HasForeignKey("MaterialId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Material");
                 });
 #pragma warning restore 612, 618
         }

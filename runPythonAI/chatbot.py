@@ -9,7 +9,7 @@ index = faiss.read_index("faiss_index.bin")
 documents = load_documents("documents/")
 
 def is_valid_question(question):
-    if len(question) < 5:  # Câu quá ngắn
+    if len(question) <= 9:  # Câu quá ngắn
         return False
     if all(char in "?.,!1234567890" for char in question):  # Chứa toàn ký tự đặc biệt
         return False
@@ -18,7 +18,7 @@ def is_valid_question(question):
 # Hàm lấy câu trả lời cho API
 def get_answer(question):
     if not is_valid_question(question):
-        return "❌ Vui lòng đặt câu hỏi rõ ràng hơn."
+        return "😼❌ Vui lòng đặt câu hỏi rõ ràng hơn."
 
     query_vector = model.encode([question])
     distances, indices = index.search(np.array(query_vector), 1)
@@ -39,4 +39,4 @@ def get_answer(question):
             "Bạn có thể thử hỏi lại hoặc liên hệ hỗ trợ khách hàng."
         )
 
-    return documents[best_match_idx]
+    return documents[best_match_idx].replace("==>", "😼✅").replace("?", ":")

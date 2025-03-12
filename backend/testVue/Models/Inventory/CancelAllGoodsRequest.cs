@@ -1,6 +1,6 @@
 ﻿namespace testVue.Models.Inventory.Inventory
 {
-    public class CancelAllGoodsDTO
+    public class CancelAllGoodsRequest
     {
         public int MaterialId { get; set; } = default;
     }
