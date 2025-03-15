@@ -33,7 +33,10 @@ const sendMessage = async () => {
       formattedResponse = response
         .split(/(?=\d+\.)/)
         .map((item) => item.trim());
+    } else {
+      formattedResponse = response;
     }
+    console.log("Dữ liệu trả về:", formattedResponse);
 
     // Thay thế text: "Đang tìm kiếm..." bằng câu trả lời nhận được
     messages.value[messages.value.length - 1].text = formattedResponse;

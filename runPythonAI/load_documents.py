@@ -1,5 +1,6 @@
 import os
 import pdfplumber
+import json
 from docx import Document
 
 def read_txt(file_path):
@@ -43,6 +44,23 @@ def read_docx(file_path):
     text = "\n".join([para.text for para in Document(file_path).paragraphs])
     return split_into_sections(text)  # Chia nhỏ nội dung
 
+def read_json(file_path):
+    """ Đọc dữ liệu từ file JSON và trả về danh sách các chuỗi văn bản """
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"Không tìm thấy file: {file_path}")
+
+    with open(file_path, "r", encoding="utf-8") as file:
+        data = json.load(file)
+
+    documents = []
+    for item in data.get("train_data", []):
+        question = f"😼✅ {item.get('question', '').strip()}"
+        steps = "\n".join(item.get("steps", []))  # Nối tất cả bước thành 1 chuỗi
+        full_text = f"{question}\n{steps}" if steps else question  # Kết hợp câu hỏi và các bước
+        documents.append(full_text)  # Append vào danh sách dưới dạng chuỗi
+
+    return documents  # Trả về danh sách các chuỗi
+    
 def split_into_sections(text):
     """ Chia văn bản thành các phần tử nhỏ giống như load_text_file """
     lines = text.split("\n")
@@ -74,4 +92,6 @@ def load_documents(folder_path):
             documents.extend(read_pdf(file_path))
         elif file_name.endswith(".docx"):
             documents.extend(read_docx(file_path))
+        elif file_name.endswith(".json"):
+            documents.extend(read_json(file_path))
     return documents
