@@ -32,11 +32,14 @@ def get_answer(question):
     print(f"📖 Nội dung tìm thấy: {documents[best_match_idx][:100]}...\n")
 
     # Kiểm tra nếu câu hỏi không đủ độ chính xác
-    THRESHOLD = np.mean(distances) * 1.2
-    if best_match_idx < 0 or best_distance > THRESHOLD:
+    THRESHOLD = 1.0
+    if best_distance > THRESHOLD:
         return (
             "🤖 Xin lỗi, tôi chưa có thông tin về câu hỏi này. "
             "Bạn có thể thử hỏi lại hoặc liên hệ hỗ trợ khách hàng."
         )
 
-    return documents[best_match_idx].replace("==>", "😼✅").replace("?", ":")
+    # if isinstance(documents[best_match_idx], str):
+        return documents[best_match_idx].replace("==>", "😼✅").replace("?", ":")
+    # else:
+        # return documents[best_match_idx]  # Chuyển về chuỗi nếu cần

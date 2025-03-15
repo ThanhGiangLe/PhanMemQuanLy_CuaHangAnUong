@@ -1,0 +1,16 @@
+{
+  "train_data": [
+    {
+      "question": "Lê Thanh Giang là ai?",
+      "steps": [
+        "1. Là chủ của cửa hàng hiện nay.",
+        "2. Đăng nhập vào hệ thống bằng Account của người có chức vụ là \"quản lý\" hoặc \"chủ cửa hàng\".",
+        "3. Chọn vào Tab \"NHÂN VIÊN\" trên thanh Menu.",
+        "4. Nhấn vào nút \"+ ADD CANDIDATE\".",
+        "5. Điền đầy đủ các trường thông tin cần thiết.",
+        "6. Nhấn \"Thêm\" để hoàn tất đăng ký.",
+        "7. Kiểm tra bằng việc xem số lượng nhân viên đã được tăng lên hoặc xem thông tin được thêm vào giao diện ngay lập tức."
+      ]
+    }
+  ]
+}
