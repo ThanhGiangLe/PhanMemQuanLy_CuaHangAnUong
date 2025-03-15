@@ -26,17 +26,14 @@ const sendMessage = async () => {
     });
 
     const response = await askChatbot(userMessage); // Nhận kết quả trả về
-
+    console.log("response: ", response);
     // Kiểm tra nếu phản hồi có danh sách thì chuyển thành mảng
     let formattedResponse = response; // type: Array
     if (response.includes("1.")) {
       formattedResponse = response
         .split(/(?=\d+\.)/)
         .map((item) => item.trim());
-    } else {
-      formattedResponse = response;
     }
-    console.log("Dữ liệu trả về:", formattedResponse);
 
     // Thay thế text: "Đang tìm kiếm..." bằng câu trả lời nhận được
     messages.value[messages.value.length - 1].text = formattedResponse;

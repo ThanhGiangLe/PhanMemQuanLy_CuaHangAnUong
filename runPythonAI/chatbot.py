@@ -39,7 +39,7 @@ def get_answer(question):
             "Bạn có thể thử hỏi lại hoặc liên hệ hỗ trợ khách hàng."
         )
 
-    # if isinstance(documents[best_match_idx], str):
+    if isinstance(documents[best_match_idx], str):
         return documents[best_match_idx].replace("==>", "😼✅").replace("?", ":")
-    # else:
-        # return documents[best_match_idx]  # Chuyển về chuỗi nếu cần
+    else:
+        return documents[best_match_idx]  # Chuyển về chuỗi nếu cần
