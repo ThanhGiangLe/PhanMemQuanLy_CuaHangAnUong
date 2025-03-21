@@ -177,7 +177,6 @@ const employeeInfo = ref({
 async function init() {
   const response = await axios.get(API_ENDPOINTS.GET_ALL_EMPLOYEES);
   employeeList.value = response.data;
-  console.log(employeeList.value);
 }
 
 init();
@@ -194,7 +193,6 @@ async function addEmployee() {
       Role: employeeInfo.value.Role,
     });
 
-    console.log("response.data", response.data);
     // Kiểm tra phản hồi từ server
     if (response.data.success === -1) {
       toast.warn("Please provide all required information!", {

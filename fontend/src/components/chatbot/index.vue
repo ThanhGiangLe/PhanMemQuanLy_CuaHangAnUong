@@ -26,7 +26,6 @@ const sendMessage = async () => {
     });
 
     const response = await askChatbot(userMessage); // Nhận kết quả trả về
-    console.log("response: ", response);
     // Kiểm tra nếu phản hồi có danh sách thì chuyển thành mảng
     let formattedResponse = response; // type: Array
     if (response.includes("1.")) {

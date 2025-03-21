@@ -2,10 +2,10 @@
   <div class="areaManagement pa-3">
     <div class="areaManagement_item d-flex align-center rounded">
       <div
-        class="areaManagement_item_tables d-flex flex-wrap py-2 justify-center "
+        class="areaManagement_item_tables d-flex flex-wrap py-2 justify-center"
         style="width: 100%"
       >
-      <!-- @click="
+        <!-- @click="
             snackbar = !snackbar;
             setCurrentOrder(table.tableId);
           " -->
@@ -29,11 +29,11 @@
 
     <v-dialog v-model="confirmDialog" max-width="300px" class="text-center">
       <v-card>
-        <v-card-title class="text-h5 text-center">
-          Xác nhận
-        </v-card-title>
+        <v-card-title class="text-h5 text-center"> Xác nhận </v-card-title>
         <v-card-actions class="justify-center">
-          <v-btn color="primary" @click="chooseTableAndSetCurrentOrders">Đồng ý</v-btn>
+          <v-btn color="primary" @click="chooseTableAndSetCurrentOrders"
+            >Đồng ý</v-btn
+          >
           <v-btn color="error" @click="confirmDialog = false">Hủy</v-btn>
         </v-card-actions>
       </v-card>
@@ -210,7 +210,7 @@ import { useOrderStore } from "@/stores/orderStore.js";
 import { useUserStore } from "@/stores/user.js";
 import { toast } from "vue3-toastify";
 
-const emit = defineEmits(['closeAndReset']);
+const emit = defineEmits(["closeAndReset"]);
 
 const storeOrder = useOrderStore();
 const userStore = useUserStore();
@@ -229,9 +229,7 @@ const currentOrder = ref({});
 const isActive = ref(false);
 
 const tableId = ref("");
-const desserts = computed(() => 
-  storeOrder.getDishesForTable(tableId.value)
-);
+const desserts = computed(() => storeOrder.getDishesForTable(tableId.value));
 
 const headers = [
   { title: "Tên món", align: "start", sortable: false, key: "name" },
@@ -246,19 +244,17 @@ const editedIndex = ref(-1);
 
 async function init() {
   const response = await axios.get(API_ENDPOINTS.GET_ALL_TABLE);
-  tables.value = response.data.map(table => ({
+  tables.value = response.data.map((table) => ({
     ...table,
-    isActive: false
+    isActive: false,
   }));
-  console.log("tables.value", tables.value);
 }
 
 init();
 const handleConfirmDialog = (table) => {
   confirmDialog.value = true;
   currentTableId.value = table.tableId;
-  console.log("Selected tableId:", currentTableId.value);
-}
+};
 function getCurrentDateTimeForSQL() {
   const now = new Date();
   const localOffset = 7 * 60; // Phút (GMT+7)
@@ -267,29 +263,29 @@ function getCurrentDateTimeForSQL() {
 }
 const resultTotalAmount = computed(() => {
   const discountAmount =
-      (currentOrder.value.total_amount * (currentOrder.value.discount || 0)) /
-      100;
+    (currentOrder.value.total_amount * (currentOrder.value.discount || 0)) /
+    100;
   const taxAmount =
-      (currentOrder.value.total_amount * (currentOrder.value.tax || 0)) / 100;
+    (currentOrder.value.total_amount * (currentOrder.value.tax || 0)) / 100;
   return currentOrder.value.total_amount + taxAmount - discountAmount;
 });
 const resetCurrentOrder = () => {
   currentOrder.value = {
-      user_id: user.value.userId,
-      order_time: getCurrentDateTimeForSQL(),
-      table_id: 1,
-      total_amount: 0, // Reset lại tổng thanh toán
-      status: "Paid", // Trạng thái mặc định
-      discount: 12, // Reset giảm giá
-      tax: 6, // Reset thuế
-      items: [], // Reset danh sách các món ăn
+    user_id: user.value.userId,
+    order_time: getCurrentDateTimeForSQL(),
+    table_id: 1,
+    total_amount: 0, // Reset lại tổng thanh toán
+    status: "Paid", // Trạng thái mặc định
+    discount: 12, // Reset giảm giá
+    tax: 6, // Reset thuế
+    items: [], // Reset danh sách các món ăn
   };
 };
 async function chooseTableAndSetCurrentOrders() {
   let orderTimeCurrent = getCurrentDateTimeForSQL();
   currentOrder.value = storeOrder.getSelectedDishes();
   try {
-      const orderResponse = await axios.post(API_ENDPOINTS.ADD_ORDER, {
+    const orderResponse = await axios.post(API_ENDPOINTS.ADD_ORDER, {
       userId: currentOrder.value.user_id,
       orderTime: orderTimeCurrent,
       tableId: currentTableId.value,
@@ -297,33 +293,33 @@ async function chooseTableAndSetCurrentOrders() {
       status: currentOrder.value.status,
       discount: currentOrder.value.discount,
       tax: currentOrder.value.tax,
-      });
+    });
 
-      const orderId = orderResponse.data.data.orderId;
+    const orderId = orderResponse.data.data.orderId;
 
-      // Gửi cả món chính và món phụ trong cùng một request
-      await Promise.all(
+    // Gửi cả món chính và món phụ trong cùng một request
+    await Promise.all(
       currentOrder.value.items.map(async (item) => {
-          // Gửi món chính
-          const mainItemResponse = await axios.post(
+        // Gửi món chính
+        const mainItemResponse = await axios.post(
           API_ENDPOINTS.ADD_ORDER_ITEM,
           {
-              orderId: orderId,
-              foodItemId: item.FoodItemId,
-              foodName: item.FoodName,
-              quantity: item.Quantity,
-              price: item.Price,
-              isMainItem: 1,
-              unit: item.Unit,
-              note: item.Note,
-              categoryId: item.CategoryId,
-              orderTime: orderTimeCurrent,
+            orderId: orderId,
+            foodItemId: item.FoodItemId,
+            foodName: item.FoodName,
+            quantity: item.Quantity,
+            price: item.Price,
+            isMainItem: 1,
+            unit: item.Unit,
+            note: item.Note,
+            categoryId: item.CategoryId,
+            orderTime: orderTimeCurrent,
           }
-          );
-          // Gửi các món phụ với parentItemId là mainItemId
-          await Promise.all(
+        );
+        // Gửi các món phụ với parentItemId là mainItemId
+        await Promise.all(
           item.ListAdditionalFood.map(async (addFood) => {
-              await axios.post(API_ENDPOINTS.ADD_ORDER_ITEM, {
+            await axios.post(API_ENDPOINTS.ADD_ORDER_ITEM, {
               orderId: orderId,
               foodItemId: addFood.id,
               foodName: addFood.foodName,
@@ -334,46 +330,45 @@ async function chooseTableAndSetCurrentOrders() {
               note: "",
               categoryId: 0,
               orderTime: orderTimeCurrent,
-              });
+            });
           })
-          );
+        );
       })
-      );
+    );
 
-      // Kiểm tra phản hồi từ server
-      if (orderResponse.data.success === -1) {
+    // Kiểm tra phản hồi từ server
+    if (orderResponse.data.success === -1) {
       toast.warn("Please provide all required information!", {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false, // Hiện thanh tiến trình
-          closeOnClick: true, // Đóng khi nhấp vào thông báo
-          pauseOnHover: true, // Dừng khi di chuột lên thông báo
-          draggable: true, // Kéo thông báo
-          progress: undefined, // Tiến độ (nếu có)
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false, // Hiện thanh tiến trình
+        closeOnClick: true, // Đóng khi nhấp vào thông báo
+        pauseOnHover: true, // Dừng khi di chuột lên thông báo
+        draggable: true, // Kéo thông báo
+        progress: undefined, // Tiến độ (nếu có)
       });
-      } else if (orderResponse.data.success === 1) {
+    } else if (orderResponse.data.success === 1) {
       confirmDialog.value = false;
-      tables.value = tables.value.map(table => ({
+      tables.value = tables.value.map((table) => ({
         ...table,
-        isActive: table.tableId == currentTableId.value
+        isActive: table.tableId == currentTableId.value,
       }));
-      console.log("Updated tables:", tables.value);
       toast.success("Add order successful!", {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false, // Hiện thanh tiến trình
-          closeOnClick: true, // Đóng khi nhấp vào thông báo
-          pauseOnHover: true, // Dừng khi di chuột lên thông báo
-          draggable: true, // Kéo thông báo
-          progress: undefined, // Tiến độ (nếu có)
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false, // Hiện thanh tiến trình
+        closeOnClick: true, // Đóng khi nhấp vào thông báo
+        pauseOnHover: true, // Dừng khi di chuột lên thông báo
+        draggable: true, // Kéo thông báo
+        progress: undefined, // Tiến độ (nếu có)
       });
       // Emit event để đóng component và reset
-      emit('closeAndReset');
-      } else {
+      emit("closeAndReset");
+    } else {
       console.error("Failed to add order", orderResponse.data.message);
-      }
+    }
   } catch (error) {
-      toast.error(`Error adding employee: ${error}`, {
+    toast.error(`Error adding employee: ${error}`, {
       position: "top-right",
       autoClose: 3000,
       hideProgressBar: false, // Hiện thanh tiến trình
@@ -381,7 +376,7 @@ async function chooseTableAndSetCurrentOrders() {
       pauseOnHover: true, // Dừng khi di chuột lên thông báo
       draggable: true, // Kéo thông báo
       progress: undefined, // Tiến độ (nếu có)
-      });
+    });
   }
 }
 

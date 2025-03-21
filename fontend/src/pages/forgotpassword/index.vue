@@ -299,8 +299,6 @@ async function UpdatePassword() {
     return;
   }
   try {
-    console.log("email.value", email.value);
-    console.log("confirmPassword.value", confirmPassword.value);
     const response = await axios.post(API_ENDPOINTS.UPDATE_PASSWORD, {
       Email: email.value,
       NewPassword: confirmPassword.value,

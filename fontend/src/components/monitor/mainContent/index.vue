@@ -5,11 +5,8 @@
 </template>
 
 <script setup>
-import { useUserStore } from '@/stores/user.js';
+import { useUserStore } from "@/stores/user.js";
 const userStore = useUserStore();
 
 const user = computed(() => userStore.user);
-console.log("MainContent in Navigation: ", user.value);
-
-
 </script>

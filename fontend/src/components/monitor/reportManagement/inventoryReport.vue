@@ -109,7 +109,7 @@
                   'bg-green-lighten-1': item.quantity > item.minQuantity,
                 }"
               >
-                {{ item.quantity ? item.quantity : "-" }}
+                {{ item.quantity ? item.quantity.toFixed(2) : "-" }}
               </span>
             </template>
             <template v-slot:item.unit="{ item }">
@@ -226,7 +226,6 @@ async function init() {
     isEditing: false,
   }));
   materialsFilter.value = materials.value;
-  console.log("Kiểm tra: ", materialsFilter.value);
 
   loading.value = false;
 }
@@ -297,7 +296,6 @@ async function addQuantityInItemAndCallAPIUpdate(item) {
       AddedQuantity: item.quantityAdded,
     });
 
-    console.log("Response:", response.data);
     if (response.data.message && response.data.message.trim() !== "") {
       item.quantity = item.quantity + item.quantityAdded;
       item.quantityAdded = 0;

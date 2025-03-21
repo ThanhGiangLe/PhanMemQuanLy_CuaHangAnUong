@@ -25,7 +25,6 @@ export default function useFoodManagement() {
 
   // Lấy thông tin người dùng từ store
   const user = computed(() => userStore.user);
-  console.log("UserInfo in FoodManager", user.value);
 
   // Danh sách categories được chọn
   const listDashSelected = ref([]);
@@ -34,17 +33,14 @@ export default function useFoodManagement() {
   async function init() {
     const response = await axios.get(API_ENDPOINTS.GET_ALL_FOOD_CATEGORIES);
     foodCategories.value = response.data;
-    console.log("foodCategories", foodCategories.value);
 
     const responseFoodItems = await axios.get(API_ENDPOINTS.GET_ALL_FOOD_ITEMS);
     foodItems.value = responseFoodItems.data;
-    console.log("foodItems", foodItems.value);
 
     const responseAdditonalFoods = await axios.get(
       API_ENDPOINTS.GET_ALL_ADDITIONAL_FOODS
     );
     additionalFoods.value = responseAdditonalFoods.data;
-    console.log("additionalFoods", additionalFoods.value);
     loading.value = false;
   }
   init();
@@ -66,7 +62,6 @@ export default function useFoodManagement() {
     } else {
       listDashSelected.value.push(foodCategory);
     }
-    console.log("listDashSelected", listDashSelected.value);
   }
   const filteredFoodItems = computed(() => {
     // Kiểm tra foodItems.value là mảng
@@ -228,7 +223,6 @@ export default function useFoodManagement() {
 
     // Cập nhật tổng tiền khi thêm hoặc tăng số lượng món
     updateTotalAmount();
-    console.log("currentOrder", currentOrder.value);
 
     resetOrderItem();
     detailItem.value = false;
@@ -241,9 +235,6 @@ export default function useFoodManagement() {
     detailItem.value = false;
   }
   function updateCurrentFoodSelected(item) {
-    console.log("item", item);
-    console.log("additionalFood", additionalFoods.value);
-
     updateOrderItem.value.CategoryId = item.CategoryId;
     updateOrderItem.value.CustomItemId = item.CustomItemId;
     updateOrderItem.value.FoodItemId = item.FoodItemId;
@@ -276,17 +267,9 @@ export default function useFoodManagement() {
         item.ListAdditionalFood.some((selected) => selected.id === foodItem.id)
       );
 
-    console.log(
-      "Danh sách các món gọi thêm",
-      updateOrderItem.value.ListAdditionalFood
-    );
-    console.log("Danh sách các món đã được gọi thêm", item.ListAdditionalFood);
-
     visibleUpdateCurrentFoodSelected.value = true;
   }
   function updateFoodItem(updateOrderItem) {
-    console.log("updateOrderItem", updateOrderItem);
-
     // Tìm index của món cần update trong mảng items
     const itemIndex = currentOrder.value.items.findIndex(
       (item) =>
@@ -311,8 +294,6 @@ export default function useFoodManagement() {
 
       // Cập nhật tổng tiền
       updateTotalAmount();
-
-      console.log("Updated currentOrder", currentOrder.value);
     }
 
     resetOrderItem();
@@ -332,9 +313,6 @@ export default function useFoodManagement() {
 
       // Cập nhật lại tổng tiền
       updateTotalAmount();
-
-      console.log("Deleted item at index:", itemIndex);
-      console.log("Updated currentOrder:", currentOrder.value);
     }
   }
   // Hàm cập nhật tổng số tiền
@@ -421,9 +399,10 @@ export default function useFoodManagement() {
     };
   };
   async function callApiOrderFood() {
-    console.log("currentOrder", currentOrder.value);
     let orderTimeCurrent = getCurrentDateTimeForSQL();
+    console.log("currentOrder", currentOrder.value);
     try {
+      // Call API để thêm vào bảng Orders về thông tin của một lần gọi món
       const orderResponse = await axios.post(API_ENDPOINTS.ADD_ORDER, {
         userId: currentOrder.value.user_id,
         orderTime: orderTimeCurrent,
@@ -433,12 +412,10 @@ export default function useFoodManagement() {
         discount: currentOrder.value.discount,
         tax: currentOrder.value.tax,
       });
-      console.log("orderResponse", orderResponse.data);
 
-      const orderId = orderResponse.data.data.orderId;
-      console.log("orderId", orderId);
+      const orderId = orderResponse.data.data.orderId; // Nhận tại OrderId để khi thêm các món ăn đã gọi sẽ biết thuộc bill nào
 
-      // Gửi cả món chính và món phụ trong cùng một request
+      // Gửi cả món chính và món phụ trong sau khi đã nhận được orderId, nhầm xác định được các món ăn này thuộc bill nào
       await Promise.all(
         currentOrder.value.items.map(async (item) => {
           // Gửi món chính
@@ -457,8 +434,7 @@ export default function useFoodManagement() {
               orderTime: orderTimeCurrent,
             }
           );
-          console.log("item.ListAdditionalFood", item.ListAdditionalFood);
-          // Gửi các món phụ với parentItemId là mainItemId
+          // Gửi các món phụ với parentItemId là mainItemId và các món phụ đi kèm món chính đó
           await Promise.all(
             item.ListAdditionalFood.map(async (addFood) => {
               await axios.post(API_ENDPOINTS.ADD_ORDER_ITEM, {
@@ -477,6 +453,14 @@ export default function useFoodManagement() {
           );
         })
       );
+
+      const responseUpdateMaterial = await axios.post(
+        API_ENDPOINTS.UPDATE_QUANTITY_MATERIALS_AFTER_ORDER,
+        {
+          Items: currentOrder.value.items,
+        }
+      );
+      console.log("responseUpdateMaterial", responseUpdateMaterial.data);
 
       // Kiểm tra phản hồi từ server
       if (orderResponse.data.success === -1) {
@@ -504,7 +488,7 @@ export default function useFoodManagement() {
         console.error("Failed to add order", orderResponse.data.message);
       }
     } catch (error) {
-      toast.error(`Error adding employee: ${error}`, {
+      toast.error(`Error adding order: ${error}`, {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false, // Hiện thanh tiến trình
@@ -516,6 +500,7 @@ export default function useFoodManagement() {
     }
   }
   async function callApiOrderFoodAndAddTable() {
+    // Đang test, sẽ move đi sau
     showComponentAreaManagement.value = !showComponentAreaManagement.value;
     storeOrder.setSelectedDishes(currentOrder.value);
   }

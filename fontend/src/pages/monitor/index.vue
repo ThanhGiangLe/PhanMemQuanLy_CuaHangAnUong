@@ -122,5 +122,4 @@ const tab = ref("main");
 
 // Lấy thông tin người dùng từ store
 const user = computed(() => userStore.user);
-console.log("User in Navigation: ", user.value);
 </script>

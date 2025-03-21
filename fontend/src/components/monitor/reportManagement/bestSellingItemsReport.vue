@@ -206,7 +206,6 @@ async function init() {
     }
   );
   allItemBestSeling.value = response.data;
-  console.log("allItemBestSeling.value", allItemBestSeling.value);
 
   const quantitySoldMaxDataTable = allItemBestSeling.value
     ? allItemBestSeling.value.reduce((max, current) => {
@@ -228,12 +227,10 @@ async function selectCurrentDayAndCallAPI() {
     currentMonth < 10 ? "0" + currentMonth : currentMonth
   }-${currentYear}`;
   selectedCurrentDay.value = formattedDate;
-  console.log("selectedCurrentDay", selectedCurrentDay.value);
   let [dayf, monthf, yearf] = selectedCurrentDay.value.split("-");
   dayf = dayf.padStart(2, "0");
   monthf = monthf.padStart(2, "0");
   selectedCurrentDay.value = `${dayf}-${monthf}-${yearf}`;
-  console.log("formatted selectedCurrentDay", selectedCurrentDay.value); // Kết quả: "02-11-2024"
 
   const response = await axios.post(
     API_ENDPOINTS.GET_ALL_ORDERITEM_BESTSELING_CURRENTDAY,
@@ -254,12 +251,10 @@ async function selectCurrentDayAndCallAPI() {
 }
 async function selectDayAndCallAPI(day) {
   selectedDay.value = day;
-  console.log("selectedDay", selectedDay.value);
   let [dayf, monthf, yearf] = selectedDay.value.split("-");
   dayf = dayf.padStart(2, "0");
   monthf = monthf.padStart(2, "0");
   selectedDay.value = `${dayf}-${monthf}-${yearf}`;
-  console.log("formatted selectedDay", selectedDay.value); // Kết quả: "02-11-2024"
   const responseTotal1 = await axios.post(
     API_ENDPOINTS.GET_ALL_ORDERITEM_BESTSELING_CURRENTDAY,
     {
@@ -279,11 +274,9 @@ async function selectDayAndCallAPI(day) {
 }
 async function selectMonthAndCallAPI(month) {
   selectedMonth.value = month;
-  console.log("selectedMonth", selectedMonth.value);
   let [monthf, yearf] = selectedMonth.value.split("-");
   monthf = monthf.padStart(2, "0");
   selectedMonth.value = `${monthf}-${yearf}`;
-  console.log("selectedMonth", selectedMonth.value);
 
   const response = await axios.post(
     API_ENDPOINTS.GET_ALL_ORDERITEM_BESTSELING_CURRENTMONTH,
