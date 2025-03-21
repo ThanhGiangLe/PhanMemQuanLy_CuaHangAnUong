@@ -124,7 +124,7 @@
               <span
                 style="font-weight: 500; color: rgba(var(--v-theme-primary), 1)"
                 class="cursor-pointer"
-                :class="{ 'opacity-50': item.quantity == 0 }"
+                :class="{ 'opacity-50': item.quantity <= 1 }"
                 @click="showDetailMaterialHistory(item)"
               >
                 {{ item.materialName ? item.materialName : "-" }}
@@ -136,23 +136,23 @@
                 :class="{
                   'bg-green-lighten-1': item.quantity > item.minQuantity,
                   'bg-yellow-lighten-1':
-                    item.quantity <= item.minQuantity && item.quantity > 0,
-                  'bg-red-lighten-1': item.quantity == 0,
+                    item.quantity <= item.minQuantity && item.quantity > 1,
+                  'bg-red-lighten-1': item.quantity <= 1,
                 }"
               >
-                {{ item.quantity ? item.quantity : "0" }}
+                {{ item.quantity ? item.quantity.toFixed(3) : "0" }}
               </span>
             </template>
             <template v-slot:item.unit="{ item }">
               <span
                 class="text-capitalize"
-                :class="{ 'opacity-50': item.quantity == 0 }"
+                :class="{ 'opacity-50': item.quantity <= 1 }"
               >
                 {{ item.unit ? item.unit : "-" }}
               </span>
             </template>
             <template v-slot:item.importDate="{ item }">
-              <span :class="{ 'opacity-50': item.quantity == 0 }">
+              <span :class="{ 'opacity-50': item.quantity <= 1 }">
                 {{
                   item.importDate
                     ? formatDateFormApiToView(item.importDate)
@@ -161,7 +161,7 @@
               </span>
             </template>
             <template v-slot:item.expirationDate="{ item }">
-              <span :class="{ 'opacity-50': item.quantity == 0 }">
+              <span :class="{ 'opacity-50': item.quantity <= 1 }">
                 {{
                   item.expirationDate
                     ? formatDateFormApiToView(item.expirationDate)
@@ -239,7 +239,7 @@
         </div>
       </v-card-text>
 
-      <v-dialog v-model="displayWarehouseHistoryOfMaterial" max-width="1180px">
+      <v-dialog v-model="displayWarehouseHistoryOfMaterial" max-width="1280px">
         <v-card>
           <v-card-title class="d-flex justify-space-between align-center">
             <span class="">Lịch Sử Nhập Kho</span>
@@ -269,29 +269,30 @@
                       color: rgba(var(--v-theme-primary), 1);
                     "
                     class="cursor-pointer"
-                    :class="{ 'opacity-50': item.quantity == 0 }"
+                    :class="{ 'opacity-50': item.quantity <= 1 }"
                     @click="showDetailMaterialHistory(item)"
                   >
                     {{ item.materialName ? item.materialName : "-" }}
                   </span>
                 </template>
                 <template v-slot:item.quantity="{ item }">
-                  <span
-                    style="padding: 4px 12px; border-radius: 25px"
-                    :class="{
-                      'bg-green-lighten-1': item.quantity > item.minQuantity,
-                      'bg-yellow-lighten-1':
-                        item.quantity <= item.minQuantity && item.quantity > 0,
-                      'bg-red-lighten-1': item.quantity == 0,
-                    }"
-                  >
-                    {{ item.quantity ? item.quantity : "0" }}
+                  <span>
+                    {{ item.quantity ? item.quantity.toFixed(3) : "0" }}
+                  </span>
+                </template>
+                <template v-slot:item.currentQuantity="{ item }">
+                  <span>
+                    {{
+                      item.currentQuantity
+                        ? item.currentQuantity.toFixed(3)
+                        : "0"
+                    }}
                   </span>
                 </template>
                 <template v-slot:item.unit="{ item }">
                   <span
                     class="text-capitalize"
-                    :class="{ 'opacity-50': item.quantity == 0 }"
+                    :class="{ 'opacity-50': item.quantity <= 1 }"
                   >
                     {{ item.unit ? item.unit : "-" }}
                   </span>
@@ -307,7 +308,7 @@
                   </span>
                 </template>
                 <template v-slot:item.importDate="{ item }">
-                  <span :class="{ 'opacity-50': item.quantity == 0 }">
+                  <span :class="{ 'opacity-50': item.quantity <= 1 }">
                     {{
                       item.importDate
                         ? formatDateFormApiToView(item.importDate)
@@ -316,7 +317,7 @@
                   </span>
                 </template>
                 <template v-slot:item.expirationDate="{ item }">
-                  <span :class="{ 'opacity-50': item.quantity == 0 }">
+                  <span :class="{ 'opacity-50': item.quantity <= 1 }">
                     {{
                       item.expirationDate
                         ? formatDateFormApiToView(item.expirationDate)

@@ -105,7 +105,6 @@ async function verifyLoginAccount() {
 
     // Lấy thông tin người dùng trả về từ server nếu đăng nhập thành công
     const user = response.data;
-    console.log("User logged in:", user);
 
     // Lưu thông tin người dùng vào store
     userStore.setUser(user);

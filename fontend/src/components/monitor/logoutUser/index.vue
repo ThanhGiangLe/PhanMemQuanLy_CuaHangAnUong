@@ -10,7 +10,6 @@ const userStore = useUserStore();
 
 // Lấy thông tin người dùng từ store
 const user = computed(() => userStore.user);
-console.log("User in Navigation: ", user.value);
 
 const exitAccountCurrent = () => {
   userStore.clearUser();

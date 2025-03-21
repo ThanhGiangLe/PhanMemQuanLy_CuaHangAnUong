@@ -47,6 +47,10 @@ namespace testVue.Controllers
             else if(material.MaterialType.ToLower().Equals("gia vị")) {
                 material.ImportDate = now;
                 material.ExpirationDate = now.AddDays(30);
+            }else
+            {
+                material.ImportDate = now;
+                material.ExpirationDate = now.AddDays(1);
             }
 
             material.Quantity += request.AddedQuantity;
@@ -105,7 +109,8 @@ namespace testVue.Controllers
                 .Where(item =>
                     item.MaterialId == request.MaterialId &&
                     EF.Functions.DateDiffSecond(item.ImportDate, request.ImportDate) == 0 &&
-                    EF.Functions.DateDiffSecond(item.ExpirationDate, request.ExpirationDate) == 0
+                    EF.Functions.DateDiffSecond(item.ExpirationDate, request.ExpirationDate) == 0 &&
+                    item.Using == 0
                 ).FirstOrDefaultAsync();
             var material = await _appDbContext.Materials.FindAsync(request.MaterialId);
             if (result == null || material == null)
@@ -150,6 +155,10 @@ namespace testVue.Controllers
                     _ => now.AddDays(10)
                 };
 
+                await _appDbContext.WarehouseHistorys
+                    .Where(item => item.MaterialId == request.MaterialId && item.Using == 1)
+                    .ForEachAsync(item => item.Using = 0);
+
                 var newWarehouseHistory = new WarehouseHistoryDTO
                 {
                     MaterialId = request.MaterialId,
@@ -158,6 +167,8 @@ namespace testVue.Controllers
                     Unit = request.Unit,
                     ImportPrice = request.ImportPrice,
                     Quantity = request.Quantity,
+                    CurrentQuantity = request.Quantity,
+                    Using = 1
                 };
 
                 _appDbContext.WarehouseHistorys.Add(newWarehouseHistory);
@@ -186,10 +197,12 @@ namespace testVue.Controllers
                                      wh.MaterialId,
                                      MaterialName = m.MaterialName,
                                      wh.Quantity,
+                                     wh.CurrentQuantity,
                                      wh.Unit,
                                      wh.ImportDate,
                                      wh.ExpirationDate,
-                                     wh.ImportPrice
+                                     wh.ImportPrice,
+                                     wh.Using
                                  }).ToListAsync();
             if (results == null || results.Count == 0) {
                 return Ok(new

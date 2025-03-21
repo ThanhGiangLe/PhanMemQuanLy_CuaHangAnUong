@@ -31,5 +31,12 @@ namespace testVue.Models.Inventory
         [Range(0, double.MaxValue)]
         public double Quantity { get; set; } // Số lượng nhập hàng
 
+        [Required]
+        [Range(0, double.MaxValue)]
+        public double CurrentQuantity { get; set; } // Số lượng nhập hàng hiện còn lại
+
+        [Required]
+        [Range(0, int.MaxValue)]
+        public int Using { get; set; } // Tình trạng có đang sử dụng không
     }
 }

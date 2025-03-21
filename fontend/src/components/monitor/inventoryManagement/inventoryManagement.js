@@ -25,7 +25,8 @@ export default function useInventoryManagement() {
 
   const headerDetail = ref([
     { title: "Tên gọi", key: "materialName" },
-    { title: "Số lượng", key: "quantity" },
+    { title: "Nhập", key: "quantity" },
+    { title: "Thừa", key: "currentQuantity" },
     { title: "Đơn vị tính", key: "unit" },
     { title: "Giá nhập", key: "importPrice" },
     { title: "Thành tiền", key: "money" },
@@ -42,8 +43,10 @@ export default function useInventoryManagement() {
       quantityAdded: 0,
       isEditing: false,
     }));
+    materials.value.sort((a, b) =>
+      a.materialName.localeCompare(b.materialName)
+    );
     materialsFilter.value = materials.value;
-    console.log("Kiểm tra: ", materialsFilter.value);
 
     loading.value = false;
   }
@@ -122,7 +125,6 @@ export default function useInventoryManagement() {
 
   function showDisplayInputAddedValues(item) {
     item.isEditing = !item.isEditing;
-    console.log("Item", item);
   }
 
   async function addQuantityInItemAndCallAPIUpdate(item) {
@@ -153,9 +155,7 @@ export default function useInventoryManagement() {
           Quantity: item.quantityAdded,
         }),
       ]);
-      console.log("Response2:", response2.data);
 
-      console.log("Response:", response.data);
       if (response.data.message && response.data.message.trim() !== "") {
         item.quantity = item.quantity + item.quantityAdded;
         item.quantityAdded = 0;
@@ -246,12 +246,13 @@ export default function useInventoryManagement() {
   }
 
   async function cancelAllGoodsDetail(item) {
+    // console.log("item", item);
     try {
       const response = await axios.post(API_ENDPOINTS.CANCEL_ALL_GOODS_DETAIL, {
         MaterialId: item.materialId,
         ImportDate: item.importDate,
         ExpirationDate: item.expirationDate,
-        Quantity: item.quantity,
+        Quantity: item.currentQuantity,
       });
       if (response.data.message && response.data.message.trim() !== "") {
         toast.success("Hủy nguyên liệu thành công!", {
@@ -272,7 +273,7 @@ export default function useInventoryManagement() {
         let materialsFilterChoose = materialsFilter.value.find(
           (material) => material.materialId == item.materialId
         );
-        materialsFilterChoose.quantity -= item.quantity;
+        materialsFilterChoose.quantity -= item.currentQuantity;
       } else {
         toast.error("Hủy nguyên liệu thất bại!", {
           position: "top-right",
@@ -299,10 +300,10 @@ export default function useInventoryManagement() {
 
   async function showDetailMaterialHistory(item) {
     try {
+      console.log("Item:", item);
       const response = await axios.get(
         `${API_ENDPOINTS.GET_WAREHOUSE_HISTORY_BY_MATERIALID}/${item.materialId}`
       );
-      console.log("response", response.data);
 
       if (response.data.message) {
         toast.warn("Không có lịch sử nhập kho cho nguyên liệu này!", {
@@ -317,10 +318,6 @@ export default function useInventoryManagement() {
       } else {
         displayWarehouseHistoryOfMaterial.value = true;
         warehouseHistoryOfMaterialIsChoose.value = response.data;
-        console.log(
-          "warehouseHistoryOfMaterialIsChoose",
-          warehouseHistoryOfMaterialIsChoose.value
-        );
       }
     } catch (error) {
       toast.error(error, {

@@ -32,7 +32,6 @@ export default function useReportRevenue() {
   const currentDate = new Date();
   const currentMonth = currentDate.getMonth() + 1; // Tháng hiện tại (cộng thêm 1 vì getMonth() trả về giá trị từ 0 đến 11)
   const currentYear = currentDate.getFullYear(); // Năm hiện tại
-  console.log("Tháng hiện tại: ", currentMonth);
 
   const dateList = ref(generateDates(currentMonth, currentYear));
   const monthList = ref(generateMonths(currentYear));
@@ -108,11 +107,9 @@ export default function useReportRevenue() {
 
   async function selectMonthAndCallAPI(month) {
     selectedMonth.value = month;
-    console.log("selectedMonth", selectedMonth.value);
     let [monthf, yearf] = selectedMonth.value.split("-");
     monthf = monthf.padStart(2, "0");
     selectedMonth.value = `${monthf}-${yearf}`;
-    console.log("selectedMonth", selectedMonth.value);
 
     const responseTotal1 = await axios.post(
       API_ENDPOINTS.GET_ALL_REVENUE_BY_TIME_MONTH,
@@ -121,10 +118,7 @@ export default function useReportRevenue() {
       }
     );
     totalRevenueOrderCurrentMonth.value = responseTotal1.data;
-    console.log(
-      "totalRevenueOrderCurrentMonth",
-      totalRevenueOrderCurrentMonth.value
-    );
+
     totalRevenue.value =
       totalRevenueOrderCurrentMonth.value.totalAmountCurrentMonth;
     totalRevenueYesterday.value =
@@ -136,12 +130,10 @@ export default function useReportRevenue() {
   }
   async function selectDayAndCallAPI(day) {
     selectedDay.value = day;
-    console.log("selectedDay", selectedDay.value);
     let [dayf, monthf, yearf] = selectedDay.value.split("-");
     dayf = dayf.padStart(2, "0");
     monthf = monthf.padStart(2, "0");
     selectedDay.value = `${dayf}-${monthf}-${yearf}`;
-    console.log("formatted selectedDay", selectedDay.value); // Kết quả: "02-11-2024"
     const responseTotal1 = await axios.post(
       API_ENDPOINTS.GET_ALL_REVENUE_BY_TIME,
       {
@@ -149,10 +141,7 @@ export default function useReportRevenue() {
       }
     );
     totalRevenueOrderCurrentDay.value = responseTotal1.data;
-    console.log(
-      "totalRevenueOrderCurrentDay",
-      totalRevenueOrderCurrentDay.value
-    );
+
     totalRevenue.value = totalRevenueOrderCurrentDay.value.totalAmount;
     totalRevenueYesterday.value =
       totalRevenueOrderCurrentDay.value.totalAmountYesterday;
@@ -167,12 +156,10 @@ export default function useReportRevenue() {
       currentMonth < 10 ? "0" + currentMonth : currentMonth
     }-${currentYear}`;
     selectedCurrentDay.value = formattedDate;
-    console.log("selectedCurrentDay", selectedCurrentDay.value);
     let [dayf, monthf, yearf] = selectedCurrentDay.value.split("-");
     dayf = dayf.padStart(2, "0");
     monthf = monthf.padStart(2, "0");
     selectedCurrentDay.value = `${dayf}-${monthf}-${yearf}`;
-    console.log("formatted selectedCurrentDay", selectedCurrentDay.value); // Kết quả: "02-11-2024"
 
     const responseTotal1 = await axios.post(
       API_ENDPOINTS.GET_ALL_REVENUE_BY_TIME,
@@ -181,10 +168,7 @@ export default function useReportRevenue() {
       }
     );
     totalRevenueOrderCurrentDay.value = responseTotal1.data;
-    console.log(
-      "totalRevenueOrderCurrentDay",
-      totalRevenueOrderCurrentDay.value
-    );
+
     totalRevenue.value = totalRevenueOrderCurrentDay.value.totalAmount;
     totalRevenueYesterday.value =
       totalRevenueOrderCurrentDay.value.totalAmountYesterday;
@@ -310,8 +294,6 @@ export default function useReportRevenue() {
       }
     );
 
-    console.log("Phần khởi tạo Categories", responseRevenueForCategory.data);
-
     const revenueMap = responseRevenueForCategory.data.reduce((acc, item) => {
       acc[item.categoryName] = item.totalRevenue;
       return acc;
@@ -354,12 +336,10 @@ export default function useReportRevenue() {
   async function selectDayAndCallAPIForEmployee(day) {
     loading.value = true;
     selectedDayForEmp.value = day;
-    console.log("selectedDayForEmp", selectedDayForEmp.value);
     let [dayf, monthf, yearf] = selectedDayForEmp.value.split("-");
     dayf = dayf.padStart(2, "0");
     monthf = monthf.padStart(2, "0");
     selectedDayForEmp.value = `${dayf}-${monthf}-${yearf}`;
-    console.log("formatted selectedDayForEmp", selectedDayForEmp.value); // Kết quả: "02-11-2024"
     const responseTotal1 = await axios.post(
       API_ENDPOINTS.GET_ALL_REVENUE_BY_EMPLOYEE_AND_TIME,
       {
@@ -384,11 +364,9 @@ export default function useReportRevenue() {
   async function selectMonthAndCallAPIForEmployee(month) {
     loading.value = true;
     selectedMonthForEmp.value = month;
-    console.log("selectedMonthForEmp", selectedMonthForEmp.value);
     let [monthf, yearf] = selectedMonthForEmp.value.split("-");
     monthf = monthf.padStart(2, "0");
     selectedMonthForEmp.value = `${monthf}-${yearf}`;
-    console.log("selectedMonthForEmp", selectedMonthForEmp.value);
 
     const responseTotal1 = await axios.post(
       API_ENDPOINTS.GET_ALL_REVENUE_BY_EMPLOYEE_AND_TIME_MONTH,
@@ -421,19 +399,16 @@ export default function useReportRevenue() {
   async function selectDayAndCallAPIForCategory(day) {
     loading.value = true;
     selectedDayForCate.value = day;
-    console.log("selectedDayForCate", selectedDayForCate.value);
     let [dayf, monthf, yearf] = selectedDayForCate.value.split("-");
     dayf = dayf.padStart(2, "0");
     monthf = monthf.padStart(2, "0");
     selectedDayForCate.value = `${dayf}-${monthf}-${yearf}`;
-    console.log("formatted selectedDayForCate", selectedDayForCate.value); // Kết quả: "02-11-2024"
     const responseTotal1 = await axios.post(
       API_ENDPOINTS.GET_ALL_REVENUE_BY_CATEGORY_AND_TIME,
       {
         date: selectedDayForCate.value,
       }
     );
-    console.log("LƯU Ý: ", responseTotal1.data);
 
     const revenueMap = responseTotal1.data.reduce((acc, item) => {
       acc[item.categoryName] = item.totalRevenue;
@@ -464,11 +439,9 @@ export default function useReportRevenue() {
   async function selectMonthAndCallAPIForCategory(month) {
     loading.value = true;
     selectedMonthForCate.value = month;
-    console.log("selectedMonthForCate", selectedMonthForCate.value);
     let [monthf, yearf] = selectedMonthForCate.value.split("-");
     monthf = monthf.padStart(2, "0");
     selectedMonthForCate.value = `${monthf}-${yearf}`;
-    console.log("selectedMonthForCate", selectedMonthForCate.value);
 
     const responseTotal1 = await axios.post(
       API_ENDPOINTS.GET_ALL_REVENUE_BY_CATEGORY_AND_TIME_MONTH,

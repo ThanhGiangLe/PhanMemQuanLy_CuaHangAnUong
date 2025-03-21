@@ -1,5 +1,5 @@
 <template>
-  <v-card class="pa-5" max-width="700px" style="margin: 0 auto;">
+  <v-card class="pa-5" max-width="700px" style="margin: 0 auto">
     <div>
       <div
         class="text-subtitle-1 text-medium-emphasis d-flex align-center justify-space-between"
@@ -75,7 +75,6 @@ const newConfirmPassword = ref("");
 
 // Lấy thông tin người dùng từ store
 const user = computed(() => userStore.user);
-console.log("User in Navigation: ", user.value);
 
 // const closeDialogInfo = () => {
 //   dialogVisibleInfo.value = false;
@@ -107,8 +106,6 @@ async function UpdatePassword() {
     return;
   }
   try {
-    console.log("user.email", user.value.email);
-    console.log("confirmPassword.value", newConfirmPassword.value);
     const response = await axios.post(API_ENDPOINTS.UPDATE_PASSWORD, {
       Email: user.value.email,
       NewPassword: newConfirmPassword.value,

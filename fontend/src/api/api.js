@@ -37,6 +37,8 @@ const API_ENDPOINTS = {
   CANCEL_ALL_GOODS_DETAIL: `${BASE_URL}/Inventory/cancel-all-goods-detail`,
   IMPORT_WAREHOUSE_HISTORY: `${BASE_URL}/Inventory/import-warehouse-history`,
   GET_WAREHOUSE_HISTORY_BY_MATERIALID: `${BASE_URL}/Inventory/get-warehouse-history`,
+
+  UPDATE_QUANTITY_MATERIALS_AFTER_ORDER: `${BASE_URL}/Material/update-quantity-materials-after-order`,
 };
 
 export default API_ENDPOINTS;
