@@ -503,13 +503,13 @@
           color="orange-darken-2"
           >Đặt món</v-btn
         >
-        <v-btn
+        <!-- <v-btn
           class="w-100"
           style="margin-bottom: 20px"
           color="blue-darken-4"
           @click="callApiOrderFoodAndAddTable"
           >Đặt món và chọn bàn</v-btn
-        >
+        > -->
         <v-dialog
           v-model="showComponentAreaManagement"
           max-width="1080px"

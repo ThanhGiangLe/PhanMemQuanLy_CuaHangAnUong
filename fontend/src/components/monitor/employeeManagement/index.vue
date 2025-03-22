@@ -20,10 +20,10 @@
         <h2>Số lượng nhân viên: {{ employeeList.length }}</h2>
       </div>
       <div class="employeeManagement_heading_filter-addEmp d-flex align-center">
-        <v-btn class="bg-blue-lighten-3 me-6">
+        <!-- <v-btn class="bg-blue-lighten-3 me-6">
           <v-icon>mdi-filter-plus</v-icon>
           <span>Filter</span>
-        </v-btn>
+        </v-btn> -->
         <v-btn
           class="bg-orange-accent-4"
           @click="showDialogAddEmployee = !showDialogAddEmployee"

@@ -3,32 +3,32 @@
   "WorkspaceRootPath": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\controllers\\materialcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\controllers\\materialcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\handls\\handleorderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\handls\\handleorderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\controllers\\inventorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\controllers\\inventorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\handls\\handlematerials.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\handls\\handlematerials.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\controllers\\materialcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\controllers\\materialcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\handls\\ihandlematerials.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\handls\\ihandlematerials.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\models\\configs\\materialconfigs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\models\\configs\\materialconfigs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\handls\\handlematerials.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\handls\\handlematerials.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\handls\\ihandleorderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\handls\\ihandleorderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\models\\configs\\materialconfigs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\models\\configs\\materialconfigs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\controllers\\inventorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\controllers\\inventorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\models\\configs\\materialidconfigs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -46,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
@@ -56,78 +56,79 @@
               "RelativeDocumentMoniker": "testVue\\Handls\\IHandleOrderItem.cs",
               "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Handls\\IHandleOrderItem.cs",
               "RelativeToolTip": "testVue\\Handls\\IHandleOrderItem.cs",
-              "ViewState": "AQIAAB0AAAAAAAAAAAD4vy0AAAAaAAAA",
+              "ViewState": "AQIAABoAAAAAAAAAAIA7wC4AAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-17T01:11:58.946Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MaterialController.cs",
               "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Controllers\\MaterialController.cs",
               "RelativeDocumentMoniker": "testVue\\Controllers\\MaterialController.cs",
               "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Controllers\\MaterialController.cs",
               "RelativeToolTip": "testVue\\Controllers\\MaterialController.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAYwFMAAAARAAAA",
+              "ViewState": "AQIAADkAAAAAAAAAAAAYwEwAAABbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-17T06:50:11.302Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "MaterialConfigs.cs",
               "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Models\\Configs\\MaterialConfigs.cs",
               "RelativeDocumentMoniker": "testVue\\Models\\Configs\\MaterialConfigs.cs",
               "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Models\\Configs\\MaterialConfigs.cs",
               "RelativeToolTip": "testVue\\Models\\Configs\\MaterialConfigs.cs",
-              "ViewState": "AQIAALIAAAAAAAAAAIA+wKUAAAAWAAAA",
+              "ViewState": "AQIAAKsAAAAAAAAAAAAtwKUAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T05:15:34.044Z"
+              "WhenOpened": "2025-03-17T05:15:34.044Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "IHandleMaterials.cs",
               "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Handls\\IHandleMaterials.cs",
               "RelativeDocumentMoniker": "testVue\\Handls\\IHandleMaterials.cs",
               "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Handls\\IHandleMaterials.cs",
               "RelativeToolTip": "testVue\\Handls\\IHandleMaterials.cs",
-              "ViewState": "AQIAAMAAAAAAAAAAAIA6wMwAAAAaAAAA",
+              "ViewState": "AQIAALsAAAAAAAAAAIA7wM8AAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-17T05:07:15.087Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "HandleMaterials.cs",
               "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Handls\\HandleMaterials.cs",
               "RelativeDocumentMoniker": "testVue\\Handls\\HandleMaterials.cs",
               "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Handls\\HandleMaterials.cs",
               "RelativeToolTip": "testVue\\Handls\\HandleMaterials.cs",
-              "ViewState": "AQIAADMJAAAAAAAAAAAawGQJAAAMAAAA",
+              "ViewState": "AQIAADAJAAAAAAAAAAApwEEJAAA+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-17T05:13:28.074Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "HandleOrderItem.cs",
               "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Handls\\HandleOrderItem.cs",
               "RelativeDocumentMoniker": "testVue\\Handls\\HandleOrderItem.cs",
               "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Handls\\HandleOrderItem.cs",
               "RelativeToolTip": "testVue\\Handls\\HandleOrderItem.cs",
-              "ViewState": "AQIAABYCAAAAAAAAAADgv0EEAABUAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEMCAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-17T01:11:14.097Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "InventoryController.cs",
               "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Controllers\\InventoryController.cs",
               "RelativeDocumentMoniker": "testVue\\Controllers\\InventoryController.cs",
@@ -135,8 +136,7 @@
               "RelativeToolTip": "testVue\\Controllers\\InventoryController.cs",
               "ViewState": "AQIAAB8AAAAAAAAAAAAQwDQAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T16:23:38.751Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-17T16:23:38.751Z"
             },
             {
               "$type": "Document",
