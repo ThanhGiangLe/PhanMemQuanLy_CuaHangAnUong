@@ -6,6 +6,7 @@ using BCrypt.Net;
 using testVue.Models.User;
 using Microsoft.AspNetCore.Identity.Data;
 using testVue.Models.User.User;
+using Twilio.TwiML.Messaging;
 
 namespace testVue.Controllers
 {
@@ -23,6 +24,13 @@ namespace testVue.Controllers
         // GET: api/user
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsers()
+        {
+            return await _context.Users.ToListAsync();
+        }
+
+        // GET: api/test
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<UserDTO>>> TestAPI()
         {
             return await _context.Users.ToListAsync();
         }
