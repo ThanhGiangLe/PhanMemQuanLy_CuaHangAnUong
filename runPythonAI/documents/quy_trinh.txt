@@ -47,6 +47,15 @@
 5. Nhấn vào nút "THÊM VÀO GIỎ" để xác nhận món ăn.
 6. Nhấn vào nút "HỦY" để bỏ các yêu cầu đã chọn.
 
+==> Tôi muốn đặt món cho khách?
+1. Đăng nhập vào tài khoản của bạn.
+2. Thực hiện đặt món ở Tab "DANH SÁCH MÓN ĂN".
+3. Nhấn vào nút "CHỌN MÓN".
+4. Sau đó sẽ hiển thị các món ăn có thể gọi kèm.
+5. Đánh dấu vào các món muốn gọi, có thể để lại ghi chú để nhà bếp có thể thực hiện theo đúng yêu cầu.
+5. Nhấn vào nút "THÊM VÀO GIỎ" để xác nhận món ăn.
+6. Nhấn vào nút "HỦY" để bỏ các yêu cầu đã chọn.
+
 ==> Khách gọi món thế nào?
 1. Đăng nhập vào tài khoản của bạn.
 2. Thực hiện đặt món ở Tab "DANH SÁCH MÓN ĂN".
@@ -75,6 +84,15 @@
 6. Nhấn vào nút "HỦY" để bỏ các yêu cầu đã chọn.
 
 ==> Làm thế nào để có thể gọi món?
+1. Đăng nhập vào tài khoản của bạn.
+2. Thực hiện đặt món ở Tab "DANH SÁCH MÓN ĂN".
+3. Nhấn vào nút "CHỌN MÓN".
+4. Sau đó sẽ hiển thị các món ăn có thể gọi kèm.
+5. Đánh dấu vào các món muốn gọi, có thể để lại ghi chú để nhà bếp có thể thực hiện theo đúng yêu cầu.
+5. Nhấn vào nút "THÊM VÀO GIỎ" để xác nhận món ăn.
+6. Nhấn vào nút "HỦY" để bỏ các yêu cầu đã chọn.
+
+==> Tôi muốn gọi món?
 1. Đăng nhập vào tài khoản của bạn.
 2. Thực hiện đặt món ở Tab "DANH SÁCH MÓN ĂN".
 3. Nhấn vào nút "CHỌN MÓN".

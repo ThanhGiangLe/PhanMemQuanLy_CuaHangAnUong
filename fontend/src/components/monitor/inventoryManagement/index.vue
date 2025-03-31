@@ -138,6 +138,7 @@
                   'bg-yellow-lighten-1':
                     item.quantity <= item.minQuantity && item.quantity > 1,
                   'bg-red-lighten-1': item.quantity <= 1,
+                  'opacity-50': item.quantity <= 1,
                 }"
               >
                 {{ item.quantity ? item.quantity.toFixed(3) : "0" }}
@@ -206,23 +207,6 @@
               >
             </template>
 
-            <!-- <template v-slot:item.quantitySold="{ item }">
-                <div class="d-user-contract-inventory-chart-progress-bar">
-                  <div
-                    class="d-user-contract-inventory-chart-progress-bar-container"
-                  >
-                    <div
-                      class="d-user-contract-inventory-chart-progress-bar-indicator"
-                      :style="{
-                        width: (item.quantitySold / quantitySoldMax) * 100 + '%',
-                      }"
-                    ></div>
-                  </div>
-                  <div class="d-user-contract-inventory-chart-progress-bar-text">
-                    {{ item.quantitySold ? item.quantitySold : 0 }}
-                  </div>
-                </div>
-              </template> -->
             <template v-slot:loading>
               <v-skeleton-loader type="table-row@5"></v-skeleton-loader>
             </template>
@@ -269,19 +253,19 @@
                       color: rgba(var(--v-theme-primary), 1);
                     "
                     class="cursor-pointer"
-                    :class="{ 'opacity-50': item.quantity <= 1 }"
+                    :class="{ 'opacity-50': item.currentQuantity <= 1 }"
                     @click="showDetailMaterialHistory(item)"
                   >
                     {{ item.materialName ? item.materialName : "-" }}
                   </span>
                 </template>
                 <template v-slot:item.quantity="{ item }">
-                  <span>
+                  <span :class="{ 'opacity-50': item.currentQuantity <= 1 }">
                     {{ item.quantity ? item.quantity.toFixed(3) : "0" }}
                   </span>
                 </template>
                 <template v-slot:item.currentQuantity="{ item }">
-                  <span>
+                  <span :class="{ 'opacity-50': item.currentQuantity <= 1 }">
                     {{
                       item.currentQuantity
                         ? item.currentQuantity.toFixed(3)
@@ -292,23 +276,29 @@
                 <template v-slot:item.unit="{ item }">
                   <span
                     class="text-capitalize"
-                    :class="{ 'opacity-50': item.quantity <= 1 }"
+                    :class="{ 'opacity-50': item.currentQuantity <= 1 }"
                   >
                     {{ item.unit ? item.unit : "-" }}
                   </span>
                 </template>
                 <template v-slot:item.importPrice="{ item }">
-                  <span class="text-capitalize">
+                  <span
+                    class="text-capitalize"
+                    :class="{ 'opacity-50': item.currentQuantity <= 1 }"
+                  >
                     {{ formatCurrency(item.importPrice) }} VNĐ
                   </span>
                 </template>
                 <template v-slot:item.money="{ item }">
-                  <span class="text-capitalize">
+                  <span
+                    class="text-capitalize"
+                    :class="{ 'opacity-50': item.currentQuantity <= 1 }"
+                  >
                     {{ formatCurrency(item.quantity * item.importPrice) }} VNĐ
                   </span>
                 </template>
                 <template v-slot:item.importDate="{ item }">
-                  <span :class="{ 'opacity-50': item.quantity <= 1 }">
+                  <span :class="{ 'opacity-50': item.currentQuantity <= 1 }">
                     {{
                       item.importDate
                         ? formatDateFormApiToView(item.importDate)
@@ -317,7 +307,7 @@
                   </span>
                 </template>
                 <template v-slot:item.expirationDate="{ item }">
-                  <span :class="{ 'opacity-50': item.quantity <= 1 }">
+                  <span :class="{ 'opacity-50': item.currentQuantity <= 1 }">
                     {{
                       item.expirationDate
                         ? formatDateFormApiToView(item.expirationDate)
