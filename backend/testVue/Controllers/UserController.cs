@@ -28,13 +28,6 @@ namespace testVue.Controllers
             return await _context.Users.ToListAsync();
         }
 
-        // GET: api/test
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserDTO>>> TestAPI()
-        {
-            return await _context.Users.ToListAsync();
-        }
-
         // POST: api/user/login
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestDTO loginRequest)

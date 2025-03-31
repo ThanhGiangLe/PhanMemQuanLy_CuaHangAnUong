@@ -1,5 +1,7 @@
 <script setup>
+import API_ENDPOINTS from "@/api/api";
 import askChatbot from "@/services/api";
+import axios from "axios";
 
 const chatbotVisible = ref(false); // Hiển thị chatbot
 const message = ref(""); // Câu hỏi được gửi đi
@@ -36,6 +38,12 @@ const sendMessage = async () => {
 
     // Thay thế text: "Đang tìm kiếm..." bằng câu trả lời nhận được
     messages.value[messages.value.length - 1].text = formattedResponse;
+    if (response) {
+      const res = await axios.post(API_ENDPOINTS.IMPORT_DATA_TRAINING, {
+        Content: userMessage,
+        Response: response,
+      });
+    }
   }
 };
 </script>

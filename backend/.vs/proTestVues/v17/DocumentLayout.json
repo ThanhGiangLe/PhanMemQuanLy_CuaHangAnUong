@@ -7,6 +7,38 @@
       "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\controllers\\chatbotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\controllers\\chatbotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\models\\chatbot\\models\\datatrainingrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\models\\chatbot\\models\\datatrainingrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\models\\chatbot\\aimodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\models\\chatbot\\aimodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\controllers\\emailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\controllers\\emailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\datas\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\datas\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\models\\configs\\materialconfigs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\models\\configs\\materialconfigs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\controllers\\inventorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\controllers\\inventorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\models\\inventory\\cancelallgoodsrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\models\\inventory\\cancelallgoodsrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\controllers\\foodcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\controllers\\foodcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -22,8 +54,85 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 6,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Datas\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "testVue\\Datas\\AppDbContext.cs",
+              "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Datas\\AppDbContext.cs",
+              "RelativeToolTip": "testVue\\Datas\\AppDbContext.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAwBoAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-31T11:58:59.532Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DataTrainingRequest.cs",
+              "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Models\\ChatBot\\Models\\DataTrainingRequest.cs",
+              "RelativeDocumentMoniker": "testVue\\Models\\ChatBot\\Models\\DataTrainingRequest.cs",
+              "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Models\\ChatBot\\Models\\DataTrainingRequest.cs",
+              "RelativeToolTip": "testVue\\Models\\ChatBot\\Models\\DataTrainingRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAIAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-31T11:49:53.959Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ChatbotController.cs",
+              "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Controllers\\ChatbotController.cs",
+              "RelativeDocumentMoniker": "testVue\\Controllers\\ChatbotController.cs",
+              "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Controllers\\ChatbotController.cs",
+              "RelativeToolTip": "testVue\\Controllers\\ChatbotController.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAzwBQAAAB7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-31T11:45:22.027Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MaterialConfigs.cs",
+              "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Models\\Configs\\MaterialConfigs.cs",
+              "RelativeDocumentMoniker": "testVue\\Models\\Configs\\MaterialConfigs.cs",
+              "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Models\\Configs\\MaterialConfigs.cs",
+              "RelativeToolTip": "testVue\\Models\\Configs\\MaterialConfigs.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-31T11:31:38.816Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AImodel.cs",
+              "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Models\\ChatBot\\AImodel.cs",
+              "RelativeDocumentMoniker": "testVue\\Models\\ChatBot\\AImodel.cs",
+              "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Models\\ChatBot\\AImodel.cs",
+              "RelativeToolTip": "testVue\\Models\\ChatBot\\AImodel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-31T11:27:13.574Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CancelAllGoodsRequest.cs",
+              "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Models\\Inventory\\CancelAllGoodsRequest.cs",
+              "RelativeDocumentMoniker": "testVue\\Models\\Inventory\\CancelAllGoodsRequest.cs",
+              "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Models\\Inventory\\CancelAllGoodsRequest.cs",
+              "RelativeToolTip": "testVue\\Models\\Inventory\\CancelAllGoodsRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAIAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-31T04:25:10.761Z"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -32,14 +141,40 @@
               "RelativeDocumentMoniker": "testVue\\Controllers\\UserController.cs",
               "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Controllers\\UserController.cs",
               "RelativeToolTip": "testVue\\Controllers\\UserController.cs",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAwCIAAAA2AAAA",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAuwBoAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-31T02:34:07.227Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
+              "Title": "EmailController.cs",
+              "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Controllers\\EmailController.cs",
+              "RelativeDocumentMoniker": "testVue\\Controllers\\EmailController.cs",
+              "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Controllers\\EmailController.cs",
+              "RelativeToolTip": "testVue\\Controllers\\EmailController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-31T12:01:34.738Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "InventoryController.cs",
+              "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Controllers\\InventoryController.cs",
+              "RelativeDocumentMoniker": "testVue\\Controllers\\InventoryController.cs",
+              "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Controllers\\InventoryController.cs",
+              "RelativeToolTip": "testVue\\Controllers\\InventoryController.cs",
+              "ViewState": "AQIAALAAAAAAAAAAAAAjwMoAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-31T04:24:59.415Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "FoodController.cs",
               "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Controllers\\FoodController.cs",
               "RelativeDocumentMoniker": "testVue\\Controllers\\FoodController.cs",
@@ -47,12 +182,11 @@
               "RelativeToolTip": "testVue\\Controllers\\FoodController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T02:04:38.133Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-29T02:04:38.133Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 10,
               "Title": "AreaController.cs",
               "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Controllers\\AreaController.cs",
               "RelativeDocumentMoniker": "testVue\\Controllers\\AreaController.cs",

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using testVue.Models;
 using testVue.Models.Area;
+using testVue.Models.ChatBot;
 using testVue.Models.Food;
 using testVue.Models.Inventory;
 using testVue.Models.User;
@@ -23,6 +24,7 @@ namespace testVue.Datas
         public DbSet<OrderItemDTO> OrderItems { get; set; }
         public DbSet<MaterialDTO> Materials { get; set; }
         public DbSet<WarehouseHistoryDTO> WarehouseHistorys { get; set; }
+        public DbSet<AImodel> AImodels { get; set; }
 
     }
 }

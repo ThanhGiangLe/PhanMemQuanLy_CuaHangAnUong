@@ -39,6 +39,8 @@ const API_ENDPOINTS = {
   GET_WAREHOUSE_HISTORY_BY_MATERIALID: `${BASE_URL}/Inventory/get-warehouse-history`,
 
   UPDATE_QUANTITY_MATERIALS_AFTER_ORDER: `${BASE_URL}/Material/update-quantity-materials-after-order`,
+
+  IMPORT_DATA_TRAINING: `${BASE_URL}/chatbot/import-data-training`,
 };
 
 export default API_ENDPOINTS;
