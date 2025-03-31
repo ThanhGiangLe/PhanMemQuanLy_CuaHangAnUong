@@ -39,9 +39,9 @@
         v-if="user.role !== 'Staff'"
         >Khu vực</v-tab
       >
-      <v-tab prepend-icon="mdi-sale" value="sale" v-if="user.role !== 'Staff'"
+      <!-- <v-tab prepend-icon="mdi-sale" value="sale" v-if="user.role !== 'Staff'"
         >Thuế - Phí - Giảm giá</v-tab
-      >
+      > -->
       <v-tab prepend-icon="mdi-cog" value="settings">Thay đổi mật khẩu</v-tab>
       <v-tab prepend-icon="mdi-logout" value="exit">Đăng xuất</v-tab>
     </v-tabs>

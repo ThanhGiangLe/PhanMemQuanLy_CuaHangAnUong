@@ -27,12 +27,12 @@ def get_answer(question):
     best_distance = distances[0][0]
 
     # Debug: Xem chỉ số FAISS chọn
-    print(f"🔍 Câu hỏi: {question}")
-    print(f"📌 Best match index: {best_match_idx}, Distance: {best_distance}")
-    print(f"📖 Nội dung tìm thấy: {documents[best_match_idx][:100]}...\n")
+    print(f"Câu hỏi: {question}")
+    print(f"Index câu trả lời: {best_match_idx}, Distance: {best_distance}")
+    print(f"Kết quả: {documents[best_match_idx][:100]}...\n")
 
     # Kiểm tra nếu câu hỏi không đủ độ chính xác
-    THRESHOLD = 1.0
+    THRESHOLD = 0.75
     if best_distance > THRESHOLD:
         return (
             "🤖 Xin lỗi, tôi chưa có thông tin về câu hỏi này. "
