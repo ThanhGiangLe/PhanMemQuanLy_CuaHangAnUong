@@ -80,7 +80,7 @@ namespace testVue.Controllers
             {
                 return NotFound("Không tìm thấy nguyên liệu.");
             }
-            material.Quantity = 0;
+            material.Quantity -= request.Quantity;
             var now = DateTime.Now;
             material.ImportDate = now;
             material.ExpirationDate = now;
@@ -109,8 +109,7 @@ namespace testVue.Controllers
                 .Where(item =>
                     item.MaterialId == request.MaterialId &&
                     EF.Functions.DateDiffSecond(item.ImportDate, request.ImportDate) == 0 &&
-                    EF.Functions.DateDiffSecond(item.ExpirationDate, request.ExpirationDate) == 0 &&
-                    item.Using == 0
+                    EF.Functions.DateDiffSecond(item.ExpirationDate, request.ExpirationDate) == 0
                 ).FirstOrDefaultAsync();
             var material = await _appDbContext.Materials.FindAsync(request.MaterialId);
             if (result == null || material == null)

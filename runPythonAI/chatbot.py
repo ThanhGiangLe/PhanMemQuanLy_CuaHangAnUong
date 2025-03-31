@@ -32,7 +32,7 @@ def get_answer(question):
     print(f"Kết quả: {documents[best_match_idx][:100]}...\n")
 
     # Kiểm tra nếu câu hỏi không đủ độ chính xác
-    THRESHOLD = 0.75
+    THRESHOLD = 0.748
     if best_distance > THRESHOLD:
         return (
             "🤖 Xin lỗi, tôi chưa có thông tin về câu hỏi này. "

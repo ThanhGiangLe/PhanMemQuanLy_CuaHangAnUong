@@ -337,7 +337,10 @@ namespace testVue.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("WarehouseHistoryId"));
 
-                    b.Property<DateTime?>("ExpỉationDate")
+                    b.Property<double>("CurrentQuantity")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime?>("ExpirationDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("ImportDate")
@@ -356,6 +359,9 @@ namespace testVue.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("Using")
+                        .HasColumnType("int");
 
                     b.HasKey("WarehouseHistoryId");
 

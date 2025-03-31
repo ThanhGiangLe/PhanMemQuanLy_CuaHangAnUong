@@ -204,9 +204,11 @@ export default function useInventoryManagement() {
   }
 
   async function cancelAllGoods(item) {
+    // console.log("Item: ", item);
     try {
       const response = await axios.post(API_ENDPOINTS.CANCEL_ALL_GOODS, {
         MaterialId: item.materialId,
+        Quantity: item.quantity,
       });
       if (response.data.message && response.data.message.trim() !== "") {
         toast.success("Hủy nguyên liệu thành công!", {
@@ -218,7 +220,7 @@ export default function useInventoryManagement() {
           draggable: true, // Kéo thông báo
           progress: undefined, // Tiến độ (nếu có)
         });
-        item.quantity = 0;
+        item.quantity -= item.quantity;
         item.importDate = response.data.importDateRes;
         item.expirationDate = response.data.expirationDateRes;
       } else {
@@ -248,12 +250,14 @@ export default function useInventoryManagement() {
   async function cancelAllGoodsDetail(item) {
     // console.log("item", item);
     try {
-      const response = await axios.post(API_ENDPOINTS.CANCEL_ALL_GOODS_DETAIL, {
-        MaterialId: item.materialId,
-        ImportDate: item.importDate,
-        ExpirationDate: item.expirationDate,
-        Quantity: item.currentQuantity,
-      });
+      const [response] = await Promise.all([
+        axios.post(API_ENDPOINTS.CANCEL_ALL_GOODS_DETAIL, {
+          MaterialId: item.materialId,
+          ImportDate: item.importDate,
+          ExpirationDate: item.expirationDate,
+          Quantity: item.currentQuantity,
+        }),
+      ]);
       if (response.data.message && response.data.message.trim() !== "") {
         toast.success("Hủy nguyên liệu thành công!", {
           position: "top-right",
