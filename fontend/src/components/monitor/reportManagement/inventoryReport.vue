@@ -225,6 +225,7 @@ async function init() {
     quantityAdded: 0,
     isEditing: false,
   }));
+  materials.value.sort((a, b) => a.materialName.localeCompare(b.materialName));
   materialsFilter.value = materials.value;
 
   loading.value = false;

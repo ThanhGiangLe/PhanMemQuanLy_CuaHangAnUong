@@ -63,6 +63,61 @@
         "2. Kéo thanh Menu ở trên để chọn đến Tab \"Thay đổi mật khẩu\" sau đó chọn vào nhập mật khẩu mới.",
         "3. Sau đó đăng nhập với mật khẩu mới đã được thay đổi."
       ]
+    },
+    {
+      "question": "I want to register an account?",
+      "steps": [
+        "1. Log in to the system using an account with the role of \"Manager\" or \"Store Owner.\"",
+        "2. Select the \"EMPLOYEES\" tab on the Menu bar.",
+        "3. Click the \"+ ADD CANDIDATE\" button.",
+        "4. Fill in all the required fields.",
+        "5. Click \"Add\" to complete the registration.",
+        "6. Verify by checking if the number of employees has increased or if the information has been added to the interface immediately."
+      ]
+    },
+    {
+      "question": "Je veux créer un compte?",
+      "steps": [
+        "1. Connectez-vous au système avec un compte ayant le rôle de \"Gestionnaire\" ou \"Propriétaire du magasin\".",
+        "2. Sélectionnez l'onglet \"EMPLOYÉS\" dans la barre de menu.",
+        "3. Cliquez sur le bouton \"+ AJOUTER UN CANDIDAT\".",
+        "4. Remplissez tous les champs obligatoires.",
+        "5. Cliquez sur \"Ajouter\" pour compléter l'inscription.",
+        "6. Vérifiez en regardant si le nombre d'employés a augmenté ou si les informations ont été ajoutées à l'interface immédiatement."
+      ]
+    },
+    {
+      "question": "¿Quiero registrar una cuenta?",
+      "steps": [
+        "1. Inicie sesión en el sistema con una cuenta con el rol de \"Gerente\" o \"Dueño de la tienda\".",
+        "2. Seleccione la pestaña \"EMPLEADOS\" en la barra de menú.",
+        "3. Haga clic en el botón \"+ AÑADIR CANDIDATO\".",
+        "4. Complete todos los campos requeridos.",
+        "5. Haga clic en \"Agregar\" para completar el registro.",
+        "6. Verifique si el número de empleados ha aumentado o si la información se ha agregado a la interfaz inmediatamente."
+      ]
+    },
+    {
+      "question": "Ich möchte ein Konto registrieren?",
+      "steps": [
+        "1. Melden Sie sich im System mit einem Konto an, das die Rolle \"Manager\" oder \"Geschäftsinhaber\" hat.",
+        "2. Wählen Sie die Registerkarte \"MITARBEITER\" in der Menüleiste.",
+        "3. Klicken Sie auf die Schaltfläche \"+ KANDIDAT HINZUFÜGEN\".",
+        "4. Füllen Sie alle erforderlichen Felder aus.",
+        "5. Klicken Sie auf \"Hinzufügen\", um die Registrierung abzuschließen.",
+        "6. Überprüfen Sie, ob die Anzahl der Mitarbeiter gestiegen ist oder ob die Informationen sofort in der Oberfläche angezeigt wurden."
+      ]
+    },
+    {
+      "question": "Voglio registrare un account?",
+      "steps": [
+        "1. Accedi al sistema utilizzando un account con il ruolo di \"Manager\" o \"Proprietario del negozio\".",
+        "2. Seleziona la scheda \"DIPENDENTI\" nella barra del menu.",
+        "3. Fai clic sul pulsante \"+ AGGIUNGI CANDIDATO\".",
+        "4. Compila tutti i campi richiesti.",
+        "5. Fai clic su \"Aggiungi\" per completare la registrazione.",
+        "6. Verifica se il numero di dipendenti è aumentato o se le informazioni sono state aggiunte immediatamente all'interfaccia."
+      ]
     }
   ]
 }
