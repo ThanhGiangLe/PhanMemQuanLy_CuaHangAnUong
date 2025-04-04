@@ -484,6 +484,9 @@ export default function useFoodManagement() {
           progress: undefined, // Tiến độ (nếu có)
         });
         resetCurrentOrder();
+        setTimeout(() => {
+          window.location.reload();
+        }, 3500);
       } else {
         console.error("Failed to add order", orderResponse.data.message);
       }
