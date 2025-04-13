@@ -454,14 +454,18 @@ export default function useFoodManagement() {
         })
       );
 
-      const responseUpdateMaterial = await axios.post(
-        API_ENDPOINTS.UPDATE_QUANTITY_MATERIALS_AFTER_ORDER,
-        {
-          Items: currentOrder.value.items,
-        }
-      );
+      const [responseUpdateMaterial, responseUpdateTotalIncome] =
+        await Promise.all([
+          axios.post(API_ENDPOINTS.UPDATE_QUANTITY_MATERIALS_AFTER_ORDER, {
+            Items: currentOrder.value.items,
+          }),
+          axios.post(API_ENDPOINTS.UPDATE_TOTALINCOME_CASH_REGISTER, {
+            UserId: user.value.userId,
+            TotalAmount: resultTotalAmount.value,
+          }),
+        ]);
       console.log("responseUpdateMaterial", responseUpdateMaterial.data);
-
+      console.log("responseUpdateTotalIncome", responseUpdateTotalIncome.data);
       // Kiểm tra phản hồi từ server
       if (orderResponse.data.success === -1) {
         toast.warn("Please provide all required information!", {
@@ -486,7 +490,7 @@ export default function useFoodManagement() {
         resetCurrentOrder();
         setTimeout(() => {
           window.location.reload();
-        }, 3500);
+        }, 3200);
       } else {
         console.error("Failed to add order", orderResponse.data.message);
       }

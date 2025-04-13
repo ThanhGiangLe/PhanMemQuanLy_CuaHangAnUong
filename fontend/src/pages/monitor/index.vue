@@ -21,12 +21,12 @@
         v-if="user.role !== 'Staff'"
         >Bán hàng</v-tab
       > -->
-      <!-- <v-tab
+      <v-tab
         prepend-icon="mdi-currency-usd"
         value="currency"
         v-if="user.role !== 'Staff'"
         >Két tiền</v-tab
-      > -->
+      >
       <v-tab
         prepend-icon="mdi-warehouse"
         value="warehouse"

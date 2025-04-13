@@ -11,6 +11,8 @@ const API_ENDPOINTS = {
   ADD_ORDER_ITEM: `${BASE_URL}/food/add-order-item`,
   GET_ALL_EMPLOYEES: `${BASE_URL}/user`, // Lấy danh sách nhân viên từ database
   ADD_USER: `${BASE_URL}/user/add`,
+  DELETE_USER: `${BASE_URL}/user/delete-user`,
+  UPDATE_USER: `${BASE_URL}/user/update-user`,
   GET_ALL_TABLE: `${BASE_URL}/area/get-all-table`,
   GET_ALL_REVENUE_BY_EMPLOYEE: `${BASE_URL}/report/total-revenue-employee`,
   GET_ALL_REVENUE_BY_EMPLOYEE_AND_TIME: `${BASE_URL}/report/total-revenue-employee-time`,
@@ -41,6 +43,11 @@ const API_ENDPOINTS = {
   UPDATE_QUANTITY_MATERIALS_AFTER_ORDER: `${BASE_URL}/Material/update-quantity-materials-after-order`,
 
   IMPORT_DATA_TRAINING: `${BASE_URL}/chatbot/import-data-training`,
+
+  GET_ALL_CASH_REGISTER: `${BASE_URL}/CashRegister/get-all-cash-register`,
+  IMPORT_CASH_REGISTER: `${BASE_URL}/CashRegister/insert-cash-register`,
+  UPDATE_ENDTIME_CASH_REGISTER: `${BASE_URL}/CashRegister/update-endtime-cash-register`,
+  UPDATE_TOTALINCOME_CASH_REGISTER: `${BASE_URL}/CashRegister/update-totalimcome-cash-register`,
 };
 
 export default API_ENDPOINTS;

@@ -277,3 +277,7 @@
   .v-label--clickable {
   margin-left: 30px;
 }
+
+.v-combobox.v-combobox--single .v-input__details {
+  display: none;
+}

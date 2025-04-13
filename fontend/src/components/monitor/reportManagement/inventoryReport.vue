@@ -105,8 +105,11 @@
               <span
                 style="padding: 4px 12px; border-radius: 25px"
                 :class="{
-                  'bg-red-lighten-1': item.quantity <= item.minQuantity,
                   'bg-green-lighten-1': item.quantity > item.minQuantity,
+                  'bg-yellow-lighten-1':
+                    item.quantity <= item.minQuantity && item.quantity > 1,
+                  'bg-red-lighten-1': item.quantity <= 1,
+                  'opacity-50': item.quantity <= 1,
                 }"
               >
                 {{ item.quantity ? item.quantity.toFixed(2) : "-" }}

@@ -118,12 +118,31 @@
                   <span>Name: {{ employee.fullName }}</span>
                   <span>Position: {{ employee.role }}</span>
                 </div>
-                <div
-                  class="employeeManagement_list_item_title_other text-center cursor-pointer"
-                  style="font-size: 24px; font-weight: bold"
-                >
-                  ...
-                </div>
+                <v-menu>
+                  <template v-slot:activator="{ props }">
+                    <div
+                      class="employeeManagement_list_item_title_other text-center cursor-pointer"
+                      style="font-size: 24px; font-weight: bold"
+                      v-bind="props"
+                    >
+                      ...
+                    </div>
+                  </template>
+                  <v-list>
+                    <v-list-item
+                      v-for="(item, index) in [
+                        { title: 'Thay đổi thông tin' },
+                        { title: 'Xóa nhân viên' },
+                      ]"
+                      :key="index"
+                      :value="index"
+                      class="rounded-lg"
+                      @click="handleExtensionOfAccount(index, employee)"
+                    >
+                      <v-list-item-title>{{ item.title }}</v-list-item-title>
+                    </v-list-item>
+                  </v-list>
+                </v-menu>
               </div>
               <div
                 class="employeeManagement_list_item_info mt-2 pa-3 rounded-lg"
@@ -151,6 +170,81 @@
           </v-col>
         </v-row>
       </v-container>
+      <div>
+        <v-dialog persistent max-width="800" v-model="displayMonitorUpdateUser">
+          <v-card class="pa-2">
+            <v-card-title class="pb-0">
+              Thông tin chi tiết
+            </v-card-title>
+            <v-card-text class="pa-3">
+              <v-container>
+                <v-row class="d-flex align-center">
+                  <v-col cols="2" class="font-weight-medium text-grey-darken-1 pa-1">
+                    Họ tên:
+                  </v-col>
+                  <v-col cols="9" class="pa-1">
+                    <input type="text" v-model="employeeCurrentChoose.fullName" class="w-100 px-3 py-2"></input>
+                  </v-col>
+                </v-row>
+                <v-row class="d-flex align-center">
+                  <v-col cols="2" class="font-weight-medium text-grey-darken-1 pa-1">
+                    Email:
+                  </v-col>
+                  <v-col cols="9" class="pa-1">
+                    <input type="text" v-model="employeeCurrentChoose.email" class="w-100 px-3 py-2"></input>
+                  </v-col>
+                </v-row>
+                <v-row class="d-flex align-center">
+                  <v-col cols="2" class="font-weight-medium text-grey-darken-1 pa-1">
+                    Địa chỉ:
+                  </v-col>
+                  <v-col cols="9" class="pa-1">
+                    <input type="text" v-model="employeeCurrentChoose.address" class="w-100 px-3 py-2"></input>
+                  </v-col>
+                </v-row>
+                <v-row class="d-flex align-center">
+                  <v-col cols="2" class="font-weight-medium text-grey-darken-1 pa-1">
+                    Số điện thoại:
+                  </v-col>
+                  <v-col cols="9" class="pa-1">
+                    <input type="text" v-model="employeeCurrentChoose.phone" class="w-100 px-3 py-2"></input>
+                  </v-col>
+                </v-row>
+                <v-row class="d-flex align-center">
+                  <v-col>
+                    <v-row class="d-flex align-center">
+                      <v-col cols="2" class="font-weight-medium text-grey-darken-1 pa-1">
+                        Vai trò:
+                      </v-col>
+                      <v-col cols="9" class="pa-1">
+                        <v-combobox
+                          :items="['Owner', 'Manager', 'Staff']"
+                          v-model="employeeCurrentChoose.role"
+                          outlined
+                        ></v-combobox>
+                      </v-col>
+                    </v-row>
+                  </v-col>
+                </v-row>
+                <v-row class="d-flex align-center">
+                  <v-col cols="2" class="font-weight-medium text-grey-darken-1 pa-1">
+                    Mật khẩu mới:
+                  </v-col>
+                  <v-col cols="9" class="pa-1">
+                    <input type="text" v-model="employeeCurrentChoose.passwordOfUser" class="w-100 px-3 py-2" placeholder="..."></input>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-card-text>
+
+            <v-card-actions class="">
+              <v-spacer></v-spacer>
+              <v-btn text="Hủy" @click="displayMonitorUpdateUser = !displayMonitorUpdateUser"></v-btn>
+              <v-btn text="Xác nhận" class="bg-orange-accent-3" @click="updateInfoUserByManager"></v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </div>
     </div>
   </div>
 </template>
@@ -173,10 +267,13 @@ const employeeInfo = ref({
   Password: "",
   Role: "",
 });
+const displayMonitorUpdateUser = ref(false);
+const employeeCurrentChoose = ref();
 
 async function init() {
   const response = await axios.get(API_ENDPOINTS.GET_ALL_EMPLOYEES);
   employeeList.value = response.data;
+  console.log("Danh sách nhân viên:", employeeList.value);
 }
 
 init();
@@ -266,4 +363,103 @@ const filterEmployeeList = computed(() => {
     return e.fullName?.toUpperCase().includes(search.value.toUpperCase());
   });
 });
+
+async function handleExtensionOfAccount(index, employee) {
+  if (index === 0) {
+    displayMonitorUpdateUser.value = !displayMonitorUpdateUser.value;
+    employeeCurrentChoose.value = {
+      ...employee,
+      passwordOfUser: "",
+    };
+  } else if (index === 1) {
+    // Xóa nhân viên
+    try {
+      const responseDel = await axios.delete(
+        `${API_ENDPOINTS.DELETE_USER}/${employee.userId}`
+      );
+      if (responseDel.data.message === "Succes") {
+        toast.success(
+          `Đã xóa nhân viên: ${responseDel.data.userRomeve.fullName}`,
+          {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false, // Hiện thanh tiến trình
+            closeOnClick: true, // Đóng khi nhấp vào thông báo
+            pauseOnHover: true, // Dừng khi di chuột lên thông báo
+            draggable: true, // Kéo thông báo
+            progress: undefined, // Tiến độ (nếu có)
+          }
+        );
+      }
+      employeeList.value = employeeList.value.filter(
+        (item) => item.userId != employee.userId
+      );
+    } catch (error) {
+      toast.error(`Lỗi khi xóa nhân viên, ${error}`, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false, // Hiện thanh tiến trình
+        closeOnClick: true, // Đóng khi nhấp vào thông báo
+        pauseOnHover: true, // Dừng khi di chuột lên thông báo
+        draggable: true, // Kéo thông báo
+        progress: undefined, // Tiến độ (nếu có)
+      });
+    }
+  }
+}
+
+async function updateInfoUserByManager() {
+  console.log("Thông tin mới nè: ", employeeCurrentChoose.value);
+  try{
+    const response = await axios.post(API_ENDPOINTS.UPDATE_USER, {
+      UserId: employeeCurrentChoose.value.userId,
+      FullName: employeeCurrentChoose.value.fullName,
+      Email: employeeCurrentChoose.value.email,
+      Address: employeeCurrentChoose.value.address,
+      Phone: employeeCurrentChoose.value.phone,
+      Role: employeeCurrentChoose.value.role,
+      NewPassword: employeeCurrentChoose.value.passwordOfUser
+    });
+    if(response.data.success === 1) {
+      toast.success(`Cập nhật thành công`, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false, // Hiện thanh tiến trình
+        closeOnClick: true, // Đóng khi nhấp vào thông báo
+        pauseOnHover: true, // Dừng khi di chuột lên thông báo
+        draggable: true, // Kéo thông báo
+        progress: undefined, // Tiến độ (nếu có)
+      });
+      displayMonitorUpdateUser.value = !displayMonitorUpdateUser.value;
+
+      const updatedUserIndex = employeeList.value.findIndex((item) => item.userId === employeeCurrentChoose.value.userId);
+      if (updatedUserIndex !== -1) {
+          employeeList.value[updatedUserIndex] = {
+            ...employeeList.value[updatedUserIndex],
+            ...response.data.data, 
+          };
+        }
+    }else {
+      toast.error(`Lỗi API`, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false, // Hiện thanh tiến trình
+        closeOnClick: true, // Đóng khi nhấp vào thông báo
+        pauseOnHover: true, // Dừng khi di chuột lên thông báo
+        draggable: true, // Kéo thông báo
+        progress: undefined, // Tiến độ (nếu có)
+      });
+    }
+  }catch(error) {
+    toast.error(`Lỗi cập nhật thông tin, ${error}`, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false, // Hiện thanh tiến trình
+        closeOnClick: true, // Đóng khi nhấp vào thông báo
+        pauseOnHover: true, // Dừng khi di chuột lên thông báo
+        draggable: true, // Kéo thông báo
+        progress: undefined, // Tiến độ (nếu có)
+      });
+  }
+}
 </script>
