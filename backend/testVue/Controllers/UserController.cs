@@ -139,7 +139,6 @@ namespace testVue.Controllers
                     email = user.Email,
                     role = user.Role,
                     address = user.Address,
-                    password = user.Password,
                     avatar = user.Avatar
                 });
             }
@@ -150,5 +149,66 @@ namespace testVue.Controllers
             }
         }
 
+        [HttpDelete("delete-user/{userId}")]
+        public async Task<IActionResult> DeleteUser(int userId)
+        {
+            if(userId == 0)
+            {
+                return BadRequest("UserId không hợp lệ");
+            }
+            var user = await _context.Users.FindAsync(userId);
+            if(user == null)
+            {
+                return NotFound("Không tồn tại nhân viên cần xóa");
+            }
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
+            return Ok(new
+            {
+                message = "Succes",
+                userRomeve = user
+            });
+        }
+
+        [HttpPost("update-user")]
+        public async Task<IActionResult> UpdateUser([FromBody] UpdateUserRequest request)
+        {
+            if (request == null) {
+                return BadRequest("Thông tin không hợp lệ");
+            }
+            var user = await _context.Users.FindAsync(request.UserId);
+            if (user == null) {
+                return NotFound("Không tìm thấy User đang tương tác");
+            }
+            if(request.NewPassword != "")
+            {
+                var newPass = BCrypt.Net.BCrypt.HashPassword(request.NewPassword);
+                user.Password = newPass;
+            }
+
+            user.FullName = request.FullName;
+            user.Email = request.Email;
+            user.Address = request.Address;
+            user.Phone = request.Phone;
+            user.Role = request.Role;
+            try
+            {
+                await _context.SaveChangesAsync();
+                return Ok(new
+                {
+                    success = 1,
+                    message = "Cập nhật thông tin thành công.",
+                    data = user
+                });
+            }
+            catch (Exception ex) { 
+                return StatusCode(500, new
+                {
+                    success = -1,
+                    message = ex.Message,
+                    details = ex.InnerException?.Message
+                });
+            }
+        }
     }
 }

@@ -65,6 +65,13 @@
       </v-alert>
     </v-card>
   </div>
+  <v-overlay
+    :model-value="isOverlay"
+    persistent
+    class="justify-center align-center"
+  >
+    <v-progress-circular indeterminate size="48" width="6" color="primary" />
+  </v-overlay>
 </template>
 
 <script setup>
@@ -83,6 +90,7 @@ const visible = ref(false);
 const phone = ref("");
 const password = ref("");
 const errorMessage = ref("");
+const isOverlay = ref(false);
 
 async function verifyLoginAccount() {
   if (!phone.value || !password.value) {
@@ -108,20 +116,24 @@ async function verifyLoginAccount() {
 
     // Lưu thông tin người dùng vào store
     userStore.setUser(user);
-
-    toast.success("Login successful!", {
-      position: "top-right",
-      autoClose: 2000,
-      hideProgressBar: false, // Hiện thanh tiến trình
-      closeOnClick: true, // Đóng khi nhấp vào thông báo
-      pauseOnHover: true, // Dừng khi di chuột lên thông báo
-      draggable: true, // Kéo thông báo
-      progress: undefined, // Tiến độ (nếu có)
+    isOverlay.value = true;
+    const response2 = await axios.post(API_ENDPOINTS.IMPORT_CASH_REGISTER, {
+      UserId: user.userId,
     });
-
+    if (response2.data.message !== 1) {
+      toast.error("Error import Cash Register!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false, // Hiện thanh tiến trình
+        closeOnClick: true, // Đóng khi nhấp vào thông báo
+        pauseOnHover: true, // Dừng khi di chuột lên thông báo
+        draggable: true, // Kéo thông báo
+        progress: undefined, // Tiến độ (nếu có)
+      });
+    }
     setTimeout(() => {
       router.push("/monitor");
-    }, 2000);
+    }, 1000);
   } catch (error) {
     if (error.response && error.response.status === 401) {
       toast.error("Invalid phone or password!", {

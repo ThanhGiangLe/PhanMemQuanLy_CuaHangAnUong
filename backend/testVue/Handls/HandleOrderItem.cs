@@ -21,34 +21,36 @@ namespace testVue.Handls
         public async Task<bool> UpdateQuantityMaterialId_BanhCuon(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_BanhCuon_BotBanhCuon(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_BanhCuon_HanhPhi(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_BanhCuon_MocNhi(quantity);
-            bool result4 = await _iHandleMaterials.UpdateQuantityMaterial_BanhCuon_NuocMam(quantity);
-            bool result5 = await _iHandleMaterials.UpdateQuantityMaterial_BanhCuon_ThitBam(quantity);
+
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BanhCuon_BotBanhCuon(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BanhCuon_HanhPhi(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BanhCuon_MocNhi(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BanhCuon_NuocMam(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BanhCuon_ThitBam(quantity);
+
             return results;
         }
 
         public async Task<bool> UpdateQuantityMaterialId_BanhMiTrung(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_BanhMiTrung_BanhMi(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_BanhMiTrung_Bo(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_BanhMiTrung_DuaLeo(quantity);
-            bool result4 = await _iHandleMaterials.UpdateQuantityMaterial_BanhMiTrung_Mayonnaise(quantity);
-            bool result5 = await _iHandleMaterials.UpdateQuantityMaterial_BanhMiTrung_TrungGa(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BanhMiTrung_BanhMi(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BanhMiTrung_Bo(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BanhMiTrung_DuaLeo(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BanhMiTrung_Mayonnaise(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BanhMiTrung_TrungGa(quantity);
             return results;
         }
 
         public async Task<bool> UpdateQuantityMaterialId_BanhXeo(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_BanhXeo_BotBanhXeo(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_BanhXeo_GiaDo(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_BanhXeo_HanhLa(quantity);
-            bool result4 = await _iHandleMaterials.UpdateQuantityMaterial_BanhXeo_NuocCotDua(quantity);
-            bool result5 = await _iHandleMaterials.UpdateQuantityMaterial_BanhXeo_ThitBaChi(quantity);
-            bool result6 = await _iHandleMaterials.UpdateQuantityMaterial_BanhXeo_TomTuoi(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BanhXeo_BotBanhXeo(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BanhXeo_GiaDo(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BanhXeo_HanhLa(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BanhXeo_NuocCotDua(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BanhXeo_ThitBaChi(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BanhXeo_TomTuoi(quantity);
 
             return results;
         }
@@ -56,9 +58,9 @@ namespace testVue.Handls
         public async Task<bool> UpdateQuantityMaterialId_BapRangBo(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_BapRangBo_Bap(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_BapRangBo_Bo(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_BapRangBo_Duong(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BapRangBo_Bap(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BapRangBo_Bo(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BapRangBo_Duong(quantity);
 
             return results;
         }
@@ -66,13 +68,13 @@ namespace testVue.Handls
         public async Task<bool> UpdateQuantityMaterialId_ChaoGa(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_ChaoGa_GaoTe(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_ChaoGa_HanhLa(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_ChaoGa_NamRom(quantity);
-            bool result4 = await _iHandleMaterials.UpdateQuantityMaterial_ChaoGa_NuocMam(quantity);
-            bool result5 = await _iHandleMaterials.UpdateQuantityMaterial_ChaoGa_RauSong(quantity);
-            bool result6 = await _iHandleMaterials.UpdateQuantityMaterial_ChaoGa_ThitGa(quantity);
-            bool result7 = await _iHandleMaterials.UpdateQuantityMaterial_ChaoGa_Tieu(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_ChaoGa_GaoTe(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_ChaoGa_HanhLa(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_ChaoGa_NamRom(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_ChaoGa_NuocMam(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_ChaoGa_RauSong(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_ChaoGa_ThitGa(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_ChaoGa_Tieu(quantity);
 
             return results;
         }
@@ -80,9 +82,9 @@ namespace testVue.Handls
         public async Task<bool> UpdateQuantityMaterialId_Combo_BanhNgot(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_ComboBanhNgot_BongLan(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_ComboBanhNgot_Croissant(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_ComboBanhNgot_XuKem(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_ComboBanhNgot_BongLan(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_ComboBanhNgot_Croissant(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_ComboBanhNgot_XuKem(quantity);
 
             return results;
         }
@@ -90,12 +92,12 @@ namespace testVue.Handls
         public async Task<bool> UpdateQuantityMaterialId_Combo_CaVienChien_Cocacola(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_XienBan_Cocacola(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_XienBan_Duong(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_XienBan_NuocMam(quantity);
-            bool result4 = await _iHandleMaterials.UpdateQuantityMaterial_XienBan_ToiOt(quantity);
-            bool result5 = await _iHandleMaterials.UpdateQuantityMaterial_XienBan_XienBan(quantity);
-            bool result6 = await _iHandleMaterials.UpdateQuantityMaterial_XienBan_XucXich(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_XienBan_Cocacola(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_XienBan_Duong(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_XienBan_NuocMam(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_XienBan_ToiOt(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_XienBan_XienBan(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_XienBan_XucXich(quantity);
 
             return results;
         }
@@ -103,12 +105,12 @@ namespace testVue.Handls
         public async Task<bool> UpdateQuantityMaterialId_ComGa(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterialRice(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterialChicken(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterialFishSauce(quantity);
-            bool result4 = await _iHandleMaterials.UpdateQuantityMaterialGarlic(quantity);
-            bool result5 = await _iHandleMaterials.UpdateQuantityMaterialVegetable(quantity);
-            bool result6 = await _iHandleMaterials.UpdateQuantityMaterialCucumber(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterialRice(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterialChicken(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterialFishSauce(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterialGarlic(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterialVegetable(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterialCucumber(quantity);
 
             return results;
         }
@@ -116,12 +118,12 @@ namespace testVue.Handls
         public async Task<bool> UpdateQuantityMaterialId_ComGaXoiMo(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_ComGaXoiMo_DuaLeo(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_ComGaXoiMo_Ga(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_ComGaXoiMo_Gao(quantity);
-            bool result4 = await _iHandleMaterials.UpdateQuantityMaterial_ComGaXoiMo_NuocMam(quantity);
-            bool result5 = await _iHandleMaterials.UpdateQuantityMaterial_ComGaXoiMo_RauSong(quantity);
-            bool result6 = await _iHandleMaterials.UpdateQuantityMaterial_ComGaXoiMo_ToiOt(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_ComGaXoiMo_DuaLeo(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_ComGaXoiMo_Ga(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_ComGaXoiMo_Gao(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_ComGaXoiMo_NuocMam(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_ComGaXoiMo_RauSong(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_ComGaXoiMo_ToiOt(quantity);
 
             return results;
         }
@@ -129,11 +131,11 @@ namespace testVue.Handls
         public async Task<bool> UpdateQuantityMaterialId_GaNuongComLam_BanhBaoChien(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_GaComLam_BanhBaoChien(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_GaComLam_DuaLeo(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_GaComLam_GaNguyenCon(quantity);
-            bool result4 = await _iHandleMaterials.UpdateQuantityMaterial_GaComLam_GaoTe(quantity);
-            bool result5 = await _iHandleMaterials.UpdateQuantityMaterial_GaComLam_RauSong(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_GaComLam_BanhBaoChien(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_GaComLam_DuaLeo(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_GaComLam_GaNguyenCon(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_GaComLam_GaoTe(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_GaComLam_RauSong(quantity);
 
             return results;
         }
@@ -141,11 +143,11 @@ namespace testVue.Handls
         public async Task<bool> UpdateQuantityMaterialId_GaRan(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_GaRan_Ga(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_GaRan_BotChienGion(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_GaRan_DauAn(quantity);
-            bool result4 = await _iHandleMaterials.UpdateQuantityMaterial_GaRan_MuoiTieu(quantity);
-            bool result5 = await _iHandleMaterials.UpdateQuantityMaterial_GaRan_Toi(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_GaRan_Ga(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_GaRan_BotChienGion(quantity);
+            results &=results & await _iHandleMaterials.UpdateQuantityMaterial_GaRan_DauAn(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_GaRan_MuoiTieu(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_GaRan_Toi(quantity);
 
             return results;
         }
@@ -153,11 +155,11 @@ namespace testVue.Handls
         public async Task<bool> UpdateQuantityMaterialId_GoiCuon(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_GoiCuon_BanhTrang(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_GoiCuon_BunTuoi(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_GoiCuon_RauSong(quantity);
-            bool result4 = await _iHandleMaterials.UpdateQuantityMaterial_GoiCuon_ThitBaChi(quantity);
-            bool result5 = await _iHandleMaterials.UpdateQuantityMaterial_GoiCuon_TomTuoi(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_GoiCuon_BanhTrang(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_GoiCuon_BunTuoi(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_GoiCuon_RauSong(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_GoiCuon_ThitBaChi(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_GoiCuon_TomTuoi(quantity);
 
             return results;
         }
@@ -165,13 +167,13 @@ namespace testVue.Handls
         public async Task<bool> UpdateQuantityMaterialId_HuTieuNamVang(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_HuTieu_GanHeo(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_HuTieu_GiaDo(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_HuTieu_HanhPhi(quantity);
-            bool result4 = await _iHandleMaterials.UpdateQuantityMaterial_HuTieu_NuocDung(quantity);
-            bool result5 = await _iHandleMaterials.UpdateQuantityMaterial_HuTieu_SoiHuTieu(quantity);
-            bool result6 = await _iHandleMaterials.UpdateQuantityMaterial_HuTieu_ThitBam(quantity);
-            bool result7 = await _iHandleMaterials.UpdateQuantityMaterial_HuTieu_TomTuoi(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_HuTieu_GanHeo(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_HuTieu_GiaDo(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_HuTieu_HanhPhi(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_HuTieu_NuocDung(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_HuTieu_SoiHuTieu(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_HuTieu_ThitBam(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_HuTieu_TomTuoi(quantity);
 
             return results;
         }
@@ -179,9 +181,9 @@ namespace testVue.Handls
         public async Task<bool> UpdateQuantityMaterialId_KemDua(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_KemDua_DuaSoi(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_KemDua_Duong(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_KemDua_NuocCotDua(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_KemDua_DuaSoi(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_KemDua_Duong(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_KemDua_NuocCotDua(quantity);
 
             return results;
         }
@@ -198,9 +200,9 @@ namespace testVue.Handls
         public async Task<bool> UpdateQuantityMaterialId_KhoaiTayChien(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_KhoaiTayChien_DauAn(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_KhoaiTayChien_KhaoiTay(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_KhoaiTayChien_TuongOt(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_KhoaiTayChien_DauAn(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_KhoaiTayChien_KhaoiTay(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_KhoaiTayChien_TuongOt(quantity);
 
             return results;
         }
@@ -208,11 +210,11 @@ namespace testVue.Handls
         public async Task<bool> UpdateQuantityMaterialId_MiXaoBo(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_MiXaoBo_CaiNgot(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_MiXaoBo_HanhLa(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_MiXaoBo_HanhTay(quantity);
-            bool result4 = await _iHandleMaterials.UpdateQuantityMaterial_MiXaoBo_MiTrung(quantity);
-            bool result5 = await _iHandleMaterials.UpdateQuantityMaterial_MiXaoBo_ThitBo(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_MiXaoBo_CaiNgot(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_MiXaoBo_HanhLa(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_MiXaoBo_HanhTay(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_MiXaoBo_MiTrung(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_MiXaoBo_ThitBo(quantity);
 
             return results;
         }
@@ -220,12 +222,12 @@ namespace testVue.Handls
         public async Task<bool> UpdateQuantityMaterialId_MiXaoOcMongTay(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_MiXaoOcMongTay_DauHao(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_MiXaoOcMongTay_MiTrung(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_MiXaoOcMongTay_OcMongtay(quantity);
-            bool result4 = await _iHandleMaterials.UpdateQuantityMaterial_MiXaoOcMongTay_RauRam(quantity);
-            bool result5 = await _iHandleMaterials.UpdateQuantityMaterial_MiXaoOcMongTay_Toi(quantity);
-            bool result6 = await _iHandleMaterials.UpdateQuantityMaterial_MiXaoOcMongTay_XiDau(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_MiXaoOcMongTay_DauHao(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_MiXaoOcMongTay_MiTrung(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_MiXaoOcMongTay_OcMongtay(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_MiXaoOcMongTay_RauRam(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_MiXaoOcMongTay_Toi(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_MiXaoOcMongTay_XiDau(quantity);
 
             return results;
         }
@@ -233,13 +235,13 @@ namespace testVue.Handls
         public async Task<bool> UpdateQuantityMaterialId_PhoBo(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_BanhPho(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_ThitBo(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_GiaViPho(quantity);
-            bool result4 = await _iHandleMaterials.UpdateQuantityMaterial_GiaDo(quantity);
-            bool result5 = await _iHandleMaterials.UpdateQuantityMaterialVegetable(quantity);
-            bool result6 = await _iHandleMaterials.UpdateQuantityMaterial_ChanhTuoi(quantity);
-            bool result7 = await _iHandleMaterials.UpdateQuantityMaterial_ToiOt(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BanhPho(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_ThitBo(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_GiaViPho(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_GiaDo(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterialVegetable(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_ChanhTuoi(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_ToiOt(quantity);
 
             return results;
         }
@@ -247,9 +249,9 @@ namespace testVue.Handls
         public async Task<bool> UpdateQuantityMaterialId_PhoMaiQue(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_PhoMaiQue_BotChienXu(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_PhoMaiQue_DauAn(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_PhoMaiQue_PhomaiMozzaarella(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_PhoMaiQue_BotChienXu(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_PhoMaiQue_DauAn(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_PhoMaiQue_PhomaiMozzaarella(quantity);
 
             return results;
         }
@@ -257,13 +259,13 @@ namespace testVue.Handls
         public async Task<bool> UpdateQuantityMaterialId_PizzaPhoMai(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_DeDanhPizza(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_SotCaChua(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_PhoMaiMozzarella(quantity);
-            bool result4 = await _iHandleMaterials.UpdateQuantityMaterial_XucXich(quantity);
-            bool result5 = await _iHandleMaterials.UpdateQuantityMaterial_ThitNguoi(quantity);
-            bool result6 = await _iHandleMaterials.UpdateQuantityMaterial_OtChuong(quantity);
-            bool result7 = await _iHandleMaterials.UpdateQuantityMaterial_HanhTay(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_DeDanhPizza(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_SotCaChua(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_PhoMaiMozzarella(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_XucXich(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_ThitNguoi(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_OtChuong(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_HanhTay(quantity);
 
             return results;
         }
@@ -271,13 +273,13 @@ namespace testVue.Handls
         public async Task<bool> UpdateQuantityMaterialId_Sandwich(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_BanhMi_BanhMi(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_BanhMi_Bow(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_BanhMi_DoChua(quantity);
-            bool result4 = await _iHandleMaterials.UpdateQuantityMaterial_BanhMi_DuaLeo(quantity);
-            bool result5 = await _iHandleMaterials.UpdateQuantityMaterial_BanhMi_Mayonnaise(quantity);
-            bool result6 = await _iHandleMaterials.UpdateQuantityMaterial_BanhMi_PaTeChaLua(quantity);
-            bool result7 = await _iHandleMaterials.UpdateQuantityMaterial_BanhMi_ThitNguoi(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BanhMi_BanhMi(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BanhMi_Bow(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BanhMi_DoChua(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BanhMi_DuaLeo(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BanhMi_Mayonnaise(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BanhMi_PaTeChaLua(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BanhMi_ThitNguoi(quantity);
 
             return results;
         }
@@ -285,10 +287,10 @@ namespace testVue.Handls
         public async Task<bool> UpdateQuantityMaterialId_SinhToXoai(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_SinhToXoai_DaVien(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_SinhToXoai_SuaDac(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_SinhToXoai_SuaTuoi(quantity);
-            bool result4 = await _iHandleMaterials.UpdateQuantityMaterial_SinhToXoai_XoaiChin(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_SinhToXoai_DaVien(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_SinhToXoai_SuaDac(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_SinhToXoai_SuaTuoi(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_SinhToXoai_XoaiChin(quantity);
 
             return results;
         }
@@ -296,11 +298,11 @@ namespace testVue.Handls
         public async Task<bool> UpdateQuantityMaterialId_SupCua(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_SupCua_BotNang(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_SupCua_HatBap(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_SupCua_NamDongCo(quantity);
-            bool result4 = await _iHandleMaterials.UpdateQuantityMaterial_SupCua_ThitCua(quantity);
-            bool result5 = await _iHandleMaterials.UpdateQuantityMaterial_SupCua_TrungGa(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_SupCua_BotNang(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_SupCua_HatBap(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_SupCua_NamDongCo(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_SupCua_ThitCua(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_SupCua_TrungGa(quantity);
 
             return results;
         }
@@ -308,10 +310,10 @@ namespace testVue.Handls
         public async Task<bool> UpdateQuantityMaterialId_TraChanh(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_TraChanh_ChanhTuoi(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_TraChanh_DaVien(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_TraChanh_Duong(quantity);
-            bool result4 = await _iHandleMaterials.UpdateQuantityMaterial_TraChanh_TraXanh(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_TraChanh_ChanhTuoi(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_TraChanh_DaVien(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_TraChanh_Duong(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_TraChanh_TraXanh(quantity);
 
             return results;
         }
@@ -319,11 +321,11 @@ namespace testVue.Handls
         public async Task<bool> UpdateQuantityMaterialId_TraSua(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_TraDen(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_SuaDac(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_TranChau(quantity);
-            bool result4 = await _iHandleMaterials.UpdateQuantityMaterial_NuocDuong(quantity);
-            bool result5 = await _iHandleMaterials.UpdateQuantityMaterial_DaVien(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_TraDen(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_SuaDac(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_TranChau(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_NuocDuong(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_DaVien(quantity);
 
             return results;
         }
@@ -331,9 +333,9 @@ namespace testVue.Handls
         public async Task<bool> UpdateQuantityMaterialId_XucXichChien(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_XucXichChien_DauAn(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_XucXichChien_TuongOt(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_XucXichChien_XucXich(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_XucXichChien_DauAn(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_XucXichChien_TuongOt(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_XucXichChien_XucXich(quantity);
 
             return results;
         }
@@ -532,52 +534,52 @@ namespace testVue.Handls
         public async Task<bool> UpdateQuantityMaterialId_MucChien_MonThem(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_MucChien_BotChienGion(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_MucChien_DauAn(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_MucChien_MucTuoi(quantity);
-            bool result4 = await _iHandleMaterials.UpdateQuantityMaterial_MucChien_TrungGa(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_MucChien_BotChienGion(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_MucChien_DauAn(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_MucChien_MucTuoi(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_MucChien_TrungGa(quantity);
 
             return results;
         }
         public async Task<bool> UpdateQuantityMaterialId_TomChien_MonThem(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_TomChien_BotChienXu(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_TomChien_DauAn(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_TomChien_TomTuoi(quantity);
-            bool result4 = await _iHandleMaterials.UpdateQuantityMaterial_TomChien_TrungGa(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_TomChien_BotChienXu(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_TomChien_DauAn(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_TomChien_TomTuoi(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_TomChien_TrungGa(quantity);
             return results;
         }
         public async Task<bool> UpdateQuantityMaterialId_NacHeoXao_MonThem(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_NacHeoXao_DauAn(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_NacHeoXao_DauHao(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_NacHeoXao_HanhTay(quantity);
-            bool result4 = await _iHandleMaterials.UpdateQuantityMaterial_NacHeoXao_ThitHeo(quantity);
-            bool result5 = await _iHandleMaterials.UpdateQuantityMaterial_NacHeoXao_Toi(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_NacHeoXao_DauAn(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_NacHeoXao_DauHao(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_NacHeoXao_HanhTay(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_NacHeoXao_ThitHeo(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_NacHeoXao_Toi(quantity);
 
             return results;
         }
         public async Task<bool> UpdateQuantityMaterialId_RauXao_MonThem(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_RauXao_CaiNgot(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_RauXao_DauAn(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_RauXao_DauHao(quantity);
-            bool result4 = await _iHandleMaterials.UpdateQuantityMaterial_RauXao_MuoiTieu(quantity);
-            bool result5 = await _iHandleMaterials.UpdateQuantityMaterial_RauXao_Toi(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_RauXao_CaiNgot(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_RauXao_DauAn(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_RauXao_DauHao(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_RauXao_MuoiTieu(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_RauXao_Toi(quantity);
 
             return results;
         }
         public async Task<bool> UpdateQuantityMaterialId_BoXao_MonThem(int quantity)
         {
             bool results = true;
-            bool result1 = await _iHandleMaterials.UpdateQuantityMaterial_BoXao_DauAn(quantity);
-            bool result2 = await _iHandleMaterials.UpdateQuantityMaterial_BoXao_DauHao(quantity);
-            bool result3 = await _iHandleMaterials.UpdateQuantityMaterial_BoXao_HanhTay(quantity);
-            bool result4 = await _iHandleMaterials.UpdateQuantityMaterial_BoXao_ThitBo(quantity);
-            bool result5 = await _iHandleMaterials.UpdateQuantityMaterial_BoXao_Toi(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BoXao_DauAn(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BoXao_DauHao(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BoXao_HanhTay(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BoXao_ThitBo(quantity);
+            results &= await _iHandleMaterials.UpdateQuantityMaterial_BoXao_Toi(quantity);
 
             return results;
         }

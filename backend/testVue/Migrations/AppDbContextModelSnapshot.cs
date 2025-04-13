@@ -39,6 +39,60 @@ namespace testVue.Migrations
                     b.ToTable("Tables");
                 });
 
+            modelBuilder.Entity("testVue.Models.CashRegister", b =>
+                {
+                    b.Property<int>("CashRegisterId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CashRegisterId"));
+
+                    b.Property<decimal?>("EndBalance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("EndTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("StartBalance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("StartTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CashRegisterId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("CashRegisters");
+                });
+
+            modelBuilder.Entity("testVue.Models.ChatBot.AImodel", b =>
+                {
+                    b.Property<int>("ChatBotId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ChatBotId"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Response")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ChatBotId");
+
+                    b.ToTable("AImodels");
+                });
+
             modelBuilder.Entity("testVue.Models.CustomizableItem", b =>
                 {
                     b.Property<int>("CustomItemId")
@@ -379,36 +433,40 @@ namespace testVue.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Avatar")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FullName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Role")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("testVue.Models.CashRegister", b =>
+                {
+                    b.HasOne("testVue.Models.User.UserDTO", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("testVue.Models.Inventory.WarehouseHistoryDTO", b =>
