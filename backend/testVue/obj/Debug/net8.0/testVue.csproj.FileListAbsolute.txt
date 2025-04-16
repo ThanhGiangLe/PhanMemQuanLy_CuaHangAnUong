@@ -1310,3 +1310,7 @@ D:\MY_PROJECT_CV\PhanMemQuanLy_CuaHangAnUong\backend\testVue\bin\Debug\net8.0\Gr
 D:\MY_PROJECT_CV\PhanMemQuanLy_CuaHangAnUong\backend\testVue\bin\Debug\net8.0\OpenAI_API.dll
 D:\MY_PROJECT_CV\PhanMemQuanLy_CuaHangAnUong\backend\testVue\bin\Debug\net8.0\Pinecone.dll
 D:\MY_PROJECT_CV\PhanMemQuanLy_CuaHangAnUong\backend\testVue\obj\Debug\net8.0\testVue.sourcelink.json
+D:\MY_PROJECT_CV\PhanMemQuanLy_CuaHangAnUong\backend\testVue\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\MY_PROJECT_CV\PhanMemQuanLy_CuaHangAnUong\backend\testVue\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\MY_PROJECT_CV\PhanMemQuanLy_CuaHangAnUong\backend\testVue\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
+D:\MY_PROJECT_CV\PhanMemQuanLy_CuaHangAnUong\backend\testVue\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll

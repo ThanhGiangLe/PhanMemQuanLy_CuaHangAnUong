@@ -102,6 +102,7 @@
 import { useUserStore } from "@/stores/user.js";
 import { computed, ref } from "vue";
 import "vue3-toastify/dist/index.css";
+import * as signalR from "@microsoft/signalr";
 
 import ListFoodManagement from "@/components/monitor/listFoodManagament/index.vue"; // 0
 import MonitorFoodManagement from "@/components/monitor/foodManagement/index.vue"; // 1
@@ -122,4 +123,30 @@ const tab = ref("main");
 
 // Lấy thông tin người dùng từ store
 const user = computed(() => userStore.user);
+console.log("user", user.value);
+let connection = null;
+
+function connectSignalR(userId) {
+  connection = new signalR.HubConnectionBuilder()
+    .withUrl(`http://localhost:5248/userhub?userId=${userId}`)
+    .withAutomaticReconnect()
+    .build();
+
+  connection
+    .start()
+    .then(() => {
+      console.log("✅ SignalR connected");
+    })
+    .catch((err) => console.error("❌ SignalR connection error", err));
+}
+
+onMounted(() => {
+  if (user.value?.userId) {
+    connectSignalR(user.value?.userId);
+  }
+});
+
+onUnmounted(() => {
+  if (connection) connection.stop();
+});
 </script>

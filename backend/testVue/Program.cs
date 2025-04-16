@@ -25,13 +25,17 @@ builder.Services.AddScoped<IHandleOrderItem, HandleOrderItem>();
 builder.Services.AddScoped<IHandleMaterials, HandleMaterials>();
 builder.Services.AddScoped<MaterialConfigs>();
 builder.Services.AddScoped<MaterialIdConfigs>();
+builder.Services.AddSignalR();
 // Cấu hình CORS
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAllOrigins",
+    options.AddPolicy("AllowSpecificOrigin",
         policy =>
         {
-            policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+            policy.WithOrigins("http://localhost:3000")  // Chỉ định chính xác origin frontend
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials();  // Cho phép cookies, authorization headers
         });
 });
 
@@ -43,7 +47,9 @@ var app = builder.Build();
     app.UseSwaggerUI();
 //}
 
-app.UseCors("AllowAllOrigins");
+app.MapHub<UserHub>("/userhub"); // endpoint cho SignalR
+
+app.UseCors("AllowSpecificOrigin");
 
 app.UseHttpsRedirection();
 
