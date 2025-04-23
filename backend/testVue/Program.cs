@@ -21,21 +21,24 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Đăng ký DI
 builder.Services.AddScoped<IHandleOrderItem, HandleOrderItem>();
 builder.Services.AddScoped<IHandleMaterials, HandleMaterials>();
 builder.Services.AddScoped<MaterialConfigs>();
 builder.Services.AddScoped<MaterialIdConfigs>();
 builder.Services.AddSignalR();
+builder.Services.AddSingleton<UserConnectionManager>(); 
+
 // Cấu hình CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigin",
         policy =>
         {
-            policy.WithOrigins("http://localhost:3000")  // Chỉ định chính xác origin frontend
+            policy.WithOrigins("http://localhost:3000") 
                 .AllowAnyMethod()
                 .AllowAnyHeader()
-                .AllowCredentials();  // Cho phép cookies, authorization headers
+                .AllowCredentials(); 
         });
 });
 

@@ -265,7 +265,10 @@
                 :key="item.FoodItemId"
                 style="padding: 4px !important"
               >
-                <div class="d-flex align-center overflow-hidden">
+                <div
+                  class="d-flex align-center overflow-hidden"
+                  style="width: 79%"
+                >
                   <img
                     :src="item.Image"
                     alt=""
@@ -503,17 +506,17 @@
           color="orange-darken-2"
           >Đặt món</v-btn
         >
-        <!-- <v-btn
+        <v-btn
           class="w-100"
           style="margin-bottom: 20px"
           color="blue-darken-4"
           @click="callApiOrderFoodAndAddTable"
           >Đặt món và chọn bàn</v-btn
-        > -->
+        >
         <v-dialog
           v-model="showComponentAreaManagement"
           max-width="1080px"
-          max-height="750px"
+          max-height="900px"
           persistent
         >
           <v-card>
@@ -525,8 +528,8 @@
             >
               <!-- Hiển thị MenuList component bên trong dialog -->
               <AreaManagement
-                v-if="showComponentAreaManagement"
-                @closeAndReset="handleCloseAndReset"
+                v-show="showComponentAreaManagement"
+                @resetFoodsSelected="handleCloseAndReset"
               />
             </v-card-text>
 

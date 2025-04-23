@@ -3,7 +3,7 @@
     class="reportManagement_totalAmount d-flex flex-wrap flex-column pa-2 rounded"
     style="height: 100%"
   >
-    <v-card style="height: 100%">
+    <v-card style="height: 100%" class="mb-2">
       <v-card-title class="pa-0 d-flex justify-center">
         <div class="d-flex align-center mb-1">
           <v-icon size="large" class="ma-1">mdi-file-chart-outline</v-icon>
@@ -25,7 +25,7 @@
         class="px-2 h-100"
         :style="{ backgroundColor: 'var(--bg-color-item)' }"
       >
-        <div class="d-flex justify-space-between h-100">
+        <div class="d-flex flex-wrap justify-space-between h-100">
           <div class="" style="width: 59%">
             <!-- Báo cáo doanh thu theo nhân viên -->
             <div class="mt-1 d-flex flex-column" style="height: 60%">

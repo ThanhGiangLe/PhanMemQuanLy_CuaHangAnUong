@@ -2,7 +2,7 @@
   <div
     id="reportManagement"
     class="mt-1 d-flex flex-column"
-    style="width: 100%; height: 100%"
+    style="width: 100%; height: 100vh"
   >
     <div class="d-flex justify-center flex-wrap">
       <v-btn

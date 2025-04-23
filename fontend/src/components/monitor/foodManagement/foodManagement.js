@@ -5,11 +5,9 @@ import API_ENDPOINTS from "@/api/api.js";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 import { useUserStore } from "@/stores/user.js";
-import { useOrderStore } from "@/stores/orderStore.js";
 import AreaManagement from "@/components/monitor/areaManagement/index.vue";
 
 export default function useFoodManagement() {
-  const storeOrder = useOrderStore();
   const userStore = useUserStore();
   const showDialogUpdate = ref(false);
   const showDialogAdd = ref(false);

@@ -5,11 +5,11 @@ import API_ENDPOINTS from "@/api/api.js";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 import { useUserStore } from "@/stores/user.js";
-import { useOrderStore } from "@/stores/orderStore.js";
+import { userOrderStore } from "@/stores/orderStore.js";
 
 export default function useFoodManagement() {
-  const storeOrder = useOrderStore();
   const userStore = useUserStore();
+  const orderStore = userOrderStore();
   const showDialogUpdate = ref(false);
   const isStaff = ref(true);
   const currentDish = ref({});
@@ -22,6 +22,9 @@ export default function useFoodManagement() {
   const visibleUpdateCurrentFoodSelected = ref(false);
   const showComponentAreaManagement = ref(false);
   const loading = shallowRef(true);
+  const currentOrderClone = ref({});
+  const propertyTax = ref(0);
+  const propertyDiscount = ref(0);
 
   // Lấy thông tin người dùng từ store
   const user = computed(() => userStore.user);
@@ -336,12 +339,11 @@ export default function useFoodManagement() {
     }, 0);
   }
   const resultTotalAmount = computed(() => {
+    const totalAmount = currentOrder.value.total_amount;
     const discountAmount =
-      (currentOrder.value.total_amount * (currentOrder.value.discount || 0)) /
-      100;
-    const taxAmount =
-      (currentOrder.value.total_amount * (currentOrder.value.tax || 0)) / 100;
-    return currentOrder.value.total_amount + taxAmount - discountAmount;
+      (totalAmount * (currentOrder.value.discount || 0)) / 100;
+    const taxAmount = (totalAmount * (currentOrder.value.tax || 0)) / 100;
+    return totalAmount + taxAmount - discountAmount;
   });
   function formatCurrency(value) {
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -507,17 +509,28 @@ export default function useFoodManagement() {
     }
   }
   async function callApiOrderFoodAndAddTable() {
-    // Đang test, sẽ move đi sau
     showComponentAreaManagement.value = !showComponentAreaManagement.value;
-    storeOrder.setSelectedDishes(currentOrder.value);
+    currentOrderClone.value = {
+      ...currentOrder.value,
+      total_amount: resultTotalAmount.value,
+    };
+    console.log("Danh sách món ăn đã gọi: ", currentOrderClone.value);
+    propertyTax.value = currentOrderClone.value.tax;
+    propertyDiscount.value = currentOrderClone.value.discount;
+    console.log("Số 11 ", propertyTax.value);
+    console.log("Số 11 ", propertyDiscount.value);
+
+    orderStore.setSelectedDishes(currentOrderClone.value);
   }
   const handleShowComponentAreaManagement = () => {
     showComponentAreaManagement.value = !showComponentAreaManagement.value;
+    orderStore.clearSelectedDishes();
+    // resetCurrentOrder();
   };
-  // Thêm hàm xử lý event từ AreaManagement
   function handleCloseAndReset() {
-    showComponentAreaManagement.value = false;
+    console.log("Có vào");
     resetCurrentOrder();
+    showComponentAreaManagement.value = !showComponentAreaManagement.value;
   }
 
   return {
