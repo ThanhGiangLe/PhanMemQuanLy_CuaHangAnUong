@@ -1,41 +1,23 @@
 import { computed, ref, defineEmits } from "vue";
 import axios from "axios";
 import API_ENDPOINTS from "@/api/api.js";
-import { useOrderStore } from "@/stores/orderStore.js";
 import { useUserStore } from "@/stores/user.js";
+import { userOrderStore } from "@/stores/orderStore.js";
 import { toast } from "vue3-toastify";
 
 export default function useAreaManagement() {
-  const emit = defineEmits(["closeAndReset"]);
-
-  const storeOrder = useOrderStore();
   const userStore = useUserStore();
+  const orderStore = userOrderStore();
 
   const tables = ref([]);
-  const snackbar = ref(false);
-  const discount = ref(0);
   const user = computed(() => userStore.user);
-
-  const dialogEdit = ref(false);
-  const dialogDelete = ref(false);
 
   const confirmDialog = ref(false);
   const currentTableId = ref(0);
-  const currentOrder = ref({});
-  const isActive = ref(false);
-
-  const tableId = ref("");
-  const desserts = computed(() => storeOrder.getDishesForTable(tableId.value));
-  const headers = [
-    { title: "Tên món", align: "start", sortable: false, key: "name" },
-    { title: "Đơn vị", key: "unit" },
-    { title: "Số lượng", key: "quantity" },
-    { title: "Đơn giá", key: "unitPrice" },
-    { title: "Thành tiền", key: "money" },
-    { title: "Actions", key: "actions", sortable: false },
-  ];
-
-  const editedIndex = ref(-1);
+  const showListFoodOrderOfTableId = ref(false);
+  const listFoodOrderOfTableId = ref([]);
+  const tax = ref(6);
+  const discount = ref(0);
 
   async function init() {
     const response = await axios.get(API_ENDPOINTS.GET_ALL_TABLE);
@@ -47,54 +29,76 @@ export default function useAreaManagement() {
 
   init();
   const handleConfirmDialog = (table) => {
-    snackbar.value = true;
+    confirmDialog.value = true;
     currentTableId.value = table.tableId;
   };
+
+  async function cancelTableAndSetCurrentOrders() {
+    confirmDialog.value = !confirmDialog.value;
+  }
+  async function viewTableAndSetCurrentOrders() {
+    showListFoodOrderOfTableId.value = !showListFoodOrderOfTableId.value;
+
+    listFoodOrderOfTableId.value = orderStore.getDishesByTable(
+      currentTableId.value
+    );
+    console.log("Kết quả đạt được là: ", listFoodOrderOfTableId.value);
+  }
+  function formatCurrency(value) {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
+  function totalAmountAdditionalFoodItem(ListAdditionalFood) {
+    return ListAdditionalFood.reduce((total, item) => {
+      return total + item.price * item.quantity;
+    }, 0);
+  }
+  function closeShowListFoodOrderOfTableId() {
+    confirmDialog.value = !confirmDialog.value;
+    showListFoodOrderOfTableId.value = !showListFoodOrderOfTableId.value;
+  }
+  function checkFoodOrderByTableId(tableId) {
+    return orderStore.getDishesByTable(tableId);
+  }
+  const totalAmount = computed(() => {
+    const result = listFoodOrderOfTableId.value.reduce((total, item) => {
+      let mainItemTotal = item.Price * item.Quantity;
+      let additionalFoodTotal =
+        item.Quantity * totalAmountAdditionalFoodItem(item.ListAdditionalFood);
+      return total + mainItemTotal + additionalFoodTotal;
+    }, 0);
+    return result;
+  });
+  const resultTotalAmount = computed(() => {
+    const taxAmount = (totalAmount.value * tax.value) / 100;
+    const discountAmount = (totalAmount.value * discount.value) / 100;
+    return totalAmount.value + taxAmount - discountAmount;
+  });
   function getCurrentDateTimeForSQL() {
     const now = new Date();
     const localOffset = 7 * 60; // Phút (GMT+7)
     const localTime = new Date(now.getTime() + localOffset * 60 * 1000);
     return localTime.toISOString(); // Format: YYYY-MM-DDTHH:MM:SS.SSSZ
   }
-  const resultTotalAmount = computed(() => {
-    const discountAmount =
-      (currentOrder.value.total_amount * (currentOrder.value.discount || 0)) /
-      100;
-    const taxAmount =
-      (currentOrder.value.total_amount * (currentOrder.value.tax || 0)) / 100;
-    return currentOrder.value.total_amount + taxAmount - discountAmount;
-  });
-  const resetCurrentOrder = () => {
-    currentOrder.value = {
-      user_id: user.value.userId,
-      order_time: getCurrentDateTimeForSQL(),
-      table_id: 1,
-      total_amount: 0, // Reset lại tổng thanh toán
-      status: "Paid", // Trạng thái mặc định
-      discount: 12, // Reset giảm giá
-      tax: 6, // Reset thuế
-      items: [], // Reset danh sách các món ăn
-    };
-  };
-  async function chooseTableAndSetCurrentOrders() {
+  async function ConfirmPayment() {
     let orderTimeCurrent = getCurrentDateTimeForSQL();
-    currentOrder.value = storeOrder.getSelectedDishes();
+    console.log("Full order", listFoodOrderOfTableId.value);
+    console.log("user", user.value);
+    console.log("table", currentTableId.value);
     try {
       const orderResponse = await axios.post(API_ENDPOINTS.ADD_ORDER, {
-        userId: currentOrder.value.user_id,
+        userId: user.value.userId,
         orderTime: orderTimeCurrent,
         tableId: currentTableId.value,
         totalAmount: resultTotalAmount.value,
-        status: currentOrder.value.status,
-        discount: currentOrder.value.discount,
-        tax: currentOrder.value.tax,
+        status: "Paid",
+        discount: discount.value,
+        tax: tax.value,
       });
 
       const orderId = orderResponse.data.data.orderId;
 
-      // Gửi cả món chính và món phụ trong cùng một request
       await Promise.all(
-        currentOrder.value.items.map(async (item) => {
+        listFoodOrderOfTableId.value.map(async (item) => {
           // Gửi món chính
           const mainItemResponse = await axios.post(
             API_ENDPOINTS.ADD_ORDER_ITEM,
@@ -111,7 +115,7 @@ export default function useAreaManagement() {
               orderTime: orderTimeCurrent,
             }
           );
-          // Gửi các món phụ với parentItemId là mainItemId
+          // Gửi các món phụ với parentItemId là mainItemId và các món phụ đi kèm món chính đó
           await Promise.all(
             item.ListAdditionalFood.map(async (addFood) => {
               await axios.post(API_ENDPOINTS.ADD_ORDER_ITEM, {
@@ -123,7 +127,7 @@ export default function useAreaManagement() {
                 isMainItem: 0,
                 unit: addFood.unit,
                 note: "",
-                categoryId: 0,
+                categoryId: addFood.categoryId,
                 orderTime: orderTimeCurrent,
               });
             })
@@ -131,7 +135,20 @@ export default function useAreaManagement() {
         })
       );
 
-      // Kiểm tra phản hồi từ server
+      const [responseUpdateMaterial, responseUpdateTotalIncome] =
+        await Promise.all([
+          await axios.post(
+            API_ENDPOINTS.UPDATE_QUANTITY_MATERIALS_AFTER_ORDER,
+            {
+              Items: listFoodOrderOfTableId.value,
+            }
+          ),
+          await axios.post(API_ENDPOINTS.UPDATE_TOTALINCOME_CASH_REGISTER, {
+            UserId: user.value.userId,
+            TotalAmount: resultTotalAmount.value,
+          }),
+        ]);
+
       if (orderResponse.data.success === -1) {
         toast.warn("Please provide all required information!", {
           position: "top-right",
@@ -143,12 +160,9 @@ export default function useAreaManagement() {
           progress: undefined, // Tiến độ (nếu có)
         });
       } else if (orderResponse.data.success === 1) {
-        confirmDialog.value = false;
-        tables.value = tables.value.map((table) => ({
-          ...table,
-          isActive: table.tableId == currentTableId.value,
-        }));
-        toast.success("Add order successful!", {
+        showListFoodOrderOfTableId.value = !showListFoodOrderOfTableId.value;
+        confirmDialog.value = !confirmDialog.value;
+        toast.success("Thanh toán thành công!", {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: false, // Hiện thanh tiến trình
@@ -157,13 +171,13 @@ export default function useAreaManagement() {
           draggable: true, // Kéo thông báo
           progress: undefined, // Tiến độ (nếu có)
         });
-        // Emit event để đóng component và reset
-        emit("closeAndReset");
-      } else {
-        console.error("Failed to add order", orderResponse.data.message);
+        orderStore.clearTableOrder(currentTableId.value);
+        setTimeout(() => {
+          window.location.reload();
+        }, 3200);
       }
     } catch (error) {
-      toast.error(`Error adding employee: ${error}`, {
+      toast.error(`Error adding order: ${error}`, {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false, // Hiện thanh tiến trình
@@ -175,160 +189,25 @@ export default function useAreaManagement() {
     }
   }
 
-  const defaultItem = {
-    name: "",
-    unit: "",
-    quantity: 0,
-    unitPrice: 0,
-    money: 0,
-  };
-
-  const editedItem = ref({ ...defaultItem });
-
-  const formTitle = computed(() => {
-    return editedIndex.value === -1 ? "Thông tin món" : "Thay đổi thông tin";
-  });
-
-  // Watchers
-  watch(dialogEdit, (val) => {
-    if (!val) close();
-  });
-
-  watch(dialogDelete, (val) => {
-    if (!val) closeDelete();
-  });
-
-  // Methods
-  const initialize = () => {
-    desserts.value = [
-      {
-        name: "Gà ủ muối",
-        unit: "Con",
-        quantity: 1,
-        unitPrice: 190000.0,
-        money: 190000.0,
-      },
-      {
-        name: "Cá hồi nướng",
-        unit: "Kg",
-        quantity: 2,
-        unitPrice: 250000.0,
-        money: 500000.0,
-      },
-      {
-        name: "Bò sốt vang",
-        unit: "Phần",
-        quantity: 3,
-        unitPrice: 120000.0,
-        money: 360000.0,
-      },
-      {
-        name: "Tôm hùm hấp",
-        unit: "Con",
-        quantity: 1,
-        unitPrice: 750000.0,
-        money: 750000.0,
-      },
-      {
-        name: "Gỏi cuốn",
-        unit: "Phần",
-        quantity: 5,
-        unitPrice: 50000.0,
-        money: 250000.0,
-      },
-      {
-        name: "Bánh xèo",
-        unit: "Cái",
-        quantity: 10,
-        unitPrice: 25000.0,
-        money: 250000.0,
-      },
-    ];
-  };
-
-  const editItem = (item) => {
-    editedIndex.value = desserts.value.indexOf(item);
-    editedItem.value = { ...item };
-    dialogEdit.value = true;
-  };
-
-  const deleteItem = (item) => {
-    editedIndex.value = desserts.value.indexOf(item);
-    editedItem.value = { ...item };
-    dialogDelete.value = true;
-  };
-
-  const deleteItemConfirm = () => {
-    desserts.value.splice(editedIndex.value, 1);
-    closeDelete();
-  };
-
-  const close = () => {
-    dialogEdit.value = false;
-    nextTick(() => {
-      editedItem.value = { ...defaultItem };
-      editedIndex.value = -1;
-    });
-  };
-
-  const closeDelete = () => {
-    dialogDelete.value = false;
-    nextTick(() => {
-      editedItem.value = { ...defaultItem };
-      editedIndex.value = -1;
-    });
-  };
-
-  const save = () => {
-    if (editedIndex.value > -1) {
-      Object.assign(desserts.value[editedIndex.value], editedItem.value);
-    } else {
-      desserts.value.push(editedItem.value);
-    }
-    close();
-  };
-
-  const totalMoney = computed(() => {
-    return desserts.value.reduce((acc, item) => acc + item.money, 0);
-  });
-
-  const totalPayment = computed(() => {
-    return totalMoney.value - (totalMoney.value * discount.value) / 100;
-  });
   return {
-    storeOrder,
-    userStore,
     tables,
-    snackbar,
-    discount,
-    user,
-    dialogEdit,
-    dialogDelete,
     confirmDialog,
+    showListFoodOrderOfTableId,
+    listFoodOrderOfTableId,
     currentTableId,
-    currentOrder,
-    isActive,
-    tableId,
-    desserts,
-    headers,
-    editedIndex,
-
-    handleConfirmDialog,
-    getCurrentDateTimeForSQL,
+    orderStore,
+    totalAmount,
     resultTotalAmount,
-    resetCurrentOrder,
-    chooseTableAndSetCurrentOrders,
-    defaultItem,
-    editedItem,
-    formTitle,
-    initialize,
-    editItem,
-    deleteItem,
-    deleteItemConfirm,
-    close,
-    closeDelete,
-    save,
-    totalMoney,
-    totalPayment,
+    tax,
+    discount,
+
+    formatCurrency,
+    handleConfirmDialog,
+    cancelTableAndSetCurrentOrders,
+    viewTableAndSetCurrentOrders,
+    totalAmountAdditionalFoodItem,
+    closeShowListFoodOrderOfTableId,
+    checkFoodOrderByTableId,
+    ConfirmPayment,
   };
 }
