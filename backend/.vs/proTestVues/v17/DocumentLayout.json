@@ -3,44 +3,12 @@
   "WorkspaceRootPath": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\handls\\userhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\handls\\userhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\controllers\\foodcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\controllers\\foodcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\handls\\userconnectionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\handls\\userconnectionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\controllers\\cashregistercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\controllers\\cashregistercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\controllers\\materialcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\controllers\\materialcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\models\\user\\loginrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\models\\user\\loginrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\testvue.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\testvue.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|d:\\my_project_cv\\phanmemquanly_cuahanganuong\\backend\\testvue\\models\\user\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C966EDD-A705-4393-8E80-7463EBE43B63}|testVue\\testVue.csproj|solutionrelative:testvue\\models\\user\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,131 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CashRegisterController.cs",
-              "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Controllers\\CashRegisterController.cs",
-              "RelativeDocumentMoniker": "testVue\\Controllers\\CashRegisterController.cs",
-              "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Controllers\\CashRegisterController.cs",
-              "RelativeToolTip": "testVue\\Controllers\\CashRegisterController.cs",
-              "ViewState": "AQIAADkAAAAAAAAAAAAqwE4AAAAAAAAA",
+              "DocumentIndex": 0,
+              "Title": "FoodController.cs",
+              "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Controllers\\FoodController.cs",
+              "RelativeDocumentMoniker": "testVue\\Controllers\\FoodController.cs",
+              "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Controllers\\FoodController.cs",
+              "RelativeToolTip": "testVue\\Controllers\\FoodController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADUAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T16:24:16.62Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ReportController.cs",
-              "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Controllers\\ReportController.cs",
-              "RelativeDocumentMoniker": "testVue\\Controllers\\ReportController.cs",
-              "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Controllers\\ReportController.cs",
-              "RelativeToolTip": "testVue\\Controllers\\ReportController.cs",
-              "ViewState": "AQIAANUBAAAAAAAAAAAqwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T16:24:04.649Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MaterialController.cs",
-              "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Controllers\\MaterialController.cs",
-              "RelativeDocumentMoniker": "testVue\\Controllers\\MaterialController.cs",
-              "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Controllers\\MaterialController.cs",
-              "RelativeToolTip": "testVue\\Controllers\\MaterialController.cs",
-              "ViewState": "AQIAAF4AAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T16:20:57.213Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Program.cs",
-              "RelativeDocumentMoniker": "testVue\\Program.cs",
-              "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Program.cs",
-              "RelativeToolTip": "testVue\\Program.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAAADQAAAAOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T04:43:15.452Z",
+              "WhenOpened": "2025-04-27T07:56:51.043Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UserConnectionManager.cs",
-              "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Handls\\UserConnectionManager.cs",
-              "RelativeDocumentMoniker": "testVue\\Handls\\UserConnectionManager.cs",
-              "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Handls\\UserConnectionManager.cs",
-              "RelativeToolTip": "testVue\\Handls\\UserConnectionManager.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAkwCEAAAAUAAAA",
+              "Title": "UserDTO.cs",
+              "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Models\\User\\UserDTO.cs",
+              "RelativeDocumentMoniker": "testVue\\Models\\User\\UserDTO.cs",
+              "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Models\\User\\UserDTO.cs",
+              "RelativeToolTip": "testVue\\Models\\User\\UserDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T04:39:43.114Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UserHub.cs",
-              "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Handls\\UserHub.cs",
-              "RelativeDocumentMoniker": "testVue\\Handls\\UserHub.cs",
-              "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Handls\\UserHub.cs",
-              "RelativeToolTip": "testVue\\Handls\\UserHub.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAAYwCYAAAA9AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T04:31:23.219Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "LoginRequestDTO.cs",
-              "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Models\\User\\LoginRequestDTO.cs",
-              "RelativeDocumentMoniker": "testVue\\Models\\User\\LoginRequestDTO.cs",
-              "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Models\\User\\LoginRequestDTO.cs",
-              "RelativeToolTip": "testVue\\Models\\User\\LoginRequestDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T02:58:14.805Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "testVue.csproj",
-              "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\testVue.csproj",
-              "RelativeDocumentMoniker": "testVue\\testVue.csproj",
-              "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\testVue.csproj",
-              "RelativeToolTip": "testVue\\testVue.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAA8AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-04-21T02:57:39.223Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\appsettings.json",
-              "RelativeDocumentMoniker": "testVue\\appsettings.json",
-              "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\appsettings.json",
-              "RelativeToolTip": "testVue\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-21T02:57:35.308Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "testVue\\Controllers\\UserController.cs",
-              "ToolTip": "D:\\MY_PROJECT_CV\\PhanMemQuanLy_CuaHangAnUong\\backend\\testVue\\Controllers\\UserController.cs",
-              "RelativeToolTip": "testVue\\Controllers\\UserController.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAQwCAAAAA+AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T02:56:18.027Z"
+              "WhenOpened": "2025-04-27T07:45:47.816Z"
             }
           ]
         }
