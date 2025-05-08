@@ -1,17 +1,16 @@
 <template>
   <div class="d-flex align-center justify-center" style="min-height: 100vh">
     <v-card
-      class="mx-auto pa-12 pb-8"
+      class="mx-auto pa-12 pb-8 bg-grey-darken-4"
       elevation="8"
       max-width="448"
       rounded="lg"
       @keydown.enter="verifyLoginAccount"
     >
-      <div class="text-subtitle-1 text-medium-emphasis">Phone</div>
-
+      <div class="text-subtitle-1 text-medium-emphasis">Số điện thoại</div>
       <v-text-field
         density="compact"
-        placeholder="Phone Number"
+        placeholder="Nhập tại đây..."
         prepend-inner-icon="mdi-phone-outline"
         variant="outlined"
         v-model="phone"
@@ -20,21 +19,19 @@
       <div
         class="text-subtitle-1 text-medium-emphasis d-flex align-center justify-space-between"
       >
-        Password
-
+        Mật khẩu
         <router-link
           class="text-caption text-decoration-none text-blue"
           to="/forgotpassword"
         >
-          Forgot login password?
+          Quên mật khẩu?
         </router-link>
       </div>
-
       <v-text-field
         :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
         :type="visible ? 'text' : 'password'"
         density="compact"
-        placeholder="Enter your password"
+        placeholder="Nhập tại đây..."
         prepend-inner-icon="mdi-lock-outline"
         variant="outlined"
         v-model="password"
@@ -42,46 +39,55 @@
       ></v-text-field>
 
       <v-card class="mb-12" color="surface-variant" variant="tonal">
-        <v-card-text class="text-medium-emphasis text-caption">
-          Warning: After 3 consecutive failed login attempts, your account will
-          be temporarily locked for three hours. If you must login now, you can
-          also click "Forgot login password?" below to reset the login password.
+        <v-card-text
+          class="text-medium-emphasis text-caption text-justify"
+          style="color: #ffee58 !important"
+        >
+          <strong>Cảnh báo:</strong> Sau 3 lần đăng nhập thất bại liên tiếp, tài
+          khoản của bạn sẽ bị tạm khóa trong vòng ba giờ. Nếu bạn cần đăng nhập
+          ngay bây giờ, bạn cũng có thể nhấp vào "Quên mật khẩu?" bên dưới để
+          đặt lại mật khẩu.
         </v-card-text>
       </v-card>
-
-      <v-btn
-        class="mb-8"
-        color="blue"
-        size="large"
-        variant="tonal"
-        block
-        @click="verifyLoginAccount()"
-      >
-        Đăng nhập
-      </v-btn>
 
       <v-alert v-if="errorMessage" type="error" outlined>
         {{ errorMessage }}
       </v-alert>
     </v-card>
+
+    <!-- Nút bay loạn xạ -->
+    <v-btn
+      :style="btnStyle"
+      color="grey-lighten-2"
+      size="large"
+      variant="tonal"
+      v-if="showButtonLogin"
+      @click="verifyLoginAccount"
+      @mouseenter="onHoverLoginBtn"
+    >
+      Đăng nhập
+    </v-btn>
+
+    <!-- Loading Overlay -->
+    <v-overlay
+      :model-value="isOverlay"
+      persistent
+      class="justify-center align-center"
+    >
+      <v-progress-circular indeterminate size="48" width="6" color="primary" />
+    </v-overlay>
   </div>
-  <v-overlay
-    :model-value="isOverlay"
-    persistent
-    class="justify-center align-center"
-  >
-    <v-progress-circular indeterminate size="48" width="6" color="primary" />
-  </v-overlay>
 </template>
 
 <script setup>
 import { useUserStore } from "@/stores/user";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
 import API_ENDPOINTS from "@/api/api.js";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
+import { showToast } from "@/styles/handmade";
 
 const userStore = useUserStore();
 const router = useRouter();
@@ -91,69 +97,100 @@ const phone = ref("");
 const password = ref("");
 const errorMessage = ref("");
 const isOverlay = ref(false);
+const showButtonLogin = ref(true);
+const quantityLogin = ref(0);
 
+// ✅ Style nút có thể thay đổi vị trí
+const btnStyle = ref({
+  position: "fixed",
+  top: "60%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  transition: "top 0.3s ease, left 0.3s ease",
+});
+
+const isValid = computed(() => phone.value && password.value);
+
+function onHoverLoginBtn() {
+  if (!isValid.value) {
+    const btnWidth = 120;
+    const btnHeight = 50;
+    const maxX = window.innerWidth - btnWidth;
+    const maxY = window.innerHeight - btnHeight;
+
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+
+    btnStyle.value.top = `${randomY}px`;
+    btnStyle.value.left = `${randomX}px`;
+  }
+}
+
+// ✅ Hàm đăng nhập
 async function verifyLoginAccount() {
-  if (!phone.value || !password.value) {
-    toast.warn("Please enter a valid phone address!", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false, // Hiện thanh tiến trình
-      closeOnClick: true, // Đóng khi nhấp vào thông báo
-      pauseOnHover: true, // Dừng khi di chuột lên thông báo
-      draggable: true, // Kéo thông báo
-      progress: undefined, // Tiến độ (nếu có)
-    });
+  if (!isValid.value) {
+    showToast("Vui lòng nhập số điện thoại và mật khẩu!", "warn");
     return;
   }
+
   try {
     const response = await axios.post(API_ENDPOINTS.LOGIN, {
       Phone: phone.value,
       Password: password.value,
     });
 
-    // Lấy thông tin người dùng trả về từ server nếu đăng nhập thành công
     const user = response.data;
-
-    // Lưu thông tin người dùng vào store
     userStore.setUser(user);
     isOverlay.value = true;
+
     const response2 = await axios.post(API_ENDPOINTS.IMPORT_CASH_REGISTER, {
       UserId: user.userId,
     });
+
     if (response2.data.message !== 1) {
-      toast.error("Error import Cash Register!", {
+      toast.error("Lỗi đăng nhập Cash Register!", {
         position: "top-right",
         autoClose: 3000,
-        hideProgressBar: false, // Hiện thanh tiến trình
-        closeOnClick: true, // Đóng khi nhấp vào thông báo
-        pauseOnHover: true, // Dừng khi di chuột lên thông báo
-        draggable: true, // Kéo thông báo
-        progress: undefined, // Tiến độ (nếu có)
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
       });
     }
+    errorMessage.value = "";
+    quantityLogin.value = 0;
     setTimeout(() => {
       router.push("/monitor");
     }, 1000);
   } catch (error) {
+    quantityLogin.value++;
+    if (quantityLogin.value > 3) {
+      errorMessage.value =
+        "Bạn đã nhập sai quá 3 lần. Liên hệ Quản lý hoặc Chủ cửa hàng để thay đổi mật khẩu.";
+      showButtonLogin.value = false;
+    } else {
+      errorMessage.value = "";
+    }
     if (error.response && error.response.status === 401) {
-      toast.error("Invalid phone or password!", {
+      toast.error("Số điện thoại hoặc mật khẩu không đúng!", {
         position: "top-right",
         autoClose: 3000,
-        hideProgressBar: false, // Hiện thanh tiến trình
-        closeOnClick: true, // Đóng khi nhấp vào thông báo
-        pauseOnHover: true, // Dừng khi di chuột lên thông báo
-        draggable: true, // Kéo thông báo
-        progress: undefined, // Tiến độ (nếu có)
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
       });
     } else {
-      toast.error("An error occurred during login. Please try again.", {
+      toast.error("Lỗi hệ thông. Vui lòng thử lại!", {
         position: "top-right",
         autoClose: 3000,
-        hideProgressBar: false, // Hiện thanh tiến trình
-        closeOnClick: true, // Đóng khi nhấp vào thông báo
-        pauseOnHover: true, // Dừng khi di chuột lên thông báo
-        draggable: true, // Kéo thông báo
-        progress: undefined, // Tiến độ (nếu có)
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
       });
     }
   }
