@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using testVue.Datas;
-using testVue.Models.Food;
-using testVue.Models.Report.Report;
+using testVue.Models;
+using testVue.ModelsRequest;
 
 namespace testVue.Controllers
 {

@@ -7,6 +7,7 @@
       min-width="448"
       rounded="lg"
     >
+      <!-- Nhập Email để nhận mã OTP -->
       <div v-if="visibleFillMail">
         <div class="text-subtitle-1 text-medium-emphasis">Email</div>
         <v-text-field
@@ -37,6 +38,7 @@
         </v-btn>
       </div>
 
+      <!-- Mail tồn tại, thực hiện nhập mã OTP -->
       <div v-else>
         <div v-if="visibleFillPassword">
           <div class="text-subtitle-1 text-medium-emphasis">OTP</div>
@@ -70,6 +72,7 @@
           </v-btn>
         </div>
 
+        <!-- Sau khi nhập mã OTP thành công. Thực hiện thay đổi mật khẩu mới -->
         <div v-else>
           <div
             class="text-subtitle-1 text-medium-emphasis d-flex align-center justify-space-between"
@@ -80,7 +83,7 @@
             :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
             :type="visible ? 'text' : 'password'"
             density="compact"
-            placeholder="Nhập tại đây..."
+            placeholder="Nhập mật khẩu mới..."
             prepend-inner-icon="mdi-lock-outline"
             variant="outlined"
             v-model="password"
@@ -96,7 +99,7 @@
             :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
             :type="visible ? 'text' : 'password'"
             density="compact"
-            placeholder="Nhập tại đây..."
+            placeholder="Xác nhận mật khẩu..."
             prepend-inner-icon="mdi-lock-outline"
             variant="outlined"
             v-model="confirmPassword"
@@ -125,8 +128,8 @@ import { useRouter } from "vue-router";
 import axios from "axios";
 import emailjs from "emailjs-com";
 import API_ENDPOINTS from "@/api/api.js";
-import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
+import { showToast } from "@/styles/handmade";
 
 const router = useRouter();
 const visible = ref(false); // Dùng để hiển thị mật khẩu...
@@ -147,7 +150,7 @@ const publicKey = "YVFyP3Zy91mr0Jc5W";
 emailjs.init(publicKey);
 
 const otpSentTime = ref(null); // Lưu thời gian lúc gửi OTP
-const otpTimeout = 0.5 * 60 * 1000; // Thời gian 5 phút
+const otpTimeout = 1 * 60 * 1000; // Thời gian 5 phút
 const visibleResendOtp = ref(false);
 
 async function sendOTP() {
@@ -156,15 +159,7 @@ async function sendOTP() {
   }
   otpSentTime.value = new Date().getTime(); // dùng để xác định thời gian gửi mã OTP đến người dùng
   if (!email.value) {
-    toast.warn("Please enter a valid email address!", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false, // Hiện thanh tiến trình
-      closeOnClick: true, // Đóng khi nhấp vào thông báo
-      pauseOnHover: true, // Dừng khi di chuột lên thông báo
-      draggable: true, // Kéo thông báo
-      progress: undefined, // Tiến độ (nếu có)
-    });
+    showToast("Nhập địa chỉ Email hợp lệ!", "warn");
     return;
   }
 
@@ -183,119 +178,47 @@ async function sendOTP() {
       emailjs
         .send(serviceID, templateID, templateParams)
         .then((response) => {
-          toast.success("Send OTP successful!", {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false, // Hiện thanh tiến trình
-            closeOnClick: true, // Đóng khi nhấp vào thông báo
-            pauseOnHover: true, // Dừng khi di chuột lên thông báo
-            draggable: true, // Kéo thông báo
-            progress: undefined, // Tiến độ (nếu có)
-          });
+          showToast("Hãy kiểm tra thông báo mail!", "success");
           visibleFillMail.value = false;
         })
         .catch((err) => {
-          toast.warn("Failed to send OTP. Please try again.", {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false, // Hiện thanh tiến trình
-            closeOnClick: true, // Đóng khi nhấp vào thông báo
-            pauseOnHover: true, // Dừng khi di chuột lên thông báo
-            draggable: true, // Kéo thông báo
-            progress: undefined, // Tiến độ (nếu có)
-          });
+          showToast("Có lỗi trong quá trình gửi mail.", "warn");
         });
     } else {
-      toast.error("Email vừa nhập không tồn tại trong hệ thống.", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false, // Hiện thanh tiến trình
-        closeOnClick: true, // Đóng khi nhấp vào thông báo
-        pauseOnHover: true, // Dừng khi di chuột lên thông báo
-        draggable: true, // Kéo thông báo
-        progress: undefined, // Tiến độ (nếu có)
-      });
+      showToast("Email vừa nhập không tồn tại trong hệ thống.", "error");
     }
   } catch (error) {
-    toast.error(`Error checking email ${error}`, {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false, // Hiện thanh tiến trình
-      closeOnClick: true, // Đóng khi nhấp vào thông báo
-      pauseOnHover: true, // Dừng khi di chuột lên thông báo
-      draggable: true, // Kéo thông báo
-      progress: undefined, // Tiến độ (nếu có)
-    });
+    showToast("Lỗi trong quá trình xác minh tài khoản.", "error");
   }
 }
 
 function verifyOTP() {
   if (!enteredOtp.value) {
-    toast.warn("Please enter a valid OTP.", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false, // Hiện thanh tiến trình
-      closeOnClick: true, // Đóng khi nhấp vào thông báo
-      pauseOnHover: true, // Dừng khi di chuột lên thông báo
-      draggable: true, // Kéo thông báo
-      progress: undefined, // Tiến độ (nếu có)
-    });
+    showToast("Vui lòng nhập đúng mã nhận được từ mail!", "warn");
     return;
   }
   let currentTime = new Date().getTime();
   if (currentTime - otpSentTime.value > otpTimeout) {
     visibleResendOtp.value = true;
     otp.value = "";
-    toast.error("The OTP code has expired.", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false, // Hiện thanh tiến trình
-      closeOnClick: true, // Đóng khi nhấp vào thông báo
-      pauseOnHover: true, // Dừng khi di chuột lên thông báo
-      draggable: true, // Kéo thông báo
-      progress: undefined, // Tiến độ (nếu có)
-    });
+    showToast("Đã quá thời gian mã OTP còn sống!", "error");
     return;
   }
   if (enteredOtp.value === otp.value) {
     visibleFillPassword.value = false;
     otp.value = ""; // Reset mã OTP
   } else {
-    toast.warn("OTP does not match.", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false, // Hiện thanh tiến trình
-      closeOnClick: true, // Đóng khi nhấp vào thông báo
-      pauseOnHover: true, // Dừng khi di chuột lên thông báo
-      draggable: true, // Kéo thông báo
-      progress: undefined, // Tiến độ (nếu có)
-    });
+    showToast("OTP không chính xác!", "warn");
   }
 }
 
 async function UpdatePassword() {
   if (password.value.trim() == "" || confirmPassword.value.trim() == "") {
-    toast.warn("Please enter a valid Password.", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false, // Hiện thanh tiến trình
-      closeOnClick: true, // Đóng khi nhấp vào thông báo
-      pauseOnHover: true, // Dừng khi di chuột lên thông báo
-      draggable: true, // Kéo thông báo
-      progress: undefined, // Tiến độ (nếu có)
-    });
+    showToast("Hãy nhập đầy đủ thông tin yêu cầu!", "warn");
     return;
   }
   if (password.value !== confirmPassword.value) {
-    toast.warn("Passwords do not match. Please try again.", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false, // Hiện thanh tiến trình
-      closeOnClick: true, // Đóng khi nhấp vào thông báo
-      pauseOnHover: true, // Dừng khi di chuột lên thông báo
-      draggable: true, // Kéo thông báo
-      progress: undefined, // Tiến độ (nếu có)
-    });
+    showToast("Mật khẩu xác nhận không trùng khớp!", "warn");
     return;
   }
   try {
@@ -305,42 +228,15 @@ async function UpdatePassword() {
     });
 
     if (response.data.success) {
-      toast.success("Password updated successfully!", {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false, // Hiện thanh tiến trình
-        closeOnClick: true, // Đóng khi nhấp vào thông báo
-        pauseOnHover: true, // Dừng khi di chuột lên thông báo
-        draggable: true, // Kéo thông báo
-        progress: undefined, // Tiến độ (nếu có)
-      });
+      showToast("Thay đổi mật khẩu thành công!", "success");
       setTimeout(() => {
         router.push("/login");
-      }, 2000);
+      }, 1500);
     } else {
-      toast.error("Failed to update password. Please check your OTP.", {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false, // Hiện thanh tiến trình
-        closeOnClick: true, // Đóng khi nhấp vào thông báo
-        pauseOnHover: true, // Dừng khi di chuột lên thông báo
-        draggable: true, // Kéo thông báo
-        progress: undefined, // Tiến độ (nếu có)
-      });
+      showToast("Lỗi trong quá trình cập nhật mật khẩu!", "error");
     }
   } catch (error) {
-    toast.error(
-      "An error occurred while updating the password. Please try again.",
-      {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false, // Hiện thanh tiến trình
-        closeOnClick: true, // Đóng khi nhấp vào thông báo
-        pauseOnHover: true, // Dừng khi di chuột lên thông báo
-        draggable: true, // Kéo thông báo
-        progress: undefined, // Tiến độ (nếu có)
-      }
-    );
+    showToast("Lỗi hệ thống!", "error");
   }
 }
 </script>

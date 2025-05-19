@@ -55,6 +55,7 @@
                 label="Vị trí"
                 :items="['Owner', 'Manager', 'Staff']"
                 v-model="employeeInfo.Role"
+                class="mb-6"
               ></v-combobox>
               <v-text-field
                 label="Email"

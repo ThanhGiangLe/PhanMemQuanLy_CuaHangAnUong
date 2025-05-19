@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using testVue.Datas;
-using testVue.Models.Inventory;
+using testVue.Models;
 using testVue.Models.Inventory.Inventory;
+using testVue.ModelsRequest;
 
 namespace testVue.Controllers
 {

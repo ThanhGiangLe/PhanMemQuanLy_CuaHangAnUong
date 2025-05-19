@@ -1,6 +1,6 @@
 ﻿
+using testVue.Configs;
 using testVue.Datas;
-using testVue.Models.Configs;
 
 namespace testVue.Handls
 {

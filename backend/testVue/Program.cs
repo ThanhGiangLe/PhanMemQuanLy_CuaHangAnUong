@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using testVue.Configs;
 using testVue.Datas;
 using testVue.Handls;
-using testVue.Models.Configs;
 
 
 

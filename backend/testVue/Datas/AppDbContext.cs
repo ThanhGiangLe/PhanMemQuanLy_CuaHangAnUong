@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using testVue.Models;
-using testVue.Models.Area;
-using testVue.Models.CashRegister;
 using testVue.Models.ChatBot;
-using testVue.Models.Food;
-using testVue.Models.Inventory;
-using testVue.Models.User;
 
 namespace testVue.Datas
 {
@@ -16,9 +11,6 @@ namespace testVue.Datas
         public DbSet<UserDTO> Users { get; set; } 
         public DbSet<FoodItemDTO> FoodItems { get; set; }
         public DbSet<FoodCategoryDTO> FoodCategories { get; set; }
-        public DbSet<FoodPriceType> FoodPriceTypes { get; set; }
-        public DbSet<CustomizableItem> CustomizableItems { get; set; }
-        public DbSet<FoodCustomizable> FoodCustomizables { get; set; }
         public DbSet<AdditionalFoodDTO> AdditionalFoods { get; set; }
         public DbSet<TableDTO> Tables { get; set; }
         public DbSet<OrderDTO> Orders { get; set; }

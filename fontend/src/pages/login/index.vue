@@ -43,8 +43,8 @@
           class="text-medium-emphasis text-caption text-justify"
           style="color: #ffee58 !important"
         >
-          <strong>Cảnh báo:</strong> Sau 3 lần đăng nhập thất bại liên tiếp, tài
-          khoản của bạn sẽ bị tạm khóa trong vòng ba giờ. Nếu bạn cần đăng nhập
+          <strong>Cảnh báo:</strong> Sau 3 lần đăng nhập thất bại liên tiếp, sẽ
+          có thông báo được gửi đến chủ cửa hàng/quản lý. Nếu bạn cần đăng nhập
           ngay bây giờ, bạn cũng có thể nhấp vào "Quên mật khẩu?" bên dưới để
           đặt lại mật khẩu.
         </v-card-text>
@@ -148,15 +148,7 @@ async function verifyLoginAccount() {
     });
 
     if (response2.data.message !== 1) {
-      toast.error("Lỗi đăng nhập Cash Register!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      showToast("Lỗi ghi nhận thông tin Quản lý két", "error");
     }
     errorMessage.value = "";
     quantityLogin.value = 0;
@@ -173,25 +165,9 @@ async function verifyLoginAccount() {
       errorMessage.value = "";
     }
     if (error.response && error.response.status === 401) {
-      toast.error("Số điện thoại hoặc mật khẩu không đúng!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      showToast("Số điện thoại hoặc mật khẩu không đúng!", "error");
     } else {
-      toast.error("Lỗi hệ thông. Vui lòng thử lại!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      showToast("Lỗi hệ thông. Vui lòng thử lại!", "error");
     }
   }
 }

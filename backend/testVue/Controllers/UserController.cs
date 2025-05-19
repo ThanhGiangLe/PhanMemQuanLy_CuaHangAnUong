@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.EntityFrameworkCore;
 using testVue.Datas;
 using BCrypt.Net;
-using testVue.Models.User;
 using Microsoft.AspNetCore.Identity.Data;
-using testVue.Models.User.User;
 using Twilio.TwiML.Messaging;
+using testVue.ModelsRequest;
+using testVue.Models;
 
 namespace testVue.Controllers
 {
