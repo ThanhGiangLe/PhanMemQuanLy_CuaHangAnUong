@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using testVue.Datas;
-using testVue.Models.User;
+using testVue.ModelsRequest;
 
 namespace testVue.Controllers
 {

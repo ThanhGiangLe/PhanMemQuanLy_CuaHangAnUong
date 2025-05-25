@@ -54,6 +54,7 @@
               accept="image/*"
               v-model="foodAdd.imageUrl"
               prepend-icon="mdi-camera"
+              class="mt-6"
               :show-size="true"
             ></v-file-input>
             <!-- <v-file-input prepend-icon="" label="Hình ảnh"></v-file-input> -->

@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using testVue.Datas;
-using testVue.Models.Area;
-using testVue.Models.CashRegister;
-using testVue.Models.User;
+using testVue.Models;
+using testVue.ModelsRequest;
 
 namespace testVue.Controllers
 {

@@ -1,5 +1,5 @@
-﻿using testVue.Datas;
-using testVue.Models.Configs;
+﻿using testVue.Configs;
+using testVue.Datas;
 
 namespace testVue.Handls
 {
